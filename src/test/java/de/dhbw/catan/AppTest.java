@@ -1,4 +1,4 @@
-package src.test.java.de.dhbw.catan;
+package de.dhbw.catan;
 
 /**
  * Unit test for simple App.

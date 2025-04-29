@@ -1,4 +1,4 @@
-package src.main.java.de.dhbw.catan;
+package de.dhbw.catan;
 
 /**
  * Hello world!
