@@ -36,29 +36,29 @@
 <?import javafx.scene.shape.Polygon?>
 
 
-<AnchorPane prefHeight="900.0" prefWidth="1300.0" styleClass="backgroundPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="900.0" prefWidth="1300.0" styleClass="backgroundPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.BoardController">
    <children>
       <AnchorPane layoutX="223.0" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="814.0" styleClass="AnchorPane" stylesheets="@style.css">
          <children>
-            <Polygon fill="#cdcba7" layoutX="164.0" layoutY="240.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="245.0" layoutY="100.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="326.0" layoutY="240.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="407.0" layoutY="100.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="407.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="488.0" layoutY="240.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="569.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="650.0" layoutY="240.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="569.0" layoutY="100.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="83.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="164.0" layoutY="520.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="245.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="326.0" layoutY="520.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="407.0" layoutY="660.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="488.0" layoutY="520.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="569.0" layoutY="660.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="650.0" layoutY="520.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="245.0" layoutY="660.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#cdcba7" layoutX="731.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fx:id="hexFields1" fill="#d3d3cf" layoutX="164.0" layoutY="240.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexForest1" fill="#d3d3cf" layoutX="245.0" layoutY="100.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexMountains1" fill="#d3d3cf" layoutX="326.0" layoutY="240.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexPastures3" fill="#d3d3cf" layoutX="407.0" layoutY="100.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexDesert" fill="#d3d3cf" layoutX="407.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexFields3" fill="#d3d3cf" layoutX="488.0" layoutY="240.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexMountains2" fill="#d3d3cf" layoutX="569.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexForest3" fill="#d3d3cf" layoutX="650.0" layoutY="240.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexPastures2" fill="#d3d3cf" layoutX="569.0" layoutY="100.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexForest2" fill="#d3d3cf" layoutX="83.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexFields2" fill="#d3d3cf" layoutX="164.0" layoutY="520.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexHills3" fill="#d3d3cf" layoutX="245.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexMountains3" fill="#d3d3cf" layoutX="326.0" layoutY="520.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexPastures1" fill="#d3d3cf" layoutX="407.0" layoutY="660.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexForest4" fill="#d3d3cf" layoutX="488.0" layoutY="520.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexHills2" fill="#d3d3cf" layoutX="569.0" layoutY="660.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexPastures4" fill="#d3d3cf" layoutX="650.0" layoutY="520.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexHills1" fill="#d3d3cf" layoutX="245.0" layoutY="660.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
+            <Polygon fx:id="hexFields4" fill="#d3d3cf" layoutX="731.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c9c276" strokeWidth="10.0" />
          </children>
       </AnchorPane>
    </children>
