@@ -32,52 +32,29 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Polygon?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" stylesheet="@style.css">
-  <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
-  </children>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1055.0" prefWidth="1199.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Polygon fill="#a3b9cd" layoutX="398.0" layoutY="407.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="463.0" layoutY="295.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="528.0" layoutY="407.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="593.0" layoutY="295.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="593.0" layoutY="519.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="658.0" layoutY="407.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="723.0" layoutY="519.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="788.0" layoutY="407.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="723.0" layoutY="295.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.5" scaleY="1.5" stroke="BLACK" strokeType="INSIDE" translateX="1.0" translateY="1.0" />
+      <Polygon fill="#a3b9cd" layoutX="333.0" layoutY="519.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="398.0" layoutY="631.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="463.0" layoutY="519.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="528.0" layoutY="631.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="593.0" layoutY="743.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="658.0" layoutY="631.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="723.0" layoutY="743.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="788.0" layoutY="631.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="463.0" layoutY="743.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fill="#a3b9cd" layoutX="853.0" layoutY="519.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+</AnchorPane>
