@@ -51,7 +51,7 @@ public class BoardController {
     @FXML
     public void initialize() {
         Image imgOcean = new Image(getClass().getResource("/images/ocean.png").toExternalForm());
-        Image imgDesert = new Image(getClass().getResource("/images/desert.png").toExternalForm());
+        Image imgDesert = new Image(getClass().getResource("/images/desert.jpg").toExternalForm());
         Image imgPastures = new Image(getClass().getResource("/images/pastures.jpg").toExternalForm());
         Image imgForest = new Image(getClass().getResource("/images/forest.jpg").toExternalForm());
         Image imgMountains = new Image(getClass().getResource("/images/mountains.jpg").toExternalForm());
@@ -63,10 +63,10 @@ public class BoardController {
         hexPastures2.setFill(new ImagePattern(imgPastures));
         hexPastures3.setFill(new ImagePattern(imgPastures));
         hexPastures4.setFill(new ImagePattern(imgPastures));
-        hexForest1.setFill(new ImagePattern(imgForest, 0, 0, 2, 1, true));
-        hexForest2.setFill(new ImagePattern(imgForest, 0, 0, 2, 1, true));
-        hexForest3.setFill(new ImagePattern(imgForest, 0, 0, 2, 1, true));
-        hexForest4.setFill(new ImagePattern(imgForest, 0, 0, 2, 1, true));
+        hexForest1.setFill(new ImagePattern(imgForest));
+        hexForest2.setFill(new ImagePattern(imgForest));
+        hexForest3.setFill(new ImagePattern(imgForest));
+        hexForest4.setFill(new ImagePattern(imgForest));
         hexMountains1.setFill(new ImagePattern(imgMountains));
         hexMountains2.setFill(new ImagePattern(imgMountains));
         hexMountains3.setFill(new ImagePattern(imgMountains));

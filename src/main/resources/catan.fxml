@@ -39,179 +39,178 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Polygon?>
 
-
 <AnchorPane prefHeight="900.0" prefWidth="1300.0" styleClass="backgroundPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.BoardController">
    <children>
       <AnchorPane layoutX="211.0" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="826.0" styleClass="AnchorPane" stylesheets="@style.css">
          <children>
             <Polygon fx:id="hexOcean" fill="#356fbf" layoutX="406.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" rotate="90.0" scaleX="6.8" scaleY="6.8" stroke="BLACK" />
-            <Polygon fx:id="hexFields1" fill="#d3d3cf" layoutX="171.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexFields1" fill="#d3d3cf" layoutX="171.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexForest1" fill="#d3d3cf" layoutX="252.0" layoutY="114.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexForest1" fill="#d3d3cf" layoutX="252.0" layoutY="114.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexMountains1" fill="#d3d3cf" layoutX="333.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexMountains1" fill="#d3d3cf" layoutX="333.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexPastures3" fill="#d3d3cf" layoutX="414.0" layoutY="114.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexPastures3" fill="#d3d3cf" layoutX="414.0" layoutY="114.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexDesert" fill="#d3d3cf" layoutX="414.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexDesert" fill="#d3d3cf" layoutX="414.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexFields3" fill="#d3d3cf" layoutX="495.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexFields3" fill="#d3d3cf" layoutX="495.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexMountains2" fill="#d3d3cf" layoutX="576.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexMountains2" fill="#d3d3cf" layoutX="576.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexForest3" fill="#d3d3cf" layoutX="657.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexForest3" fill="#d3d3cf" layoutX="657.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexPastures2" fill="#d3d3cf" layoutX="576.0" layoutY="114.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexPastures2" fill="#d3d3cf" layoutX="576.0" layoutY="114.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexForest2" fill="#d3d3cf" layoutX="90.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexForest2" fill="#d3d3cf" layoutX="90.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexFields2" fill="#d3d3cf" layoutX="171.0" layoutY="534.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexFields2" fill="#d3d3cf" layoutX="171.0" layoutY="534.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexHills3" fill="#d3d3cf" layoutX="252.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexHills3" fill="#d3d3cf" layoutX="252.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexMountains3" fill="#d3d3cf" layoutX="333.0" layoutY="534.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexMountains3" fill="#d3d3cf" layoutX="333.0" layoutY="534.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexPastures1" fill="#d3d3cf" layoutX="414.0" layoutY="674.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexPastures1" fill="#d3d3cf" layoutX="414.0" layoutY="674.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexForest4" fill="#d3d3cf" layoutX="495.0" layoutY="534.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexForest4" fill="#d3d3cf" layoutX="495.0" layoutY="534.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexHills2" fill="#d3d3cf" layoutX="576.0" layoutY="674.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexHills2" fill="#d3d3cf" layoutX="576.0" layoutY="674.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexPastures4" fill="#d3d3cf" layoutX="657.0" layoutY="534.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexPastures4" fill="#d3d3cf" layoutX="657.0" layoutY="534.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexHills1" fill="#d3d3cf" layoutX="252.0" layoutY="674.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexHills1" fill="#d3d3cf" layoutX="252.0" layoutY="674.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexFields4" fill="#d3d3cf" layoutX="738.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#c6b776" strokeWidth="10.0">
+            <Polygon fx:id="hexFields4" fill="#d3d3cf" layoutX="738.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
-                  <InnerShadow choke="0.78" height="84.4" radius="41.3275" width="82.91">
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
-                        <Color red="0.7764706015586853" green="0.7176470756530762" blue="0.4627451002597809" />
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
                      </color>
                   </InnerShadow>
                </effect>
