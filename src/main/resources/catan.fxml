@@ -35,26 +35,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Polygon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1055.0" prefWidth="1199.0" styleClass="AnchorPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane prefHeight="900.0" prefWidth="1300.0" styleClass="backgroundPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Polygon fill="#a3b9cd" layoutX="398.0" layoutY="407.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="463.0" layoutY="295.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="528.0" layoutY="407.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="593.0" layoutY="295.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="593.0" layoutY="519.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="658.0" layoutY="407.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="723.0" layoutY="519.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="788.0" layoutY="407.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="723.0" layoutY="295.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.5" scaleY="1.5" stroke="BLACK" strokeType="INSIDE" translateX="1.0" translateY="1.0" />
-      <Polygon fill="#a3b9cd" layoutX="333.0" layoutY="519.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="398.0" layoutY="631.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="463.0" layoutY="519.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="528.0" layoutY="631.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="593.0" layoutY="743.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="658.0" layoutY="631.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="723.0" layoutY="743.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="788.0" layoutY="631.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="463.0" layoutY="743.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fill="#a3b9cd" layoutX="853.0" layoutY="519.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <AnchorPane layoutX="223.0" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="814.0" styleClass="AnchorPane" stylesheets="@style.css">
+         <children>
+            <Polygon fill="#cdcba7" layoutX="164.0" layoutY="240.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="245.0" layoutY="100.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="326.0" layoutY="240.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="407.0" layoutY="100.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="407.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="488.0" layoutY="240.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="569.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="650.0" layoutY="240.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="569.0" layoutY="100.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="83.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="164.0" layoutY="520.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="245.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="326.0" layoutY="520.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="407.0" layoutY="660.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="488.0" layoutY="520.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="569.0" layoutY="660.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="650.0" layoutY="520.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="245.0" layoutY="660.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#cdcba7" layoutX="731.0" layoutY="380.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
