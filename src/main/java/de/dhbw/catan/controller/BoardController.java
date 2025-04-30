@@ -8,6 +8,8 @@ import javafx.scene.shape.Polygon;
 public class BoardController {
 
     @FXML
+    private Polygon hexOcean;
+    @FXML
     private Polygon hexDesert;
     @FXML
     private Polygon hexPastures1;
@@ -48,12 +50,14 @@ public class BoardController {
 
     @FXML
     public void initialize() {
+        Image imgOcean = new Image(getClass().getResource("/images/ocean.png").toExternalForm());
         Image imgDesert = new Image(getClass().getResource("/images/desert.png").toExternalForm());
         Image imgPastures = new Image(getClass().getResource("/images/pastures.jpg").toExternalForm());
         Image imgForest = new Image(getClass().getResource("/images/forest.jpg").toExternalForm());
         Image imgMountains = new Image(getClass().getResource("/images/mountains.jpg").toExternalForm());
         Image imgHills = new Image(getClass().getResource("/images/hills.jpg").toExternalForm());
         Image imgFields = new Image(getClass().getResource("/images/fields.jpg").toExternalForm());
+        hexOcean.setFill(new ImagePattern(imgOcean, 0, 0, 0.25, 0.25, true));
         hexDesert.setFill(new ImagePattern(imgDesert));
         hexPastures1.setFill(new ImagePattern(imgPastures));
         hexPastures2.setFill(new ImagePattern(imgPastures));
