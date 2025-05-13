@@ -2,13 +2,18 @@ package de.dhbw.catan.controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
+
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Circle;
 
 public class BoardController {
 
@@ -16,6 +21,10 @@ public class BoardController {
     private Polygon hexOcean, hexDesert, hexPastures1, hexPastures2, hexPastures3, hexPastures4, 
             hexForest1, hexForest2, hexForest3, hexForest4, hexMountains1, hexMountains2, hexMountains3,
             hexHills1, hexHills2, hexHills3, hexFields1, hexFields2, hexFields3, hexFields4;
+    
+    private List<Polygon> hexList;
+    private List<Double> posX;
+    private List<Double> posY;
 
     @FXML
     private AnchorPane circ2, circ3a, circ3b, circ4a, circ4b, circ5a, circ5b, circ6a, circ6b, circ8a, circ8b,
@@ -27,15 +36,15 @@ public class BoardController {
     @FXML
     public void initialize() {
 
-        List<Polygon> hexList = List.of(hexPastures1, hexPastures2, hexPastures3, hexPastures4,
+        hexList = List.of(hexPastures1, hexPastures2, hexPastures3, hexPastures4,
                 hexForest1, hexForest2, hexForest3, hexForest4, hexMountains1, hexMountains2, hexMountains3,
                 hexHills1, hexHills2, hexHills3, hexFields1, hexFields2, hexFields3, hexFields4);
 
         List<AnchorPane> circList = List.of(circ2, circ3a, circ3b, circ4a, circ4b, circ5a, circ5b,
                 circ6a, circ6b, circ8a, circ8b, circ9a, circ9b, circ10a, circ10b, circ11a, circ11b, circ12);
         
-        List<Double> posX = hexList.stream().map(Polygon::getLayoutX).collect(Collectors.toList());
-        List<Double> posY = hexList.stream().map(Polygon::getLayoutY).collect(Collectors.toList());
+        posX = hexList.stream().map(Polygon::getLayoutX).collect(Collectors.toList());
+        posY = hexList.stream().map(Polygon::getLayoutY).collect(Collectors.toList());
 
         List<Polygon> shuffledPoly = new ArrayList<>(hexList);
         List<AnchorPane> shuffledCirc = new ArrayList<>(circList);
@@ -50,8 +59,8 @@ public class BoardController {
             poly.setLayoutY(posY.get(i));
             circ.setLayoutX(posX.get(i) - 24);
             circ.setLayoutY(posY.get(i) - 24);
-        }        
-
+        }   
+        
         Image imgOcean = new Image(getClass().getResource("/images/ocean.png").toExternalForm());
         Image imgDesert = new Image(getClass().getResource("/images/desert.jpg").toExternalForm());
         Image imgPastures = new Image(getClass().getResource("/images/pastures.jpg").toExternalForm());
@@ -80,5 +89,66 @@ public class BoardController {
         hexFields2.setFill(new ImagePattern(imgFields));
         hexFields3.setFill(new ImagePattern(imgFields));
         hexFields4.setFill(new ImagePattern(imgFields));
+    }
+
+    @FXML
+    public void showCornerPoints() {
+
+        // Set<String> uniqueCornerSet = new HashSet<>();
+        // List<double[]> allHexCorners = new ArrayList<>();
+
+        // for (Polygon hex : hexList) {
+        //     Observablepoints = hex.getPoints();
+        //     double layoutX = hex.getLayoutX();
+        //     double layoutY = hex.getLayoutY();
+
+        //     for (int i = 0; i < points.size(); i += 2) {
+        //         double localX = layoutX + points.get(i);
+        //         double localY = layoutY + points.get(i + 1);
+
+        //         javafx.geometry.Point2D scenePoint = hex.localToParent(localX, localY);
+
+        //         double x = scenePoint.getX();
+        //         double y = scenePoint.getY();
+        //         // Schlüssel zur Identifikation (z. B. gerundet auf 3 Dezimalstellen)
+        //         String key = String.format("%.3f_%.3f", x, y);
+
+        //         if (uniqueCornerSet.add(key)) {
+        //             allHexCorners.add(new double[] { x, y });
+        //             Circle point = new Circle(x, y, 8);
+        //             point.setFill(javafx.scene.paint.Color.WHITE);
+        //             boardPane.getChildren().add(point);
+        //         }
+        //     }
+        // }
+
+        // for (double[] corner : allHexCorners) {
+        //     System.out.println("Ecke bei: x = " + corner[0] + ", y = " + corner[1]);
+        // }
+
+        List<double[]> offsets = List.of(
+            new double[] { -64.95, -37.5 },
+            new double[] { -64.95, 37.5 },
+            new double[] { 0, 75.0 },
+            new double[] { 64.95, 37.5 },
+            new double[] { 64.95, -37.5 },
+            new double[] { 0, -75.0 }
+        );  
+        
+        Set<String> uniquePoints = new HashSet<>();
+        
+        for (int i = 0; i < hexList.size(); i++) {
+            for (double[] offset : offsets) {
+                double x = posX.get(i) + offset[0] * hexList.get(i).getScaleX();
+                double y = posY.get(i) + offset[1] * hexList.get(i).getScaleY();
+        
+                String key = String.format("%.3f_%.3f", x, y);
+                if (uniquePoints.add(key)) {
+                    Circle point = new Circle(x, y, 8);
+                    point.setFill(javafx.scene.paint.Color.WHITE);
+                    boardPane.getChildren().add(point);
+                }
+            }
+        }         
     }
 }
