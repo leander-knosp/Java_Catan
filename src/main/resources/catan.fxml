@@ -129,7 +129,7 @@
                   </InnerShadow>
                </effect>
             </Polygon>
-            <Polygon fx:id="hexForest2" fill="#d3d3cf" layoutX="90.0" layoutY="394.0" points="-64.95, -37.5, -64.95, -64.95, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+            <Polygon fx:id="hexForest2" fill="#d3d3cf" layoutX="90.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
                <effect>
                   <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
                      <color>
