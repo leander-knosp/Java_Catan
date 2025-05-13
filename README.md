@@ -32,3 +32,19 @@
 
 ## How to Run:
 1. Run `mvn javafx:run`
+
+
+
+## Klassen
+
+- **Spiel**: Steuert den Spielablauf.
+- **Spieler**: Repräsentiert einen Spieler (Ressourcen, Bauwerke, Karten).
+- **Ressource (Enum)**: HOLZ, LEHM, GETREIDE, WOLLE, ERZ.
+- **Entwicklungskarte**: Ritter, Monopol, Straßenausbau, etc.
+- **Spielfeld / Spielbrett**: Enthält Hexfelder, Knoten, Kanten.
+- **HexFeld**: Ressourcenfeld mit Würfelzahl.
+- **Kante**: Verbindung zwischen Knoten (für Straßen).
+- **Knoten**: Ort für Siedlungen/Städte.
+- **Würfel**: Generiert Zahlen zwischen 2–12.
+- **Räuber**: Blockiert Ressourcen, stiehlt Karten.
+- **Handel**: Abwicklung von Tauschgeschäften.
