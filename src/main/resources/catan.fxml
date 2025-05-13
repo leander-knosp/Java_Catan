@@ -37,11 +37,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="900.0" prefWidth="1300.0" styleClass="backgroundPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.BoardController">
    <children>
-      <AnchorPane layoutX="211.0" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="826.0" styleClass="AnchorPane" stylesheets="@style.css">
+      <AnchorPane fx:id="boardPane" layoutX="211.0" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="826.0" styleClass="AnchorPane" stylesheets="@style.css">
          <children>
             <Polygon fx:id="hexOcean" fill="#356fbf" layoutX="406.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" rotate="90.0" scaleX="6.8" scaleY="6.8" stroke="BLACK" />
             <Polygon fx:id="hexFields1" fill="#d3d3cf" layoutX="171.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
@@ -375,6 +378,186 @@
                   <Image url="@images/medium%20stones.png" />
                </image>
             </ImageView>
+            <AnchorPane fx:id="circ3a" layoutX="119.0" layoutY="2.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="16.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ4a" layoutX="-2.0" layoutY="71.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="15.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ5b" layoutX="-1.0" layoutY="182.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="15.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ5a" layoutX="-1.0" layoutY="126.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="15.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ4b" layoutX="54.0" layoutY="72.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="15.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ2" layoutX="55.0" layoutY="-1.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="15.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ3b" layoutX="176.0" layoutY="7.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="16.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ6a" layoutX="58.0" layoutY="128.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fill="#bc0303" layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6.">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ6b" layoutX="117.0" layoutY="129.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fill="#bc0303" layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6.">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ8a" layoutX="-1.0" layoutY="237.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fill="#bc0303" layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ8b" layoutX="54.0" layoutY="235.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fill="#bc0303" layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ9a" layoutX="-1.0" layoutY="296.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9.">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ9b" layoutX="57.0" layoutY="298.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9.">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ10a" layoutX="114.0" layoutY="299.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="9.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ10b" layoutX="174.0" layoutY="300.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="9.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ11a" layoutX="6.0" layoutY="360.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="11.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ11b" layoutX="66.0" layoutY="360.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="11.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ12" layoutX="125.0" layoutY="362.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="10.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
