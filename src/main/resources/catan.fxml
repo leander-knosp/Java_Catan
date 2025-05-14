@@ -32,52 +32,534 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
-  </children>
-</VBox>
+<AnchorPane prefHeight="900.0" prefWidth="1550.0" styleClass="backgroundPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.BoardController">
+   <children>
+      <AnchorPane fx:id="boardPane" layoutX="122.0" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="826.0" styleClass="AnchorPane" stylesheets="@style.css">
+         <children>
+            <Polygon fx:id="hexOcean" fill="#356fbf" layoutX="406.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" rotate="90.0" scaleX="6.8" scaleY="6.8" stroke="BLACK" />
+            <Polygon fx:id="hexFields1" fill="#d3d3cf" layoutX="171.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexForest1" fill="#d3d3cf" layoutX="252.0" layoutY="114.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexMountains1" fill="#d3d3cf" layoutX="333.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.9225" radius="40.958124999999995" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexPastures3" fill="#d3d3cf" layoutX="414.0" layoutY="114.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexDesert" fill="#d3d3cf" layoutX="414.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexFields3" fill="#d3d3cf" layoutX="495.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexMountains2" fill="#d3d3cf" layoutX="576.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexForest3" fill="#d3d3cf" layoutX="657.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexPastures2" fill="#d3d3cf" layoutX="576.0" layoutY="114.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexForest2" fill="#d3d3cf" layoutX="90.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexFields2" fill="#d3d3cf" layoutX="171.0" layoutY="534.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexHills3" fill="#d3d3cf" layoutX="252.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexMountains3" fill="#d3d3cf" layoutX="333.0" layoutY="534.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexPastures1" fill="#d3d3cf" layoutX="414.0" layoutY="674.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexForest4" fill="#d3d3cf" layoutX="495.0" layoutY="534.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexHills2" fill="#d3d3cf" layoutX="576.0" layoutY="674.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexPastures4" fill="#d3d3cf" layoutX="657.0" layoutY="534.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexHills1" fill="#d3d3cf" layoutX="252.0" layoutY="674.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <Polygon fx:id="hexFields4" fill="#d3d3cf" layoutX="738.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
+               <effect>
+                  <InnerShadow choke="0.72" height="82.96" radius="40.9675" width="82.91">
+                     <color>
+                        <Color red="0.8470588326454163" green="0.7372549176216125" blue="0.41960784792900085" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Polygon>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="131.0" layoutY="22.0" rotate="55.4">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="187.0" layoutY="-8.0" rotate="72.0">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="388.0" layoutY="-16.0" rotate="-73.7">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="451.0" layoutY="20.0" rotate="-55.0">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="647.0" layoutY="131.0" rotate="-69.4">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="702.0" layoutY="166.0" rotate="-34.6">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="809.0" layoutY="343.0" rotate="7.0">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="805.0" layoutY="403.0" rotate="17.9">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="706.0" layoutY="589.0" rotate="34.6">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="645.0" layoutY="628.0" rotate="-106.0">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="457.0" layoutY="735.0" rotate="49.0">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="391.0" layoutY="769.0" rotate="88.2">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="189.0" layoutY="768.0" rotate="-66.1">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="132.0" layoutY="734.0" rotate="-43.2">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="25.0" layoutY="504.0">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="29.0" layoutY="561.0" rotate="-19.4">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="30.0" layoutY="263.0" rotate="12.0">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="74.0" layoutX="30.0" layoutY="201.0" rotate="19.0">
+               <image>
+                  <Image url="@images/pier.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="19.0" fitWidth="49.0" layoutX="71.0" layoutY="185.0" rotate="-30.200000000000003">
+               <image>
+                  <Image url="@images/big%20stone.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="12.0" fitWidth="39.0" layoutX="186.0" layoutY="34.0" rotate="-31.0">
+               <image>
+                  <Image url="@images/medium%20stones.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="28.0" layoutX="143.0" layoutY="153.0" rotate="-37.400000000000006">
+               <image>
+                  <Image url="@images/small%20stones.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="19.0" fitWidth="49.0" layoutX="320.0" layoutY="40.0" rotate="-21.0">
+               <image>
+                  <Image url="@images/big%20stone.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="28.0" layoutX="236.0" layoutY="12.0" rotate="-11.0">
+               <image>
+                  <Image url="@images/small%20stones.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="14.0" fitWidth="41.0" layoutX="498.0" layoutY="37.0" rotate="-25.0">
+               <image>
+                  <Image url="@images/medium%20stones.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="19.0" fitWidth="49.0" layoutX="548.0" layoutY="8.0" rotate="-5.0">
+               <image>
+                  <Image url="@images/big%20stone.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="14.0" fitWidth="41.0" layoutX="622.0" layoutY="44.0" rotate="34.0">
+               <image>
+                  <Image url="@images/medium%20stones.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="14.0" fitWidth="41.0" layoutX="642.0" layoutY="70.0" rotate="84.9">
+               <image>
+                  <Image url="@images/medium%20stones.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="28.0" layoutX="299.0" layoutY="43.0" rotate="27.0">
+               <image>
+                  <Image url="@images/small%20stones.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="28.0" layoutX="687.0" layoutY="172.0" rotate="26.0">
+               <image>
+                  <Image url="@images/small%20stones.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="19.0" fitWidth="49.0" layoutX="724.0" layoutY="251.0" rotate="91.6">
+               <image>
+                  <Image url="@images/big%20stone.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="28.0" layoutX="732.0" layoutY="287.0" rotate="74.6">
+               <image>
+                  <Image url="@images/small%20stones.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="14.0" fitWidth="41.0" layoutX="787.0" layoutY="325.0" rotate="31.6">
+               <image>
+                  <Image url="@images/medium%20stones.png" />
+               </image>
+            </ImageView>
+            <AnchorPane fx:id="circ3a" layoutX="119.0" layoutY="2.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="16.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ4a" layoutX="-2.0" layoutY="71.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="15.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ5b" layoutX="-1.0" layoutY="182.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="15.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ5a" layoutX="-1.0" layoutY="126.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="15.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ4b" layoutX="54.0" layoutY="72.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="15.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ2" layoutX="55.0" layoutY="-1.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="15.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ3b" layoutX="176.0" layoutY="7.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="16.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ6a" layoutX="58.0" layoutY="128.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fill="#bc0303" layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6.">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ6b" layoutX="117.0" layoutY="129.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fill="#bc0303" layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6.">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ8a" layoutX="-1.0" layoutY="237.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fill="#bc0303" layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ8b" layoutX="54.0" layoutY="235.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fill="#bc0303" layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ9a" layoutX="-1.0" layoutY="296.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9.">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ9b" layoutX="57.0" layoutY="298.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9.">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ10a" layoutX="114.0" layoutY="299.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="9.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ10b" layoutX="174.0" layoutY="300.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="9.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ11a" layoutX="6.0" layoutY="360.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="11.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ11b" layoutX="66.0" layoutY="360.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="11.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="circ12" layoutX="125.0" layoutY="362.0" prefHeight="33.0" prefWidth="38.0">
+               <children>
+                  <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text layoutX="10.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12">
+                     <font>
+                        <Font name="Georgia Bold" size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="sidebar" layoutX="1094.0" layoutY="51.0" prefHeight="805.0" prefWidth="414.0" />
+   </children>
+</AnchorPane>
