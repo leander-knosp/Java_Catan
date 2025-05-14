@@ -44,7 +44,7 @@
 
 <AnchorPane prefHeight="900.0" prefWidth="1550.0" styleClass="backgroundPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.BoardController">
    <children>
-      <AnchorPane fx:id="boardPane" layoutX="122.0" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="826.0" styleClass="AnchorPane" stylesheets="@style.css">
+      <AnchorPane fx:id="boardPane" layoutX="122.0" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="762.0" prefWidth="826.0" scaleX="0.75" scaleY="0.75" styleClass="AnchorPane" stylesheets="@style.css">
          <children>
             <Polygon fx:id="hexOcean" fill="#356fbf" layoutX="406.0" layoutY="394.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" rotate="90.0" scaleX="6.8" scaleY="6.8" stroke="BLACK" />
             <Polygon fx:id="hexFields1" fill="#d3d3cf" layoutX="171.0" layoutY="254.0" points="-64.95, -37.5, -64.95, 37.5, 0.0, 75.0, 64.95, 37.5, 64.95, -37.5, 0.0, -75.0" scaleX="1.25" scaleY="1.25" stroke="#d7c169" strokeWidth="10.0">
