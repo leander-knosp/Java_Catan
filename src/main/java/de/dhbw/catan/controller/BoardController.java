@@ -32,7 +32,7 @@ public class BoardController {
     circ9a, circ9b, circ10a, circ10b, circ11a, circ11b, circ12;
     
     @FXML
-    private AnchorPane boardPane;
+    private AnchorPane boardPane, sidebar;
 
     public AnchorPane getBoardPane() {
         return boardPane;
@@ -46,7 +46,7 @@ public class BoardController {
             Parent subComponent = loader.load();
             PointsController pointsController = loader.getController();
             pointsController.setBoardController(this);
-            boardPane.getChildren().add(subComponent);  // Füge die Sub-Komponente hinzu
+            sidebar.getChildren().add(subComponent);  // Füge die Sub-Komponente hinzu
         } catch (IOException e) {
             e.printStackTrace();
 
