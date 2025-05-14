@@ -1,8 +1,6 @@
 package de.dhbw.catan.controller;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import de.dhbw.catan.model.Tile;
 
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
@@ -10,70 +8,36 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class PointsController {
 
-    @FXML
-    private BoardController BoardController;
+    private BoardController boardController;
 
     public void setBoardController(BoardController boardController) {
-        this.BoardController = boardController;
+        this.boardController = boardController;
     }
-    
 
     @FXML
     public void showCornerPoints() {
-
-        // Set<String> uniqueCornerSet = new HashSet<>();
-        // List<double[]> allHexCorners = new ArrayList<>();
-
-        // for (Polygon hex : hexList) {
-        //     Observablepoints = hex.getPoints();
-        //     double layoutX = hex.getLayoutX();
-        //     double layoutY = hex.getLayoutY();
-
-        //     for (int i = 0; i < points.size(); i += 2) {
-        //         double localX = layoutX + points.get(i);
-        //         double localY = layoutY + points.get(i + 1);
-
-        //         javafx.geometry.Point2D scenePoint = hex.localToParent(localX, localY);
-
-        //         double x = scenePoint.getX();
-        //         double y = scenePoint.getY();
-        //         // Schlüssel zur Identifikation (z. B. gerundet auf 3 Dezimalstellen)
-        //         String key = String.format("%.3f_%.3f", x, y);
-
-        //         if (uniqueCornerSet.add(key)) {
-        //             allHexCorners.add(new double[] { x, y });
-        //             Circle point = new Circle(x, y, 8);
-        //             point.setFill(javafx.scene.paint.Color.WHITE);
-        //             boardPane.getChildren().add(point);
-        //         }
-        //     }
-        // }
-
-        // for (double[] corner : allHexCorners) {
-        //     System.out.println("Ecke bei: x = " + corner[0] + ", y = " + corner[1]);
-        // }
-
-        List<Polygon> hexList = BoardController.getHexList();
-        AnchorPane boardPane = BoardController.getBoardPane();
+        List<Tile> tiles = boardController.getTiles();
+        AnchorPane boardPane = boardController.getBoardPane();
 
         List<double[]> offsets = List.of(
-            new double[] { -64.95, -37.5 },
-            new double[] { -64.95, 37.5 },
-            new double[] { 0, 75.0 },
-            new double[] { 64.95, 37.5 },
-            new double[] { 64.95, -37.5 },
-            new double[] { 0, -75.0 }
-        );  
-        
+            new double[]{ -64.95, -37.5 }, new double[]{ -64.95, 37.5 }, new double[]{ 0, 75.0 },
+            new double[]{ 64.95, 37.5 }, new double[]{ 64.95, -37.5 }, new double[]{ 0, -75.0 }
+        );
+
         Set<String> uniquePoints = new HashSet<>();
-        
-        for (int i = 0; i < hexList.size(); i++) {
+
+        for (Tile tile : tiles) {
+            Polygon hex = tile.getShape();
             for (double[] offset : offsets) {
-                double x = hexList.get(i).getLayoutX() + offset[0] * hexList.get(i).getScaleX();
-                double y = hexList.get(i).getLayoutY() + offset[1] * hexList.get(i).getScaleY();
-        
+                double x = hex.getLayoutX() + offset[0] * hex.getScaleX();
+                double y = hex.getLayoutY() + offset[1] * hex.getScaleY();
+
                 String key = String.format("%.3f_%.3f", x, y);
                 if (uniquePoints.add(key)) {
                     Circle point = new Circle(x, y, 8);
@@ -85,6 +49,6 @@ public class PointsController {
                     boardPane.getChildren().add(point);
                 }
             }
-        }         
+        }
     }
 }
