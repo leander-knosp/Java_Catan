@@ -43,7 +43,9 @@ public class PointsController {
                     Circle point = new Circle(x, y, 8);
                     point.setFill(javafx.scene.paint.Color.WHITE);
                     point.setCursor(Cursor.HAND);
-                    point.setOnMouseClicked(event -> boardPane.getChildren().removeIf(n -> n instanceof Circle));
+                    point.setOnMouseClicked(event -> {
+                        boardPane.getChildren().removeIf(node -> node instanceof Circle);
+                    });
                     boardPane.getChildren().add(point);
                 }
             }
