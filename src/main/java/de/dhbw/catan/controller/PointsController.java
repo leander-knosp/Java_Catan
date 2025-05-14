@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
@@ -77,6 +78,7 @@ public class PointsController {
                 if (uniquePoints.add(key)) {
                     Circle point = new Circle(x, y, 8);
                     point.setFill(javafx.scene.paint.Color.WHITE);
+                    point.setCursor(Cursor.HAND);
                     point.setOnMouseClicked(event -> {
                         boardPane.getChildren().removeIf(node -> node instanceof Circle);
                     });
