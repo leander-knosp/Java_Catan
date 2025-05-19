@@ -8,5 +8,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class Tile {
     private Polygon shape;
-    private ResourceType type;
+    private TileType type;
 }

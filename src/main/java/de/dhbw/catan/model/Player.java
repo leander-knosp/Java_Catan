@@ -1,0 +1,68 @@
+package de.dhbw.catan.model;
+
+import java.util.EnumMap;
+import java.util.Map;
+
+import lombok.Data;
+
+
+@Data
+public class Player {
+    private final String name;
+    private final Map<ResourceType, Integer> resources;
+    private int roads;
+    private int settlements;
+    private int cities;
+
+    public Player(String name) {
+        this.name = name;
+        this.resources = new EnumMap<>(ResourceType.class);
+        for (ResourceType type : ResourceType.values()) {
+            resources.put(type, 0);
+        }
+        this.roads = 15;
+        this.settlements = 5;
+        this.cities = 4;
+    }
+
+    public void addResource(ResourceType type, int amount) {
+        resources.put(type, resources.get(type) + amount);
+    }
+
+    public boolean hasEnoughResources(BuildingType buildingType) {
+        Map<ResourceType, Integer> cost = BuildingCost.getCost(buildingType);
+        for (Map.Entry<ResourceType, Integer> entry : cost.entrySet()) {
+            if (resources.get(entry.getKey()) < entry.getValue()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean build(BuildingType buildingType) {
+        if (!hasEnoughResources(buildingType)) return false;
+
+        Map<ResourceType, Integer> cost = BuildingCost.getCost(buildingType);
+        for (Map.Entry<ResourceType, Integer> entry : cost.entrySet()) {
+            resources.put(entry.getKey(), resources.get(entry.getKey()) - entry.getValue());
+        }
+
+        switch (buildingType) {
+                    case ROAD -> {
+                        if (roads <= 0) return false;
+                        roads--;
+                    }
+                    case SETTLEMENT -> {
+                        if (settlements <= 0) return false;
+                        settlements--;
+                    }
+                    case CITY -> {
+                        if (cities <= 0) return false;
+                        cities--;
+                    }
+                    default -> throw new IllegalArgumentException("Unexpected value: " + buildingType);
+        }
+
+        return true;
+    }
+}
