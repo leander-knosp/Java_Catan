@@ -2,7 +2,7 @@ package de.dhbw.catan.controller;
 
 import de.dhbw.catan.model.Board;
 import de.dhbw.catan.model.Tile;
-import de.dhbw.catan.model.ResourceType;
+import de.dhbw.catan.model.TileType;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,9 +16,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Map;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.image.Image;
-import de.dhbw.catan.model.ResourceType;
 
 public class BoardController {
 
@@ -74,21 +71,21 @@ public class BoardController {
 
     private void applyImages() {
         var patterns = Map.of(
-            ResourceType.OCEAN, new ImagePattern(new Image(getClass().getResource("/images/ocean.png").toExternalForm()), 0, 0, 0.25, 0.25, true),
-            ResourceType.DESERT, new ImagePattern(new Image(getClass().getResource("/images/desert.jpg").toExternalForm())),
-            ResourceType.PASTURES, new ImagePattern(new Image(getClass().getResource("/images/pastures.jpg").toExternalForm())),
-            ResourceType.FOREST, new ImagePattern(new Image(getClass().getResource("/images/forest.jpg").toExternalForm())),
-            ResourceType.MOUNTAINS, new ImagePattern(new Image(getClass().getResource("/images/mountains.jpg").toExternalForm())),
-            ResourceType.HILLS, new ImagePattern(new Image(getClass().getResource("/images/hills.jpg").toExternalForm())),
-            ResourceType.FIELDS, new ImagePattern(new Image(getClass().getResource("/images/fields.jpg").toExternalForm()))
+            TileType.OCEAN, new ImagePattern(new Image(getClass().getResource("/images/ocean.png").toExternalForm()), 0, 0, 0.25, 0.25, true),
+            TileType.DESERT, new ImagePattern(new Image(getClass().getResource("/images/desert.jpg").toExternalForm())),
+            TileType.PASTURES, new ImagePattern(new Image(getClass().getResource("/images/pastures.jpg").toExternalForm())),
+            TileType.FOREST, new ImagePattern(new Image(getClass().getResource("/images/forest.jpg").toExternalForm())),
+            TileType.MOUNTAINS, new ImagePattern(new Image(getClass().getResource("/images/mountains.jpg").toExternalForm())),
+            TileType.HILLS, new ImagePattern(new Image(getClass().getResource("/images/hills.jpg").toExternalForm())),
+            TileType.FIELDS, new ImagePattern(new Image(getClass().getResource("/images/fields.jpg").toExternalForm()))
         );
 
         for (Tile tile : board.getTiles()) {
             tile.getShape().setFill(patterns.get(tile.getType()));
         }
 
-        hexOcean.setFill(patterns.get(ResourceType.OCEAN));
-        hexDesert.setFill(patterns.get(ResourceType.DESERT));
+        hexOcean.setFill(patterns.get(TileType.OCEAN));
+        hexDesert.setFill(patterns.get(TileType.DESERT));
     }
 
     @FXML
