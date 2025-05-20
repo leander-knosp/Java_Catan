@@ -99,16 +99,16 @@ public class PointsController {
 
         for (Edge edge : boardController.getBoard().getEdges()) {
             String key = edgeKey(edge.getNodeA(), edge.getNodeB());
-            if (uniqueEdges.add(key)) {
-                Line line = new Line(edge.getNodeA().getX(), edge.getNodeA().getY(),
-                                     edge.getNodeB().getX(), edge.getNodeB().getY());
-                line.setStroke(edge.isOccupied() ? Color.BLUE : Color.GRAY);
-                line.setStrokeWidth(5);
-                line.setCursor(Cursor.HAND);
-                line.setUserData("edge");
+            if (edge.checkEndpoints(boardPane) || edge.checkConnectedEdge(boardPane)) {
+                if (uniqueEdges.add(key)) {
+                    Line line = new Line(edge.getNodeA().getX(), edge.getNodeA().getY(),
+                                        edge.getNodeB().getX(), edge.getNodeB().getY());
+                    line.setStroke(edge.isOccupied() ? Color.BLUE : Color.GRAY);
+                    line.setStrokeWidth(5);
+                    line.setCursor(Cursor.HAND);
+                    line.setUserData("edge");
 
-                line.setOnMouseClicked(event -> {
-                    if (edge.checkEndpoints(boardPane) || edge.checkConnectedEdge(boardPane)) {
+                    line.setOnMouseClicked(event -> {
                         if (!edge.isOccupied()) {
                             boolean success = currentPlayer.build(BuildingType.ROAD);
                             if (success) {
@@ -122,10 +122,9 @@ public class PointsController {
                         } else {
                             System.out.println("Kante bereits besetzt: " + edge);
                         }
-                    }
-                });
-
-                boardPane.getChildren().add(line);
+                    });
+                    boardPane.getChildren().add(line);
+                }
             }
         }
     }
