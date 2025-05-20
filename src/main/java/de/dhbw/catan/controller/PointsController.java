@@ -54,30 +54,32 @@ public class PointsController {
                 circle.setUserData("corner");
 
                 circle.setOnMouseClicked(event -> {
-                    if (!node.isOccupied()) {
-                        boolean success = currentPlayer.build(BuildingType.SETTLEMENT);
-                        if (success) {
-                            node.setOwner(currentPlayer);
-                            node.setBuildingType(BuildingType.SETTLEMENT);
+                    if (!node.checkNeighbor(node, boardPane)) {
+                        if (!node.isOccupied()) {
+                            boolean success = currentPlayer.build(BuildingType.SETTLEMENT);
+                            if (success) {
+                                node.setOwner(currentPlayer);
+                                node.setBuildingType(BuildingType.SETTLEMENT);
 
-                            // Settlement Bild anzeigen
-                            Image image = new Image(getClass().getResource("/images/Catan_HausRot.png").toExternalForm());
-                            ImageView imageView = new ImageView(image);
-                            imageView.setFitWidth(55);
-                            imageView.setFitHeight(55);
-                            imageView.setX(node.getX() - 30);
-                            imageView.setY(node.getY() - 30);
-                            imageView.setUserData("corner");
+                                // Settlement Bild anzeigen
+                                Image image = new Image(getClass().getResource("/images/Catan_HausRot.png").toExternalForm());
+                                ImageView imageView = new ImageView(image);
+                                imageView.setFitWidth(55);
+                                imageView.setFitHeight(55);
+                                imageView.setX(node.getX() - 30);
+                                imageView.setY(node.getY() - 30);
+                                imageView.setUserData("corner");
 
-                            boardPane.getChildren().remove(circle); // Kreis entfernen
-                            boardPane.getChildren().add(imageView);
+                                boardPane.getChildren().remove(circle); // Kreis entfernen
+                                boardPane.getChildren().add(imageView);
 
-                            System.out.println("Gebäude auf Ecke gesetzt: " + node);
+                                //System.out.println("Gebäude auf Ecke gesetzt: " + node);
+                            } else {
+                                System.out.println("Nicht genug Ressourcen für Siedlung.");
+                            }
                         } else {
-                            System.out.println("Nicht genug Ressourcen für Siedlung.");
+                            System.out.println("Ecke bereits besetzt: " + node);
                         }
-                    } else {
-                        System.out.println("Ecke bereits besetzt: " + node);
                     }
                 });
 
@@ -97,30 +99,32 @@ public class PointsController {
 
         for (Edge edge : boardController.getBoard().getEdges()) {
             String key = edgeKey(edge.getNodeA(), edge.getNodeB());
-            if (uniqueEdges.add(key)) {
-                Line line = new Line(edge.getNodeA().getX(), edge.getNodeA().getY(),
-                                     edge.getNodeB().getX(), edge.getNodeB().getY());
-                line.setStroke(edge.isOccupied() ? Color.BLUE : Color.GRAY);
-                line.setStrokeWidth(5);
-                line.setCursor(Cursor.HAND);
-                line.setUserData("edge");
+            if (edge.checkEndpoints(boardPane) || edge.checkConnectedEdge(boardPane)) {
+                if (uniqueEdges.add(key)) {
+                    Line line = new Line(edge.getNodeA().getX(), edge.getNodeA().getY(),
+                                        edge.getNodeB().getX(), edge.getNodeB().getY());
+                    line.setStroke(edge.isOccupied() ? Color.BLUE : Color.GRAY);
+                    line.setStrokeWidth(5);
+                    line.setCursor(Cursor.HAND);
+                    line.setUserData("edge");
 
-                line.setOnMouseClicked(event -> {
-                    if (!edge.isOccupied()) {
-                        boolean success = currentPlayer.build(BuildingType.ROAD);
-                        if (success) {
-                            edge.setOwner(currentPlayer);
-                            line.setStroke(Color.BLUE);
-                            System.out.println("Straße auf Kante gesetzt: " + edge);
+                    line.setOnMouseClicked(event -> {
+                        if (!edge.isOccupied()) {
+                            boolean success = currentPlayer.build(BuildingType.ROAD);
+                            if (success) {
+                                edge.setOwner(currentPlayer);
+                                line.setStroke(Color.BLUE);
+                                line.setUserData("road");
+                                System.out.println("Straße auf Kante gesetzt: " + edge);
+                            } else {
+                                System.out.println("Nicht genug Ressourcen für Straße.");
+                            }
                         } else {
-                            System.out.println("Nicht genug Ressourcen für Straße.");
+                            System.out.println("Kante bereits besetzt: " + edge);
                         }
-                    } else {
-                        System.out.println("Kante bereits besetzt: " + edge);
-                    }
-                });
-
-                boardPane.getChildren().add(line);
+                    });
+                    boardPane.getChildren().add(line);
+                }
             }
         }
     }
