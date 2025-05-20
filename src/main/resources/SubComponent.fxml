@@ -6,10 +6,10 @@
 
 <VBox prefHeight="200.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.PointsController">
    <children>
-      <Button mnemonicParsing="false" onAction="#showCornerPoints" text="Button">
+      <Button mnemonicParsing="false" onAction="#showCornerPoints" text="Corner">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button mnemonicParsing="false" text="Button" />
+      <Button mnemonicParsing="false" onAction="#showEdgePoints" text="Edge" />
    </children>
 </VBox>

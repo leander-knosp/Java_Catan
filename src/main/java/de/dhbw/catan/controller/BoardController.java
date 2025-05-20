@@ -30,6 +30,11 @@ public class BoardController {
 
     private Board board;
 
+    public Board getBoard() {
+        return board;
+    }
+    
+
     public List<Tile> getTiles() {
         return board.getTiles();
     }
