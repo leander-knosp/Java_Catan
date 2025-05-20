@@ -8,6 +8,8 @@ import de.dhbw.catan.model.BuildingType;
 
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -46,7 +48,7 @@ public class PointsController {
             String key = String.format("%.3f_%.3f", node.getX(), node.getY());
             if (uniquePoints.add(key)) {
                 Circle circle = new Circle(node.getX(), node.getY(), 10);
-                circle.setFill(node.isOccupied() ? Color.RED : Color.WHITE);
+                circle.setFill(Color.WHITE);
                 circle.setStroke(Color.BLACK);
                 circle.setCursor(Cursor.HAND);
                 circle.setUserData("corner");
@@ -57,7 +59,19 @@ public class PointsController {
                         if (success) {
                             node.setOwner(currentPlayer);
                             node.setBuildingType(BuildingType.SETTLEMENT);
-                            circle.setFill(Color.RED);
+
+                            // Settlement Bild anzeigen
+                            Image image = new Image(getClass().getResource("/images/Catan_HausRot.png").toExternalForm());
+                            ImageView imageView = new ImageView(image);
+                            imageView.setFitWidth(55);
+                            imageView.setFitHeight(55);
+                            imageView.setX(node.getX() - 30);
+                            imageView.setY(node.getY() - 30);
+                            imageView.setUserData("corner");
+
+                            boardPane.getChildren().remove(circle); // Kreis entfernen
+                            boardPane.getChildren().add(imageView);
+
                             System.out.println("Gebäude auf Ecke gesetzt: " + node);
                         } else {
                             System.out.println("Nicht genug Ressourcen für Siedlung.");
@@ -65,7 +79,7 @@ public class PointsController {
                     } else {
                         System.out.println("Ecke bereits besetzt: " + node);
                     }
-                });                
+                });
 
                 boardPane.getChildren().add(circle);
             }
@@ -105,7 +119,6 @@ public class PointsController {
                         System.out.println("Kante bereits besetzt: " + edge);
                     }
                 });
-                
 
                 boardPane.getChildren().add(line);
             }
