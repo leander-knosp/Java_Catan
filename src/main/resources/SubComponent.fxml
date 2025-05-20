@@ -10,5 +10,6 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
+      <Button mnemonicParsing="false" text="Button" />
    </children>
 </VBox>
