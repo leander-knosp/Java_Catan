@@ -54,30 +54,32 @@ public class PointsController {
                 circle.setUserData("corner");
 
                 circle.setOnMouseClicked(event -> {
-                    if (!node.isOccupied()) {
-                        boolean success = currentPlayer.build(BuildingType.SETTLEMENT);
-                        if (success) {
-                            node.setOwner(currentPlayer);
-                            node.setBuildingType(BuildingType.SETTLEMENT);
+                    if (!node.checkNeighbor(node, boardPane)) {
+                        if (!node.isOccupied()) {
+                            boolean success = currentPlayer.build(BuildingType.SETTLEMENT);
+                            if (success) {
+                                node.setOwner(currentPlayer);
+                                node.setBuildingType(BuildingType.SETTLEMENT);
 
-                            // Settlement Bild anzeigen
-                            Image image = new Image(getClass().getResource("/images/Catan_HausRot.png").toExternalForm());
-                            ImageView imageView = new ImageView(image);
-                            imageView.setFitWidth(55);
-                            imageView.setFitHeight(55);
-                            imageView.setX(node.getX() - 30);
-                            imageView.setY(node.getY() - 30);
-                            imageView.setUserData("corner");
+                                // Settlement Bild anzeigen
+                                Image image = new Image(getClass().getResource("/images/Catan_HausRot.png").toExternalForm());
+                                ImageView imageView = new ImageView(image);
+                                imageView.setFitWidth(55);
+                                imageView.setFitHeight(55);
+                                imageView.setX(node.getX() - 30);
+                                imageView.setY(node.getY() - 30);
+                                imageView.setUserData("corner");
 
-                            boardPane.getChildren().remove(circle); // Kreis entfernen
-                            boardPane.getChildren().add(imageView);
+                                boardPane.getChildren().remove(circle); // Kreis entfernen
+                                boardPane.getChildren().add(imageView);
 
-                            System.out.println("Gebäude auf Ecke gesetzt: " + node);
+                                //System.out.println("Gebäude auf Ecke gesetzt: " + node);
+                            } else {
+                                System.out.println("Nicht genug Ressourcen für Siedlung.");
+                            }
                         } else {
-                            System.out.println("Nicht genug Ressourcen für Siedlung.");
+                            System.out.println("Ecke bereits besetzt: " + node);
                         }
-                    } else {
-                        System.out.println("Ecke bereits besetzt: " + node);
                     }
                 });
 
