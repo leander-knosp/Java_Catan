@@ -1,12 +1,8 @@
 package de.dhbw.catan.model;
 
-import java.util.Arrays;
-import java.util.List;
-
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import lombok.Data;
-import lombok.val;
 
 @Data
 public class Node {
