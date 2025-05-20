@@ -108,17 +108,19 @@ public class PointsController {
                 line.setUserData("edge");
 
                 line.setOnMouseClicked(event -> {
-                    if (!edge.isOccupied()) {
-                        boolean success = currentPlayer.build(BuildingType.ROAD);
-                        if (success) {
-                            edge.setOwner(currentPlayer);
-                            line.setStroke(Color.BLUE);
-                            System.out.println("Straße auf Kante gesetzt: " + edge);
+                    if (edge.checkEndpoints(boardPane)) {
+                        if (!edge.isOccupied()) {
+                            boolean success = currentPlayer.build(BuildingType.ROAD);
+                            if (success) {
+                                edge.setOwner(currentPlayer);
+                                line.setStroke(Color.BLUE);
+                                System.out.println("Straße auf Kante gesetzt: " + edge);
+                            } else {
+                                System.out.println("Nicht genug Ressourcen für Straße.");
+                            }
                         } else {
-                            System.out.println("Nicht genug Ressourcen für Straße.");
+                            System.out.println("Kante bereits besetzt: " + edge);
                         }
-                    } else {
-                        System.out.println("Kante bereits besetzt: " + edge);
                     }
                 });
 
