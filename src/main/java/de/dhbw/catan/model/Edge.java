@@ -1,6 +1,5 @@
 package de.dhbw.catan.model;
 
-import javafx.scene.paint.Color;
 import lombok.Data;
 
 @Data

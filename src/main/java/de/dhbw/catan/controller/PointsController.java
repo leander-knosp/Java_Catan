@@ -1,6 +1,5 @@
 package de.dhbw.catan.controller;
 
-import de.dhbw.catan.model.Board;
 import de.dhbw.catan.model.Edge;
 import de.dhbw.catan.model.Node;
 import de.dhbw.catan.model.Player;
