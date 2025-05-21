@@ -9,7 +9,7 @@ public class Robber {
     private boolean isActive;
 
     public Robber() {
-        this.position = ;
+        // this.position = ;
         this.isActive = false;
     }
 

@@ -451,7 +451,7 @@
             <AnchorPane fx:id="circ6a" layoutX="58.0" layoutY="128.0" prefHeight="33.0" prefWidth="38.0">
                <children>
                   <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Text fill="#bc0303" layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6.">
+                  <Text fill="#bc0303" layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6">
                      <font>
                         <Font name="Georgia Bold" size="25.0" />
                      </font>
@@ -461,7 +461,7 @@
             <AnchorPane fx:id="circ6b" layoutX="117.0" layoutY="129.0" prefHeight="33.0" prefWidth="38.0">
                <children>
                   <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Text fill="#bc0303" layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6.">
+                  <Text fill="#bc0303" layoutX="12.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6">
                      <font>
                         <Font name="Georgia Bold" size="25.0" />
                      </font>
@@ -491,7 +491,7 @@
             <AnchorPane fx:id="circ9a" layoutX="-1.0" layoutY="296.0" prefHeight="33.0" prefWidth="38.0">
                <children>
                   <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9.">
+                  <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9">
                      <font>
                         <Font name="Georgia Bold" size="25.0" />
                      </font>
@@ -501,7 +501,7 @@
             <AnchorPane fx:id="circ9b" layoutX="57.0" layoutY="298.0" prefHeight="33.0" prefWidth="38.0">
                <children>
                   <Circle fill="#d7c169" layoutX="23.0" layoutY="24.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9.">
+                  <Text layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9">
                      <font>
                         <Font name="Georgia Bold" size="25.0" />
                      </font>

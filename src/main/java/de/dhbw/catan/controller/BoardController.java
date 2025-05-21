@@ -51,8 +51,6 @@ public class BoardController {
 
     @FXML
     public void initialize() {
-        loadSubComponent();
-
         List<Polygon> hexes = this.makeHexList();
 
         List<AnchorPane> tokens = List.of(circ2, circ3a, circ3b, circ4a, circ4b, circ5a, circ5b,
@@ -61,6 +59,7 @@ public class BoardController {
         board = new Board(hexes, tokens);
         applyImages();
         positionTiles();
+        loadSubComponent();
     }
 
     private void positionTiles() {
@@ -102,6 +101,8 @@ public class BoardController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/SubComponent.fxml"));
             Parent subComponent = loader.load();
+            MainGameController subController = loader.getController();
+            subController.setBoard(this.board);
             sidebar.getChildren().add(subComponent);
         } catch (IOException e) {
             e.printStackTrace();
