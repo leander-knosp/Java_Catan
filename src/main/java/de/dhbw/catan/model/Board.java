@@ -33,7 +33,7 @@ public class Board {
 
         List<Tile> result = new ArrayList<>();
         for (int i = 0; i < hexes.size(); i++) {
-            result.add(new Tile(hexes.get(i), tileTypes.get(i)));
+            result.add(new Tile(hexes.get(i), tileTypes.get(i), numberTokens.get(i)));
         }
         return result;
     }
@@ -77,6 +77,7 @@ public class Board {
                 }
                 tileNodes.add(node);
             }
+            tile.setAdjacentNodes(tileNodes);
 
             for (int i = 0; i < tileNodes.size(); i++) {
                 Node a = tileNodes.get(i);
@@ -101,4 +102,20 @@ public class Board {
         String key2 = keyFromCoords(b.getX(), b.getY());
         return (key1.compareTo(key2) < 0) ? key1 + "|" + key2 : key2 + "|" + key1;
     }
+
+    public void distributeResources(int diceRoll) {
+        for (Tile tile : tiles) {
+            if (tile.getNumberToken() != diceRoll) continue;
+    
+            TileType resource = tile.getType();
+    
+            for (Node node : tile.getAdjacentNodes()) {
+                if (node.hasSettlement()) {
+                    Player player = node.getOwner();
+                    int amount = node.getBuildingType() == BuildingType.CITY ? 2 : 1;
+                    player.addResource(resource, amount);
+                }
+            }
+        }
+    }    
 }
