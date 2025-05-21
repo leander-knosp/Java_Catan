@@ -15,8 +15,8 @@ public class Board {
     private List<Edge> edges; // Kanten
 
     public Board(List<Polygon> hexes, List<AnchorPane> tokens) {
-        this.tiles = assignTileTypes(hexes);
         this.numberTokens = new ArrayList<>(tokens);
+        this.tiles = assignTileTypes(hexes);
         shuffleBoard();
         createNodesAndEdges();
     }
@@ -30,14 +30,32 @@ public class Board {
                 TileType.FIELDS, TileType.FIELDS, TileType.FIELDS, TileType.FIELDS
         ));
         Collections.shuffle(tileTypes);
-
+    
         List<Tile> result = new ArrayList<>();
         for (int i = 0; i < hexes.size(); i++) {
-            result.add(new Tile(hexes.get(i), tileTypes.get(i), numberTokens.get(i)));
+            AnchorPane tokenPane = numberTokens.get(i);
+            if (tokenPane == null) {
+                throw new NullPointerException("TokenPane ist null bei Index " + i);
+            }
+    
+            // Hier den Text-Knoten suchen:
+            javafx.scene.text.Text textNode = null;
+            for (var node : tokenPane.getChildren()) {
+                if (node instanceof javafx.scene.text.Text) {
+                    textNode = (javafx.scene.text.Text) node;
+                    break;
+                }
+            }
+            if (textNode == null) {
+                throw new NullPointerException("Kein Text-Element in TokenPane bei Index " + i);
+            }
+    
+            int number = Integer.parseInt(textNode.getText());
+            result.add(new Tile(hexes.get(i), tileTypes.get(i), number));
         }
         return result;
     }
-
+    
     private void shuffleBoard() {
         Collections.shuffle(tiles);
         Collections.shuffle(numberTokens);
@@ -107,10 +125,12 @@ public class Board {
         for (Tile tile : tiles) {
             if (tile.getNumberToken() != diceRoll) continue;
     
-            TileType resource = tile.getType();
+            ResourceType resource = tile.getType().toResourceType();
+
+            if (resource == null) continue;
     
             for (Node node : tile.getAdjacentNodes()) {
-                if (node.hasSettlement()) {
+                if (node.getBuildingType() == BuildingType.SETTLEMENT) {
                     Player player = node.getOwner();
                     int amount = node.getBuildingType() == BuildingType.CITY ? 2 : 1;
                     player.addResource(resource, amount);
@@ -118,4 +138,5 @@ public class Board {
             }
         }
     }    
+    
 }
