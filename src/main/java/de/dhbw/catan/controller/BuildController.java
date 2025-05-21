@@ -19,7 +19,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class PointsController {
+public class BuildController {
 
     private BoardController boardController;
     private Player currentPlayer; // Beispielspieler, solltest du passend setzen
