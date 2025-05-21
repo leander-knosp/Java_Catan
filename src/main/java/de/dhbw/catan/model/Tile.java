@@ -9,4 +9,6 @@ import lombok.Data;
 public class Tile {
     private Polygon shape;
     private TileType type;
+    private int numberToken;
+    private List<Node> adjacentNodes; 
 }

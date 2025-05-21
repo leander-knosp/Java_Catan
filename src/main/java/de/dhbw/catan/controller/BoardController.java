@@ -43,13 +43,17 @@ public class BoardController {
         return boardPane;
     }
 
+    public List<Polygon> makeHexList(){
+        return List.of(hexPastures1, hexPastures2, hexPastures3, hexPastures4,
+        hexForest1, hexForest2, hexForest3, hexForest4, hexMountains1, hexMountains2, hexMountains3,
+        hexHills1, hexHills2, hexHills3, hexFields1, hexFields2, hexFields3, hexFields4);
+    }
+
     @FXML
     public void initialize() {
         loadSubComponent();
 
-        List<Polygon> hexes = List.of(hexPastures1, hexPastures2, hexPastures3, hexPastures4,
-                hexForest1, hexForest2, hexForest3, hexForest4, hexMountains1, hexMountains2, hexMountains3,
-                hexHills1, hexHills2, hexHills3, hexFields1, hexFields2, hexFields3, hexFields4);
+        List<Polygon> hexes = this.makeHexList();
 
         List<AnchorPane> tokens = List.of(circ2, circ3a, circ3b, circ4a, circ4b, circ5a, circ5b,
                 circ6a, circ6b, circ8a, circ8b, circ9a, circ9b, circ10a, circ10b, circ11a, circ11b, circ12);
@@ -105,4 +109,5 @@ public class BoardController {
             e.printStackTrace();
         }
     }
+    
 }
