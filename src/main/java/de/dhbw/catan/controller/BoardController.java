@@ -103,6 +103,9 @@ public class BoardController {
             Parent subComponent = loader.load();
             MainGameController subController = loader.getController();
             subController.setBoard(this.board);
+            BuildController buildController = new BuildController();
+            buildController.setBoardController(this); // <--- wichtig!
+            subController.setBuildController(buildController);
             sidebar.getChildren().add(subComponent);
         } catch (IOException e) {
             e.printStackTrace();

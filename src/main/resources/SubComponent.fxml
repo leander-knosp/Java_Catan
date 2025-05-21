@@ -9,11 +9,11 @@
 
 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.MainGameController">
    <children>
-      <Button disable="true" mnemonicParsing="false" text="Corner">
+      <Button mnemonicParsing="false" onAction="#callShowCornerPoints" text="Corner">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button disable="true" mnemonicParsing="false" text="Edge" />
+      <Button mnemonicParsing="false" onAction="#callShowEdgePoints" text="Edge" />
       <AnchorPane nodeOrientation="RIGHT_TO_LEFT">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9cdd0" height="80.0" layoutX="11.0" onMouseClicked="#onRollDice" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="80.0" />

@@ -73,7 +73,7 @@ public class BuildController {
                                 boardPane.getChildren().remove(circle); // Kreis entfernen
                                 boardPane.getChildren().add(imageView);
 
-                                //System.out.println("Gebäude auf Ecke gesetzt: " + node);
+                                System.out.println("Gebäude auf Ecke gesetzt: " + node);
                             } else {
                                 System.out.println("Nicht genug Ressourcen für Siedlung.");
                             }
