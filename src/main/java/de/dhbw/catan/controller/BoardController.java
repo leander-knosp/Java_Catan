@@ -102,8 +102,6 @@ public class BoardController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/SubComponent.fxml"));
             Parent subComponent = loader.load();
-            PointsController pointsController = loader.getController();
-            pointsController.setBoardController(this);
             sidebar.getChildren().add(subComponent);
         } catch (IOException e) {
             e.printStackTrace();
