@@ -4,6 +4,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Polygon;
 import lombok.Data;
 
+import de.dhbw.catan.controller.BoardController;
 import java.util.*;
 
 @Data
@@ -12,50 +13,79 @@ public class Board {
     private List<AnchorPane> numberTokens;
     private List<Node> nodes;
     private List<Edge> edges;
+    private Robber robber;
+    private BoardController controller;
+
 
     public Board(List<Polygon> hexes, List<AnchorPane> tokens) {
         this.numberTokens = new ArrayList<>(tokens);
-        shuffleBoard();
         this.tiles = assignTileTypes(hexes);
         createNodesAndEdges();
+        initializeRobber();
+    }
+
+    private void initializeRobber() {
+        robber = new Robber();
+        robber.move(9);
+        robber.activate();
     }
 
     private List<Tile> assignTileTypes(List<Polygon> hexes) {
-        List<TileType> tileTypes = new ArrayList<>(List.of(
-                TileType.PASTURES, TileType.PASTURES, TileType.PASTURES, TileType.PASTURES,
-                TileType.FOREST, TileType.FOREST, TileType.FOREST, TileType.FOREST,
-                TileType.MOUNTAINS, TileType.MOUNTAINS, TileType.MOUNTAINS,
-                TileType.HILLS, TileType.HILLS, TileType.HILLS,
-                TileType.FIELDS, TileType.FIELDS, TileType.FIELDS, TileType.FIELDS
+        List<TileType> resourceTypes = new ArrayList<>(List.of(
+            TileType.PASTURES, TileType.PASTURES, TileType.PASTURES, TileType.PASTURES,
+            TileType.FOREST, TileType.FOREST, TileType.FOREST, TileType.FOREST,
+            TileType.MOUNTAINS, TileType.MOUNTAINS, TileType.MOUNTAINS,
+            TileType.HILLS, TileType.HILLS, TileType.HILLS,
+            TileType.FIELDS, TileType.FIELDS, TileType.FIELDS, TileType.FIELDS
         ));
-        Collections.shuffle(tileTypes);
-
-        List<Tile> result = new ArrayList<>();
+    
+        Collections.shuffle(resourceTypes);  // Resource-Tiles mischen
+        Collections.shuffle(numberTokens);   // Tokens mischen
+    
+        List<TileType> tileTypes = new ArrayList<>();
+        // Baue die vollständige Liste mit Desert an Position 9
         for (int i = 0; i < hexes.size(); i++) {
-            AnchorPane tokenPane = numberTokens.get(i);
-            if (tokenPane == null) {
-                throw new NullPointerException("TokenPane ist null bei Index " + i);
+            if (i == 9) {
+                tileTypes.add(TileType.DESERT);
+            } else {
+                // Nimm das nächste ResourceType von resourceTypes
+                tileTypes.add(resourceTypes.remove(0));
             }
-
-            javafx.scene.text.Text textNode = null;
-            for (var node : tokenPane.getChildren()) {
-                if (node instanceof javafx.scene.text.Text) {
-                    textNode = (javafx.scene.text.Text) node;
-                    break;
+        }
+    
+        List<Tile> result = new ArrayList<>();
+        int tokenIndex = 0;
+    
+        for (int i = 0; i < hexes.size(); i++) {
+            TileType type = tileTypes.get(i);
+            int number = -1;
+    
+            if (type != TileType.DESERT) {
+                // Token für alle außer Desert
+                AnchorPane tokenPane = numberTokens.get(tokenIndex);
+    
+                javafx.scene.text.Text textNode = null;
+                for (var node : tokenPane.getChildren()) {
+                    if (node instanceof javafx.scene.text.Text) {
+                        textNode = (javafx.scene.text.Text) node;
+                        break;
+                    }
                 }
+                if (textNode == null) {
+                    throw new NullPointerException("Kein Text-Element in TokenPane bei Index " + tokenIndex);
+                }
+    
+                number = Integer.parseInt(textNode.getText());
+                tokenIndex++;
             }
-            if (textNode == null) {
-                throw new NullPointerException("Kein Text-Element in TokenPane bei Index " + i);
-            }
-
-            int number = Integer.parseInt(textNode.getText());
-            result.add(new Tile(hexes.get(i), tileTypes.get(i), number));
+    
+            result.add(new Tile(hexes.get(i), type, number));
         }
         return result;
     }
-
-    private void shuffleBoard() {
-        Collections.shuffle(numberTokens);
+    
+    public void setController(BoardController controller) {
+        this.controller = controller;
     }
 
     private static final double[][] HEX_OFFSETS = {
@@ -121,14 +151,27 @@ public class Board {
     }
 
     public void distributeResources(int diceRoll) {
-        for (Tile tile : tiles) {
-            if (tile.getNumberToken() != diceRoll) continue;
-
+        if (diceRoll == 7) {
+            robber.activate();
+            if (controller != null) {
+                controller.showRobberOverlay();
+            }
+            return;
+        }
+    
+        for (int i = 0; i < tiles.size(); i++) {
+            Tile tile = tiles.get(i);
+            if (robber.isActive() && robber.getPosition() == i) {
+                continue;
+            }
+    
+            int numberToken = tile.getNumberToken();
+            if (numberToken != diceRoll) continue;
+    
             ResourceType resource = tile.getType().toResourceType();
             if (resource == null) continue;
-
+    
             for (Node node : tile.getAdjacentNodes()) {
-
                 if (node.getOwner() != null && node.getBuildingType() != null) {
                     int amount = (node.getBuildingType() == BuildingType.CITY) ? 2 : 1;
                     node.getOwner().addResource(resource, amount);
@@ -136,6 +179,7 @@ public class Board {
             }
         }
     }
+    
 
     public boolean hasAdjacentBuildings(Node node) {
         for (Edge edge : edges) {

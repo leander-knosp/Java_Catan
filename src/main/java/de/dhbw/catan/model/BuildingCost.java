@@ -23,11 +23,6 @@ public class BuildingCost {
                 cost.put(ResourceType.GRAIN, 2);
                 cost.put(ResourceType.ORE, 3);
             }
-            case DEVELOPMENT_CARD -> {
-                cost.put(ResourceType.WOOL, 1);
-                cost.put(ResourceType.GRAIN, 1);
-                cost.put(ResourceType.ORE, 1);
-            }
         }
 
         return cost;

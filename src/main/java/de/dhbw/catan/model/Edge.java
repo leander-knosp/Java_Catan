@@ -2,7 +2,6 @@ package de.dhbw.catan.model;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import lombok.Data;
 

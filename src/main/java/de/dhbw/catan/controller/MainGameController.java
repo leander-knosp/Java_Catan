@@ -4,8 +4,6 @@ import de.dhbw.catan.model.Board;
 
 import lombok.Data;
 
-import de.dhbw.catan.controller.BuildController;
-
 @Data
 public class MainGameController {
 

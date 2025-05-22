@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 import javafx.scene.shape.Polygon;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
