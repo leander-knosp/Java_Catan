@@ -1,6 +1,7 @@
 package de.dhbw.catan.controller;
 
 import de.dhbw.catan.model.Board;
+import de.dhbw.catan.model.Player;
 import de.dhbw.catan.model.Robber;
 import de.dhbw.catan.model.Tile;
 import de.dhbw.catan.model.TileType;
@@ -40,8 +41,15 @@ public class BoardController {
     private Board board;
     private Robber robber;
     private ImageView robberImageView;
-    private String playerColor;
-    private int playerCount;
+    private Player currentPlayer;
+
+    public void setCurrentPlayer(Player player) {
+        this.currentPlayer = player;
+    }
+
+    public Player getCurrentPlayer() {
+        return this.currentPlayer;
+    }
 
     public Board getBoard() {
         return board;
@@ -62,22 +70,6 @@ public class BoardController {
             hexMountains1, hexDesert, hexMountains2, hexMountains3,
             hexHills1, hexHills2, hexHills3,
             hexFields1, hexFields2, hexFields3, hexFields4);
-    }
-
-    public void setPlayerColor(String playerColor) {
-        this.playerColor = playerColor;
-    }
-    
-    public void setPlayerCount(int playerCount) {
-        this.playerCount = playerCount;
-    }
-
-    public String getPlayerColor() {
-        return this.playerColor;
-    }
-
-    public int getPlayerCount() {
-        return this.playerCount;
     }
 
     @FXML
@@ -165,7 +157,6 @@ public class BoardController {
             }
         }
     }
-    
 
     private void applyImages() {
         var patterns = Map.of(
@@ -193,8 +184,11 @@ public class BoardController {
             Parent subComponent = loader.load();
             MainGameController subController = loader.getController();
             subController.setBoard(this.board);
+
             BuildController buildController = new BuildController();
+            buildController.setCurrentPlayer(this.currentPlayer);
             buildController.setBoardController(this); // <--- wichtig!
+
             subController.setBuildController(buildController);
             sidebar.getChildren().add(subComponent);
         } catch (IOException e) {
@@ -231,9 +225,7 @@ public class BoardController {
             // Nur Cursor-Effekt (kein roter Rahmen oder Füllfarbe)
             hex.setCursor(javafx.scene.Cursor.HAND);
         }
-    }
-
-        
+    } 
         
     public void disableRobberOverlay() {
         for (Tile tile : board.getTiles()) {

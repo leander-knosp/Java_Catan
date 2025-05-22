@@ -2,6 +2,7 @@ package de.dhbw.catan.controller;
 
 import de.dhbw.catan.Main;
 import de.dhbw.catan.model.Dice;
+import de.dhbw.catan.model.Player;
 import de.dhbw.catan.model.Board;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ public class MainGameController {
     private final Dice dice;
     private Board board;
     private BuildController buildController;
+    private int playerCount;
 
     public MainGameController() {
         this.dice = new Dice();
@@ -42,6 +44,7 @@ public class MainGameController {
     }
 
     public void startGame(int playerCount, String playerColor) {
+        this.playerCount = playerCount;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/catan.fxml"));
             Scene gameScene = new Scene(loader.load());
@@ -49,14 +52,18 @@ public class MainGameController {
             // Setze den MainGameController im BoardController
             BoardController boardController = loader.getController();
             boardController.setMainGameController(this);
-            boardController.setPlayerColor(playerColor);
-            boardController.setPlayerCount(playerCount);
-            
-            Main.primaryStage.setScene(gameScene);
-            
+
+            Player player = new Player("Spieler 1", playerColor);
+            boardController.setCurrentPlayer(player);
+
+            Main.primaryStage.setScene(gameScene);  
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getPlayerCount() {
+        return this.playerCount;
     }
 
     public void onRollDice() {

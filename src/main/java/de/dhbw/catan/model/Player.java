@@ -9,13 +9,15 @@ import lombok.Data;
 @Data
 public class Player {
     private final String name;
+    private final String color;
     private final Map<ResourceType, Integer> resources;
     private int roads;
     private int settlements;
     private int cities;
 
-    public Player(String name) {
+    public Player(String name, String color) {
         this.name = name;
+        this.color = color;
         this.resources = new EnumMap<>(ResourceType.class);
         for (ResourceType type : ResourceType.values()) {
             resources.put(type, 0);
@@ -23,6 +25,10 @@ public class Player {
         this.roads = 15;
         this.settlements = 5;
         this.cities = 4;
+    }
+
+    public String getColor() {
+        return this.color;
     }
 
     public void addResource(ResourceType type, int amount) {

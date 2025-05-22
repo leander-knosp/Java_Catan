@@ -23,6 +23,10 @@ public class BuildController {
     private BoardController boardController;
     private Player currentPlayer;
 
+    public void setCurrentPlayer(Player player) {
+        this.currentPlayer = player;
+    }
+
     public void setBoardController(BoardController boardController) {
         this.boardController = boardController;
         currentPlayer.addResource(ResourceType.BRICK, 10);
@@ -107,7 +111,7 @@ public class BuildController {
                     boardNode.setBuildingType(BuildingType.SETTLEMENT);
 
                     String imagePath = "/images/Catan_House_" + 
-                        boardController.getPlayerColor() + ".png";
+                        currentPlayer.getColor() + ".png";
                     
                     Image image = new Image(getClass().getResource(imagePath).toExternalForm());
                     ImageView imageView = new ImageView(image);
@@ -138,9 +142,9 @@ public class BuildController {
                 Color playerColor;
 
                 try {
-                    playerColor = Color.valueOf(boardController.getPlayerColor());
+                    playerColor = Color.valueOf(currentPlayer.getColor());
                 } catch (IllegalArgumentException e) {
-                    System.err.println("Ungültiger Farbstring für JavaFX: " + boardController.getPlayerColor() + ". Setze auf Schwarz.");
+                    System.err.println("Ungültiger Farbstring für JavaFX: " + currentPlayer.getColor() + ". Setze auf Schwarz.");
                     playerColor = Color.BLACK;
                 }
                 
