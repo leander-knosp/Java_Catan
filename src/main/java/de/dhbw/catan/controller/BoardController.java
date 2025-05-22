@@ -21,6 +21,13 @@ import java.util.Map;
 
 public class BoardController {
 
+    private MainGameController mainGameController;
+
+    public void setMainGameController(MainGameController mainGameController) {
+        this.mainGameController = mainGameController;
+        this.mainGameController.setBoard(this.board);
+    }
+
     @FXML private Polygon hexOcean, hexDesert, hexPastures1, hexPastures2, hexPastures3, hexPastures4,
         hexForest1, hexForest2, hexForest3, hexForest4, hexMountains1, hexMountains2, hexMountains3,
         hexHills1, hexHills2, hexHills3, hexFields1, hexFields2, hexFields3, hexFields4;
@@ -33,12 +40,13 @@ public class BoardController {
     private Board board;
     private Robber robber;
     private ImageView robberImageView;
+    private String playerColor;
+    private int playerCount;
 
     public Board getBoard() {
         return board;
     }
     
-
     public List<Tile> getTiles() {
         return board.getTiles();
     }
@@ -55,7 +63,22 @@ public class BoardController {
             hexHills1, hexHills2, hexHills3,
             hexFields1, hexFields2, hexFields3, hexFields4);
     }
+
+    public void setPlayerColor(String playerColor) {
+        this.playerColor = playerColor;
+    }
     
+    public void setPlayerCount(int playerCount) {
+        this.playerCount = playerCount;
+    }
+
+    public String getPlayerColor() {
+        return this.playerColor;
+    }
+
+    public int getPlayerCount() {
+        return this.playerCount;
+    }
 
     @FXML
     public void initialize() {
@@ -179,48 +202,46 @@ public class BoardController {
         }
     }
 
- public void showRobberOverlay() {
-    System.out.println("Räuber-Overlay aktiviert – bitte ein Feld auswählen.");
+    public void showRobberOverlay() {
+        System.out.println("Räuber-Overlay aktiviert – bitte ein Feld auswählen.");
 
-    int currentRobberPosition = board.getRobber().getPosition();
+        int currentRobberPosition = board.getRobber().getPosition();
 
-    for (int i = 0; i < board.getTiles().size(); i++) {
-        final int index = i;
-        Tile tile = board.getTiles().get(i);
-        Polygon hex = tile.getShape();
+        for (int i = 0; i < board.getTiles().size(); i++) {
+            final int index = i;
+            Tile tile = board.getTiles().get(i);
+            Polygon hex = tile.getShape();
 
-        // Aktuelles Räuberfeld – optisch abmildern
-        if (index == currentRobberPosition) {
-            hex.setOpacity(0.7); // halbtransparent machen
-            continue;
+            // Aktuelles Räuberfeld – optisch abmildern
+            if (index == currentRobberPosition) {
+                hex.setOpacity(0.7); // halbtransparent machen
+                continue;
+            }
+
+            // Nur auf Land-Felder reagieren (optional, um z. B. Wasser auszuschließen)
+            if (tile.getType() == TileType.OCEAN) continue;
+
+            // Interaktiv machen
+            hex.setOnMouseClicked(event -> {
+                System.out.println("Klick auf Feld " + index);
+                moveRobberTo(index);
+                disableRobberOverlay();
+            });
+
+            // Nur Cursor-Effekt (kein roter Rahmen oder Füllfarbe)
+            hex.setCursor(javafx.scene.Cursor.HAND);
         }
-
-        // Nur auf Land-Felder reagieren (optional, um z. B. Wasser auszuschließen)
-        if (tile.getType() == TileType.OCEAN) continue;
-
-        // Interaktiv machen
-        hex.setOnMouseClicked(event -> {
-            System.out.println("Klick auf Feld " + index);
-            moveRobberTo(index);
-            disableRobberOverlay();
-        });
-
-        // Nur Cursor-Effekt (kein roter Rahmen oder Füllfarbe)
-        hex.setCursor(javafx.scene.Cursor.HAND);
     }
-}
 
-    
-    
-public void disableRobberOverlay() {
-    for (Tile tile : board.getTiles()) {
-        Polygon hex = tile.getShape();
-        hex.setOnMouseClicked(null);
-        hex.setCursor(javafx.scene.Cursor.DEFAULT);
-        hex.setStyle(""); // Reset style
-        hex.setOpacity(1.0); // Reset Transparenz
-    }
-}
-
-    
+        
+        
+    public void disableRobberOverlay() {
+        for (Tile tile : board.getTiles()) {
+            Polygon hex = tile.getShape();
+            hex.setOnMouseClicked(null);
+            hex.setCursor(javafx.scene.Cursor.DEFAULT);
+            hex.setStyle(""); // Reset style
+            hex.setOpacity(1.0); // Reset Transparenz
+        }
+    } 
 }

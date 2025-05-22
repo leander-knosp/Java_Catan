@@ -107,7 +107,10 @@ public class BuildController {
                     boardNode.setOwner(currentPlayer);
                     boardNode.setBuildingType(BuildingType.SETTLEMENT);
 
-                    Image image = new Image(getClass().getResource("/images/Catan_HausRot.png").toExternalForm());
+                    String imagePath = "/images/Catan_Haus" + 
+                        boardController.getPlayerColor() + ".png";
+                    
+                    Image image = new Image(getClass().getResource(imagePath).toExternalForm());
                     ImageView imageView = new ImageView(image);
                     imageView.setFitWidth(55);
                     imageView.setFitHeight(55);

@@ -1,8 +1,14 @@
 package de.dhbw.catan.controller;
+
+import de.dhbw.catan.Main;
 import de.dhbw.catan.model.Dice;
 import de.dhbw.catan.model.Board;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 
 import lombok.Data;
+
+import java.io.IOException;
 
 @Data
 public class MainGameController {
@@ -20,18 +26,52 @@ public class MainGameController {
         this.buildController = buildController;
     }
 
+    public void showIntroScreen() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/IntroScreen.fxml"));
+            Scene introScene = new Scene(loader.load());
+            
+            IntroScreenController introController = loader.getController();
+            introController.setMainGameController(this);
+            
+            Main.primaryStage.setScene(introScene);
+            Main.primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void startGame(int playerCount, String playerColor) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/catan.fxml"));
+            Scene gameScene = new Scene(loader.load());
+            
+            // Setze den MainGameController im BoardController
+            BoardController boardController = loader.getController();
+            boardController.setMainGameController(this);
+            boardController.setPlayerColor(playerColor);
+            boardController.setPlayerCount(playerCount);
+            
+            Main.primaryStage.setScene(gameScene);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void onRollDice() {
         int number = dice.rollDice();
         System.out.println("Rolled: " + number);
-        board.distributeResources(number);
+        if (board != null) {
+            board.distributeResources(number);
+        }
     }
 
-    public void callShowCornerPoints () {
+    public void callShowCornerPoints() {
         buildController.showCornerPoints();
     }
 
-    public void callShowEdgePoints () {
+    public void callShowEdgePoints() {
         buildController.showEdgePoints();
     }
-
 }

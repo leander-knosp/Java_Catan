@@ -1,26 +1,19 @@
 package de.dhbw.catan.controller;
 
-import de.dhbw.catan.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.shape.Circle;
-import java.io.IOException;
 
 import lombok.Data;
 
 @Data
 public class IntroScreenController {
 
+    private MainGameController mainGameController;
     private String selectedColor = null;
-
-    @FXML
-    private Button startGameButton;
 
     @FXML
     private ComboBox<String> colorComboBox;
@@ -34,7 +27,7 @@ public class IntroScreenController {
     @FXML
     public void initialize() {
         SpinnerValueFactory<Integer> valueFactory =
-            new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 4, 3); // min=2, max=4, initial=3
+            new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 4, 3);
         playerSpinner.setValueFactory(valueFactory);
         colorComboBox.getItems().addAll("Red", "Blue", "Green", "Yellow");
         colorComboBox.setValue("Red");
@@ -42,13 +35,9 @@ public class IntroScreenController {
 
     @FXML
     private void onStartGame(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/catan.fxml"));
-            Scene gameScene = new Scene(loader.load());
-            Main.primaryStage.setScene(gameScene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        int playerCount = playerSpinner.getValue();
+        String playerColor = selectedColor != null ? selectedColor : colorComboBox.getValue();
+        mainGameController.startGame(playerCount, playerColor);
     }
 
     @FXML
@@ -76,5 +65,9 @@ public class IntroScreenController {
         }
     
         System.out.println("Ausgewählte Farbe: " + selectedColor);
-    }    
+    }
+
+    public void setMainGameController(MainGameController mainGameController) {
+        this.mainGameController = mainGameController;
+    }
 }
