@@ -19,7 +19,7 @@ public class Game {
         return players.get(currentPlayerIndex);
     }
 
-    public void moveRobber(int newPosition, Player victim) {
+    public void moveRobber(int newPosition) {
         // Player currentPlayer = getCurrentPlayer();
         // board.moveRobber(newPosition, victim);
         // nextPlayer();

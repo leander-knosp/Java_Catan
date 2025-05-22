@@ -65,6 +65,8 @@ public class BoardController {
                 circ6a, circ6b, circ8a, circ8b, circ9a, circ9b, circ10a, circ10b, circ11a, circ11b, circ12);
 
         board = new Board(hexes, tokens);
+        board.setController(this);
+
         applyImages();
         positionTiles();
         loadSubComponent();
@@ -72,9 +74,7 @@ public class BoardController {
     }
 
     private void initializeRobber() {
-        robber = new Robber();
-
-        // Desert-Tile finden
+        robber = board.getRobber(); // statt eigenes Feld
         int desertIndex = -1;
         for (Tile tile : board.getTiles()) {
             System.out.println(tile.getType());
@@ -104,21 +104,23 @@ public class BoardController {
         updateRobberPosition();
     }
 
-    // Diese Methode setzt die ImageView des Räubers an die korrekte Position
     public void updateRobberPosition() {
+        Robber robber = board.getRobber(); // 🔁
         Tile robberTile = board.getTiles().get(robber.getPosition());
         Polygon hex = robberTile.getShape();
-
+    
         robberImageView.setLayoutX(hex.getLayoutX() - robberImageView.getFitWidth() / 2);
         robberImageView.setLayoutY(hex.getLayoutY() - robberImageView.getFitHeight() / 2);
-    }
-
-    // Beispielmethode, um den Räuber zu bewegen
-    public void moveRobberTo(int newPosition) {
-        robber.move(newPosition);
-        updateRobberPosition();
+    
+        System.out.println("Räuber ist jetzt auf Tile " + robber.getPosition());
     }
     
+
+    public void moveRobberTo(int newPosition) {
+        board.getRobber().move(newPosition); // 🔁
+        updateRobberPosition();
+        System.out.println("Räuber bewegt zu Position " + newPosition);
+    }
 
     private void positionTiles() {
         List<Double> posX = board.getTiles().stream().map(t -> t.getShape().getLayoutX()).collect(Collectors.toList());
@@ -176,5 +178,49 @@ public class BoardController {
             e.printStackTrace();
         }
     }
+
+ public void showRobberOverlay() {
+    System.out.println("Räuber-Overlay aktiviert – bitte ein Feld auswählen.");
+
+    int currentRobberPosition = board.getRobber().getPosition();
+
+    for (int i = 0; i < board.getTiles().size(); i++) {
+        final int index = i;
+        Tile tile = board.getTiles().get(i);
+        Polygon hex = tile.getShape();
+
+        // Aktuelles Räuberfeld – optisch abmildern
+        if (index == currentRobberPosition) {
+            hex.setOpacity(0.7); // halbtransparent machen
+            continue;
+        }
+
+        // Nur auf Land-Felder reagieren (optional, um z. B. Wasser auszuschließen)
+        if (tile.getType() == TileType.OCEAN) continue;
+
+        // Interaktiv machen
+        hex.setOnMouseClicked(event -> {
+            System.out.println("Klick auf Feld " + index);
+            moveRobberTo(index);
+            disableRobberOverlay();
+        });
+
+        // Nur Cursor-Effekt (kein roter Rahmen oder Füllfarbe)
+        hex.setCursor(javafx.scene.Cursor.HAND);
+    }
+}
+
+    
+    
+public void disableRobberOverlay() {
+    for (Tile tile : board.getTiles()) {
+        Polygon hex = tile.getShape();
+        hex.setOnMouseClicked(null);
+        hex.setCursor(javafx.scene.Cursor.DEFAULT);
+        hex.setStyle(""); // Reset style
+        hex.setOpacity(1.0); // Reset Transparenz
+    }
+}
+
     
 }

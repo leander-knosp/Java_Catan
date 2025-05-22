@@ -4,6 +4,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Polygon;
 import lombok.Data;
 
+import de.dhbw.catan.controller.BoardController;
 import java.util.*;
 
 @Data
@@ -13,6 +14,7 @@ public class Board {
     private List<Node> nodes;
     private List<Edge> edges;
     private Robber robber;
+    private BoardController controller;
 
 
     public Board(List<Polygon> hexes, List<AnchorPane> tokens) {
@@ -29,7 +31,6 @@ public class Board {
     }
 
     private List<Tile> assignTileTypes(List<Polygon> hexes) {
-        // Alle Resource-Tiles außer Desert
         List<TileType> resourceTypes = new ArrayList<>(List.of(
             TileType.PASTURES, TileType.PASTURES, TileType.PASTURES, TileType.PASTURES,
             TileType.FOREST, TileType.FOREST, TileType.FOREST, TileType.FOREST,
@@ -83,6 +84,9 @@ public class Board {
         return result;
     }
     
+    public void setController(BoardController controller) {
+        this.controller = controller;
+    }
 
     private static final double[][] HEX_OFFSETS = {
         {-64.95, -37.5}, {-64.95, 37.5}, {0, 75.0},
@@ -149,7 +153,9 @@ public class Board {
     public void distributeResources(int diceRoll) {
         if (diceRoll == 7) {
             robber.activate();
-            System.out.println("Räuber aktivieren, keine Ressourcen werden verteilt");
+            if (controller != null) {
+                controller.showRobberOverlay();
+            }
             return;
         }
     
