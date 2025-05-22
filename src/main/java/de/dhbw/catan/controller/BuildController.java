@@ -25,7 +25,6 @@ public class BuildController {
 
     public void setBoardController(BoardController boardController) {
         this.boardController = boardController;
-        this.currentPlayer = new Player("Spieler 1");
         currentPlayer.addResource(ResourceType.BRICK, 10);
         currentPlayer.addResource(ResourceType.GRAIN, 10);
         currentPlayer.addResource(ResourceType.LUMBER, 10);
@@ -136,8 +135,17 @@ public class BuildController {
         if (!edge.isOccupied()) {
             boolean success = currentPlayer.build(BuildingType.ROAD);
             if (success) {
+                Color playerColor;
+
+                try {
+                    playerColor = Color.valueOf(boardController.getPlayerColor());
+                } catch (IllegalArgumentException e) {
+                    System.err.println("Ungültiger Farbstring für JavaFX: " + boardController.getPlayerColor() + ". Setze auf Schwarz.");
+                    playerColor = Color.BLACK;
+                }
+                
                 edge.setOwner(currentPlayer);
-                line.setStroke(Color.BLUE);
+                line.setStroke(playerColor);
                 line.setUserData("road");
 
                 System.out.println("Straße auf Kante gesetzt: " + edge);
