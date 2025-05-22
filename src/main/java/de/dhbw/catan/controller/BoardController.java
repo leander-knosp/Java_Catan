@@ -1,6 +1,7 @@
 package de.dhbw.catan.controller;
 
 import de.dhbw.catan.model.Board;
+import de.dhbw.catan.model.Robber;
 import de.dhbw.catan.model.Tile;
 import de.dhbw.catan.model.TileType;
 
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Polygon;
@@ -29,6 +31,8 @@ public class BoardController {
     @FXML private AnchorPane boardPane, sidebar;
 
     private Board board;
+    private Robber robber;
+    private ImageView robberImageView;
 
     public Board getBoard() {
         return board;
@@ -44,10 +48,14 @@ public class BoardController {
     }
 
     public List<Polygon> makeHexList(){
-        return List.of(hexPastures1, hexPastures2, hexPastures3, hexPastures4,
-        hexForest1, hexForest2, hexForest3, hexForest4, hexMountains1, hexMountains2, hexMountains3,
-        hexHills1, hexHills2, hexHills3, hexFields1, hexFields2, hexFields3, hexFields4);
+        return List.of(
+            hexPastures1, hexPastures2, hexPastures3, hexPastures4,
+            hexForest1, hexForest2, hexForest3, hexForest4,
+            hexMountains1, hexDesert, hexMountains2, hexMountains3,
+            hexHills1, hexHills2, hexHills3,
+            hexFields1, hexFields2, hexFields3, hexFields4);
     }
+    
 
     @FXML
     public void initialize() {
@@ -60,22 +68,79 @@ public class BoardController {
         applyImages();
         positionTiles();
         loadSubComponent();
+        initializeRobber();
     }
+
+    private void initializeRobber() {
+        robber = new Robber();
+
+        // Desert-Tile finden
+        int desertIndex = -1;
+        for (Tile tile : board.getTiles()) {
+            System.out.println(tile.getType());
+        }
+        
+        for (int i = 0; i < board.getTiles().size(); i++) {
+            if (board.getTiles().get(i).getType() == TileType.DESERT) {
+                desertIndex = i;
+                break;
+            }
+        }
+
+        if (desertIndex == -1) {
+            throw new IllegalStateException("Kein Desert-Tile gefunden");
+        }
+
+        robber.move(desertIndex);
+
+        // Robber-Bild erstellen
+        Image robberImage = new Image(getClass().getResource("/images/robber.png").toExternalForm());
+        robberImageView = new ImageView(robberImage);
+        robberImageView.setFitWidth(40);
+        robberImageView.setFitHeight(40);
+
+        boardPane.getChildren().add(robberImageView);
+
+        updateRobberPosition();
+    }
+
+    // Diese Methode setzt die ImageView des Räubers an die korrekte Position
+    public void updateRobberPosition() {
+        Tile robberTile = board.getTiles().get(robber.getPosition());
+        Polygon hex = robberTile.getShape();
+
+        robberImageView.setLayoutX(hex.getLayoutX() - robberImageView.getFitWidth() / 2);
+        robberImageView.setLayoutY(hex.getLayoutY() - robberImageView.getFitHeight() / 2);
+    }
+
+    // Beispielmethode, um den Räuber zu bewegen
+    public void moveRobberTo(int newPosition) {
+        robber.move(newPosition);
+        updateRobberPosition();
+    }
+    
 
     private void positionTiles() {
         List<Double> posX = board.getTiles().stream().map(t -> t.getShape().getLayoutX()).collect(Collectors.toList());
         List<Double> posY = board.getTiles().stream().map(t -> t.getShape().getLayoutY()).collect(Collectors.toList());
-
+    
+        int tokenIndex = 0;
+    
         for (int i = 0; i < board.getTiles().size(); i++) {
             Polygon shape = board.getTiles().get(i).getShape();
-            AnchorPane token = board.getNumberTokens().get(i);
-
+    
             shape.setLayoutX(posX.get(i));
             shape.setLayoutY(posY.get(i));
-            token.setLayoutX(posX.get(i) - 24);
-            token.setLayoutY(posY.get(i) - 24);
+    
+            if (board.getTiles().get(i).getType() != TileType.DESERT) {
+                AnchorPane token = board.getNumberTokens().get(tokenIndex);
+                token.setLayoutX(posX.get(i) - 24);
+                token.setLayoutY(posY.get(i) - 24);
+                tokenIndex++;
+            }
         }
     }
+    
 
     private void applyImages() {
         var patterns = Map.of(
