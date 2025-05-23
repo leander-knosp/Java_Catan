@@ -42,6 +42,7 @@ public class BoardController {
     private Robber robber;
     private ImageView robberImageView;
     private Player currentPlayer;
+    private BuildController buildController;
 
     public void setCurrentPlayer(Player player) {
         this.currentPlayer = player;
@@ -86,6 +87,14 @@ public class BoardController {
         positionTiles();
         loadSubComponent();
         initializeRobber();
+    }
+
+    public void initializePlayer(Player player) {
+        this.currentPlayer = player;
+        if (this.buildController != null) {
+            this.buildController.initializePlayer(player);
+        }
+        System.out.println("Hier initializePlayer " + this.currentPlayer);
     }
 
     private void initializeRobber() {
@@ -186,8 +195,13 @@ public class BoardController {
             subController.setBoard(this.board);
 
             BuildController buildController = new BuildController();
-            buildController.setCurrentPlayer(this.currentPlayer);
             buildController.setBoardController(this); // <--- wichtig!
+            this.buildController = buildController;
+
+            // Wenn Player bereits existiert, sofort initialisieren
+            if (this.currentPlayer != null) {
+                buildController.initializePlayer(this.currentPlayer);
+            }
 
             subController.setBuildController(buildController);
             sidebar.getChildren().add(subComponent);

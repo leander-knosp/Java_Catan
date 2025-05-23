@@ -54,7 +54,7 @@ public class MainGameController {
             boardController.setMainGameController(this);
 
             Player player = new Player("Spieler 1", playerColor);
-            boardController.setCurrentPlayer(player);
+            boardController.initializePlayer(player);
 
             Main.primaryStage.setScene(gameScene);  
         } catch (IOException e) {

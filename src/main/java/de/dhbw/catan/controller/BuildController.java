@@ -23,17 +23,19 @@ public class BuildController {
     private BoardController boardController;
     private Player currentPlayer;
 
-    public void setCurrentPlayer(Player player) {
+    public void initializePlayer(Player player) {
         this.currentPlayer = player;
-    }
-
-    public void setBoardController(BoardController boardController) {
-        this.boardController = boardController;
+        System.out.println("Player: " + player);
+        // Ressourcen initialisieren
         currentPlayer.addResource(ResourceType.BRICK, 10);
         currentPlayer.addResource(ResourceType.GRAIN, 10);
         currentPlayer.addResource(ResourceType.LUMBER, 10);
         currentPlayer.addResource(ResourceType.ORE, 10);
         currentPlayer.addResource(ResourceType.WOOL, 10);
+    }
+
+    public void setBoardController(BoardController boardController) {
+        this.boardController = boardController;
     }
 
     @FXML
@@ -94,6 +96,11 @@ public class BuildController {
     }
 
     private void handleSettlementPlacement(Node node, Circle circle) {
+        if (currentPlayer == null) {
+            System.err.println("Kein Spieler initialisiert!");
+            return;
+        }
+        
         AnchorPane boardPane = boardController.getBoardPane();
 
         // Hole zentralen Node (besser für Vergleich)
