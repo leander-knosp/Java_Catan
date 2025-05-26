@@ -15,7 +15,6 @@ public class Board {
     private List<Edge> edges;
     private Robber robber;
     private BoardController controller;
-    private Player currentPlayer;
 
 
     public Board(List<Polygon> hexes, List<AnchorPane> tokens) {
@@ -201,13 +200,5 @@ public class Board {
             }
         }
         return null;
-    }
-    
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
-    
-    public void setCurrentPlayer(Player currentPlayer) {
-        this.currentPlayer = currentPlayer;
     }
 }
