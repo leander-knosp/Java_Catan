@@ -1,6 +1,7 @@
 package de.dhbw.catan.controller;
 
 import de.dhbw.catan.model.Board;
+import de.dhbw.catan.model.Player;
 import de.dhbw.catan.model.Robber;
 import de.dhbw.catan.model.Tile;
 import de.dhbw.catan.model.TileType;
@@ -21,6 +22,13 @@ import java.util.Map;
 
 public class BoardController {
 
+    private MainGameController mainGameController;
+
+    public void setMainGameController(MainGameController mainGameController) {
+        this.mainGameController = mainGameController;
+        this.mainGameController.setBoard(this.board);
+    }
+
     @FXML private Polygon hexOcean, hexDesert, hexPastures1, hexPastures2, hexPastures3, hexPastures4,
         hexForest1, hexForest2, hexForest3, hexForest4, hexMountains1, hexMountains2, hexMountains3,
         hexHills1, hexHills2, hexHills3, hexFields1, hexFields2, hexFields3, hexFields4;
@@ -33,12 +41,21 @@ public class BoardController {
     private Board board;
     private Robber robber;
     private ImageView robberImageView;
+    private Player currentPlayer;
+    private BuildController buildController;
+
+    public void setCurrentPlayer(Player player) {
+        this.currentPlayer = player;
+    }
+
+    public Player getCurrentPlayer() {
+        return this.currentPlayer;
+    }
 
     public Board getBoard() {
         return board;
     }
     
-
     public List<Tile> getTiles() {
         return board.getTiles();
     }
@@ -55,7 +72,6 @@ public class BoardController {
             hexHills1, hexHills2, hexHills3,
             hexFields1, hexFields2, hexFields3, hexFields4);
     }
-    
 
     @FXML
     public void initialize() {
@@ -71,6 +87,14 @@ public class BoardController {
         positionTiles();
         loadSubComponent();
         initializeRobber();
+    }
+
+    public void initializePlayer(Player player) {
+        this.currentPlayer = player;
+        if (this.buildController != null) {
+            this.buildController.initializePlayer(player);
+        }
+        System.out.println("Hier initializePlayer " + this.currentPlayer);
     }
 
     private void initializeRobber() {
@@ -142,7 +166,6 @@ public class BoardController {
             }
         }
     }
-    
 
     private void applyImages() {
         var patterns = Map.of(
@@ -170,8 +193,16 @@ public class BoardController {
             Parent subComponent = loader.load();
             MainGameController subController = loader.getController();
             subController.setBoard(this.board);
+
             BuildController buildController = new BuildController();
             buildController.setBoardController(this); // <--- wichtig!
+            this.buildController = buildController;
+
+            // Wenn Player bereits existiert, sofort initialisieren
+            if (this.currentPlayer != null) {
+                buildController.initializePlayer(this.currentPlayer);
+            }
+
             subController.setBuildController(buildController);
             sidebar.getChildren().add(subComponent);
         } catch (IOException e) {
@@ -179,48 +210,44 @@ public class BoardController {
         }
     }
 
- public void showRobberOverlay() {
-    System.out.println("Räuber-Overlay aktiviert – bitte ein Feld auswählen.");
+    public void showRobberOverlay() {
+        System.out.println("Räuber-Overlay aktiviert – bitte ein Feld auswählen.");
 
-    int currentRobberPosition = board.getRobber().getPosition();
+        int currentRobberPosition = board.getRobber().getPosition();
 
-    for (int i = 0; i < board.getTiles().size(); i++) {
-        final int index = i;
-        Tile tile = board.getTiles().get(i);
-        Polygon hex = tile.getShape();
+        for (int i = 0; i < board.getTiles().size(); i++) {
+            final int index = i;
+            Tile tile = board.getTiles().get(i);
+            Polygon hex = tile.getShape();
 
-        // Aktuelles Räuberfeld – optisch abmildern
-        if (index == currentRobberPosition) {
-            hex.setOpacity(0.7); // halbtransparent machen
-            continue;
+            // Aktuelles Räuberfeld – optisch abmildern
+            if (index == currentRobberPosition) {
+                hex.setOpacity(0.7); // halbtransparent machen
+                continue;
+            }
+
+            // Nur auf Land-Felder reagieren (optional, um z. B. Wasser auszuschließen)
+            if (tile.getType() == TileType.OCEAN) continue;
+
+            // Interaktiv machen
+            hex.setOnMouseClicked(event -> {
+                System.out.println("Klick auf Feld " + index);
+                moveRobberTo(index);
+                disableRobberOverlay();
+            });
+
+            // Nur Cursor-Effekt (kein roter Rahmen oder Füllfarbe)
+            hex.setCursor(javafx.scene.Cursor.HAND);
         }
-
-        // Nur auf Land-Felder reagieren (optional, um z. B. Wasser auszuschließen)
-        if (tile.getType() == TileType.OCEAN) continue;
-
-        // Interaktiv machen
-        hex.setOnMouseClicked(event -> {
-            System.out.println("Klick auf Feld " + index);
-            moveRobberTo(index);
-            disableRobberOverlay();
-        });
-
-        // Nur Cursor-Effekt (kein roter Rahmen oder Füllfarbe)
-        hex.setCursor(javafx.scene.Cursor.HAND);
-    }
-}
-
-    
-    
-public void disableRobberOverlay() {
-    for (Tile tile : board.getTiles()) {
-        Polygon hex = tile.getShape();
-        hex.setOnMouseClicked(null);
-        hex.setCursor(javafx.scene.Cursor.DEFAULT);
-        hex.setStyle(""); // Reset style
-        hex.setOpacity(1.0); // Reset Transparenz
-    }
-}
-
-    
+    } 
+        
+    public void disableRobberOverlay() {
+        for (Tile tile : board.getTiles()) {
+            Polygon hex = tile.getShape();
+            hex.setOnMouseClicked(null);
+            hex.setCursor(javafx.scene.Cursor.DEFAULT);
+            hex.setStyle(""); // Reset style
+            hex.setOpacity(1.0); // Reset Transparenz
+        }
+    } 
 }

@@ -23,14 +23,19 @@ public class BuildController {
     private BoardController boardController;
     private Player currentPlayer;
 
-    public void setBoardController(BoardController boardController) {
-        this.boardController = boardController;
-        this.currentPlayer = new Player("Spieler 1");
+    public void initializePlayer(Player player) {
+        this.currentPlayer = player;
+        System.out.println("Player: " + player);
+        // Ressourcen initialisieren
         currentPlayer.addResource(ResourceType.BRICK, 10);
         currentPlayer.addResource(ResourceType.GRAIN, 10);
         currentPlayer.addResource(ResourceType.LUMBER, 10);
         currentPlayer.addResource(ResourceType.ORE, 10);
         currentPlayer.addResource(ResourceType.WOOL, 10);
+    }
+
+    public void setBoardController(BoardController boardController) {
+        this.boardController = boardController;
     }
 
     @FXML
@@ -91,6 +96,11 @@ public class BuildController {
     }
 
     private void handleSettlementPlacement(Node node, Circle circle) {
+        if (currentPlayer == null) {
+            System.err.println("Kein Spieler initialisiert!");
+            return;
+        }
+        
         AnchorPane boardPane = boardController.getBoardPane();
 
         // Hole zentralen Node (besser für Vergleich)
@@ -107,7 +117,10 @@ public class BuildController {
                     boardNode.setOwner(currentPlayer);
                     boardNode.setBuildingType(BuildingType.SETTLEMENT);
 
-                    Image image = new Image(getClass().getResource("/images/Catan_HausRot.png").toExternalForm());
+                    String imagePath = "/images/Catan_House_" + 
+                        currentPlayer.getColor() + ".png";
+                    
+                    Image image = new Image(getClass().getResource(imagePath).toExternalForm());
                     ImageView imageView = new ImageView(image);
                     imageView.setFitWidth(55);
                     imageView.setFitHeight(55);
@@ -133,8 +146,17 @@ public class BuildController {
         if (!edge.isOccupied()) {
             boolean success = currentPlayer.build(BuildingType.ROAD);
             if (success) {
+                Color playerColor;
+
+                try {
+                    playerColor = Color.valueOf(currentPlayer.getColor());
+                } catch (IllegalArgumentException e) {
+                    System.err.println("Ungültiger Farbstring für JavaFX: " + currentPlayer.getColor() + ". Setze auf Schwarz.");
+                    playerColor = Color.BLACK;
+                }
+                
                 edge.setOwner(currentPlayer);
-                line.setStroke(Color.BLUE);
+                line.setStroke(playerColor);
                 line.setUserData("road");
 
                 System.out.println("Straße auf Kante gesetzt: " + edge);
