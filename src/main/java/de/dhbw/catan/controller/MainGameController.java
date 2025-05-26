@@ -27,6 +27,7 @@ public class MainGameController {
     private final Dice dice;
     private Board board;
     private BuildController buildController;
+    private BoardController boardController;
     private int playerCount;
 
     public MainGameController() {
@@ -62,9 +63,11 @@ public class MainGameController {
             // Setze den MainGameController im BoardController
             BoardController boardController = loader.getController();
             boardController.setMainGameController(this);
-
+            
             Player player = new Player("Spieler 1", playerColor);
             boardController.initializePlayer(player);
+            
+            this.boardController = boardController;
 
             Main.primaryStage.setScene(gameScene);  
         } catch (IOException e) {
@@ -82,7 +85,9 @@ public class MainGameController {
         if (board != null) {
             board.distributeResources(number);
         }
-        updateResourceLabels(board.getCurrentPlayer());
+        if (boardController != null) {
+            updateResourceLabels(boardController.getCurrentPlayer());
+        }
     }
 
     public void callShowCornerPoints() {
