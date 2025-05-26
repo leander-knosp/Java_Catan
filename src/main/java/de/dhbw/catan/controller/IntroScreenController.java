@@ -19,7 +19,7 @@ public class IntroScreenController {
     private ComboBox<String> colorComboBox;
 
     @FXML
-    private Circle colChoiceRed, colChoiceBlue, colChoiceBrown, colChoiceGreen;
+    private Circle colChoiceRed, colChoiceBlue, colChoiceYellow, colChoiceGreen;
 
     @FXML
     private Spinner<Integer> playerSpinner;
@@ -43,11 +43,10 @@ public class IntroScreenController {
     @FXML
     private void onChooseColor(javafx.scene.input.MouseEvent event) {
         Circle clickedCircle = (Circle) event.getSource();
-    
         // Borders zurücksetzen
         colChoiceRed.setStyle("");
         colChoiceBlue.setStyle("");
-        colChoiceBrown.setStyle("");
+        colChoiceYellow.setStyle("");
         colChoiceGreen.setStyle("");
     
         // Ausgewählten Kreis hervorheben
@@ -58,8 +57,8 @@ public class IntroScreenController {
             selectedColor = "Red";
         } else if (clickedCircle == colChoiceBlue) {
             selectedColor = "Blue";
-        } else if (clickedCircle == colChoiceBrown) {
-            selectedColor = "Brown";
+        } else if (clickedCircle == colChoiceYellow) {
+            selectedColor = "YELLOW";
         } else if (clickedCircle == colChoiceGreen) {
             selectedColor = "Green";
         }

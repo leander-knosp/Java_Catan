@@ -36,7 +36,7 @@
          <children>
             <Circle fx:id="colChoiceRed" fill="#c63a2a" onMouseClicked="#onChooseColor" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="colChoiceBlue" fill="#3b7acd" onMouseClicked="#onChooseColor" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="colChoiceBrown" fill="#8a5613" onMouseClicked="#onChooseColor" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="colChoiceYellow" fill="#fce903" onMouseClicked="#onChooseColor" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="colChoiceGreen" fill="#1abf27" onMouseClicked="#onChooseColor" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
