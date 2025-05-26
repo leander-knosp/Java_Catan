@@ -3,6 +3,10 @@ package de.dhbw.catan.controller;
 import de.dhbw.catan.Main;
 import de.dhbw.catan.model.Dice;
 import de.dhbw.catan.model.Player;
+import de.dhbw.catan.model.ResourceType;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.shape.Rectangle;
 import de.dhbw.catan.model.Board;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,6 +17,12 @@ import java.io.IOException;
 
 @Data
 public class MainGameController {
+
+    @FXML
+    private Rectangle grainCard, woolCard, oreCard, brickCard, lumberCard;
+
+    @FXML
+    private Label grainCount, woolCount, oreCount, brickCount, lumberCount, diceLabel;
 
     private final Dice dice;
     private Board board;
@@ -68,10 +78,11 @@ public class MainGameController {
 
     public void onRollDice() {
         int number = dice.rollDice();
-        System.out.println("Rolled: " + number);
+        diceLabel.setText("Rolled: " + number);
         if (board != null) {
             board.distributeResources(number);
         }
+        updateResourceLabels(board.getCurrentPlayer());
     }
 
     public void callShowCornerPoints() {
@@ -80,5 +91,13 @@ public class MainGameController {
 
     public void callShowEdgePoints() {
         buildController.showEdgePoints();
+    }
+
+    public void updateResourceLabels(Player player) {
+        grainCount.setText(String.valueOf(player.getResourceCount(ResourceType.GRAIN)));
+        woolCount.setText(String.valueOf(player.getResourceCount(ResourceType.WOOL)));
+        oreCount.setText(String.valueOf(player.getResourceCount(ResourceType.ORE)));
+        brickCount.setText(String.valueOf(player.getResourceCount(ResourceType.BRICK)));
+        lumberCount.setText(String.valueOf(player.getResourceCount(ResourceType.LUMBER)));
     }
 }
