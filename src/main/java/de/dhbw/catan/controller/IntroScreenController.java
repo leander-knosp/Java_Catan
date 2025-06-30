@@ -16,9 +16,6 @@ public class IntroScreenController {
     private String selectedColor = null;
 
     @FXML
-    private ComboBox<String> colorComboBox;
-
-    @FXML
     private Circle colChoiceRed, colChoiceBlue, colChoiceYellow, colChoiceGreen;
 
     @FXML
@@ -29,14 +26,12 @@ public class IntroScreenController {
         SpinnerValueFactory<Integer> valueFactory =
             new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 4, 3);
         playerSpinner.setValueFactory(valueFactory);
-        colorComboBox.getItems().addAll("Red", "Blue", "Green", "Yellow");
-        colorComboBox.setValue("Red");
     }
 
     @FXML
     private void onStartGame(ActionEvent event) {
         int playerCount = playerSpinner.getValue();
-        String playerColor = selectedColor != null ? selectedColor : colorComboBox.getValue();
+        String playerColor = selectedColor != null ? selectedColor : "Red";
         mainGameController.startGame(playerCount, playerColor);
     }
 

@@ -25,7 +25,6 @@
             <Font name="Georgia" size="36.0" />
          </font>
       </Label>
-      <ComboBox fx:id="colorComboBox" layoutX="665.0" layoutY="443.0" prefHeight="29.0" prefWidth="209.0" />
       <Spinner fx:id="playerSpinner" layoutX="669.0" layoutY="280.0" prefHeight="35.0" prefWidth="71.0" />
       <Label layoutX="750.0" layoutY="276.0" prefHeight="43.0" prefWidth="121.0" text="Players">
          <font>
