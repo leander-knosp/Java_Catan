@@ -46,7 +46,7 @@ public class MainGameController {
     public void startGame(int playerCount, String playerColor) {
         this.playerCount = playerCount;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/catan.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Board.fxml"));
             Scene gameScene = new Scene(loader.load());
             
             // Setze den MainGameController im BoardController
