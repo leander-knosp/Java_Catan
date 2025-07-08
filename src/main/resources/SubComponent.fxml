@@ -2,12 +2,15 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.MainGameController">
+<VBox alignment="CENTER" prefHeight="385.0" prefWidth="279.0" spacing="30.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.MainGameController">
    <children>
       <Button mnemonicParsing="false" onAction="#callShowCornerPoints" text="Corner">
          <cursor>
@@ -27,5 +30,50 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Button mnemonicParsing="false" text="Trade with Player" />
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" focusTraversable="true" prefHeight="36.0" prefWidth="161.0" spacing="10.0">
+                     <children>
+                        <Circle fill="#c63a2a" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fill="#3b7acd" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fill="#fce903" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fill="#1abf27" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Spinner prefHeight="35.0" prefWidth="71.0" />
+                        <Spinner prefHeight="35.0" prefWidth="71.0" />
+                        <Spinner prefHeight="35.0" prefWidth="71.0" />
+                        <Spinner prefHeight="35.0" prefWidth="71.0" />
+                        <Spinner prefHeight="35.0" prefWidth="71.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                     <children>
+                        <Label text="Wool" />
+                        <Label text="Lumber" />
+                        <Label text="Ore" />
+                        <Label text="Brick" />
+                        <Label text="Grain" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Spinner prefHeight="35.0" prefWidth="71.0" />
+                        <Spinner prefHeight="35.0" prefWidth="71.0" />
+                        <Spinner prefHeight="35.0" prefWidth="71.0" />
+                        <Spinner prefHeight="35.0" prefWidth="71.0" />
+                        <Spinner prefHeight="35.0" prefWidth="71.0" />
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" text="Send" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </VBox>
