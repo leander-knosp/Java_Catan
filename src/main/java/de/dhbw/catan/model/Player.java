@@ -71,4 +71,8 @@ public class Player {
 
         return true;
     }
+
+    public int getResourceCount(ResourceType type) {
+        return resources.getOrDefault(type, 0);
+    }
 }

@@ -58,7 +58,7 @@ public class IntroScreenController {
             selectedColor = "Green";
         }
     
-        System.out.println("Ausgewählte Farbe: " + selectedColor);
+        //System.out.println("Ausgewählte Farbe: " + selectedColor);
     }
 
     public void setMainGameController(MainGameController mainGameController) {

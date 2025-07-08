@@ -94,14 +94,14 @@ public class BoardController {
         if (this.buildController != null) {
             this.buildController.initializePlayer(player);
         }
-        System.out.println("Hier initializePlayer " + this.currentPlayer);
+        //System.out.println("Hier initializePlayer " + this.currentPlayer);
     }
 
     private void initializeRobber() {
         robber = board.getRobber(); // statt eigenes Feld
         int desertIndex = -1;
         for (Tile tile : board.getTiles()) {
-            System.out.println(tile.getType());
+            //System.out.println(tile.getType());
         }
         
         for (int i = 0; i < board.getTiles().size(); i++) {
@@ -136,14 +136,14 @@ public class BoardController {
         robberImageView.setLayoutX(hex.getLayoutX() - robberImageView.getFitWidth() / 2);
         robberImageView.setLayoutY(hex.getLayoutY() - robberImageView.getFitHeight() / 2);
     
-        System.out.println("Räuber ist jetzt auf Tile " + robber.getPosition());
+        //System.out.println("Räuber ist jetzt auf Tile " + robber.getPosition());
     }
     
 
     public void moveRobberTo(int newPosition) {
         board.getRobber().move(newPosition); // 🔁
         updateRobberPosition();
-        System.out.println("Räuber bewegt zu Position " + newPosition);
+        //System.out.println("Räuber bewegt zu Position " + newPosition);
     }
 
     private void positionTiles() {
@@ -192,10 +192,12 @@ public class BoardController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/SubComponent.fxml"));
             Parent subComponent = loader.load();
             MainGameController subController = loader.getController();
-            subController.setBoard(this.board);
+            subController.setBoard(board);
+            subController.setBoardController(this);
 
             BuildController buildController = new BuildController();
             buildController.setBoardController(this); // <--- wichtig!
+            buildController.setMainGameController(subController);
             this.buildController = buildController;
 
             // Wenn Player bereits existiert, sofort initialisieren
@@ -211,7 +213,7 @@ public class BoardController {
     }
 
     public void showRobberOverlay() {
-        System.out.println("Räuber-Overlay aktiviert – bitte ein Feld auswählen.");
+        //System.out.println("Räuber-Overlay aktiviert – bitte ein Feld auswählen.");
 
         int currentRobberPosition = board.getRobber().getPosition();
 
@@ -231,7 +233,7 @@ public class BoardController {
 
             // Interaktiv machen
             hex.setOnMouseClicked(event -> {
-                System.out.println("Klick auf Feld " + index);
+                //System.out.println("Klick auf Feld " + index);
                 moveRobberTo(index);
                 disableRobberOverlay();
             });
