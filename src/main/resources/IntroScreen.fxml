@@ -12,78 +12,81 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1550.0" styleClass="backgroundPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.IntroScreenController">
+<AnchorPane prefHeight="900.0" prefWidth="1550.0" styleClass="backgroundPane" stylesheets="@style.css"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="de.dhbw.catan.controller.IntroScreenController">
+
    <children>
-      <Button layoutX="667.0" layoutY="710.0" mnemonicParsing="false" onAction="#onStartGame" prefHeight="59.0" prefWidth="214.0" text="New Game">
-         <font>
-            <Font size="30.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Spinner fx:id="playerSpinner" layoutX="656.0" layoutY="282.0" prefHeight="35.0" prefWidth="71.0" />
-      <Label layoutX="750.0" layoutY="278.0" prefHeight="43.0" prefWidth="121.0" text="Players">
-         <font>
-            <Font name="Georgia" size="36.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="catan_logo" fitHeight="159.0" fitWidth="399.0" layoutX="582.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+
+      <ImageView fx:id="catan_logo" fitHeight="159.0" fitWidth="399.0"
+                 layoutX="582.0" layoutY="80.0" preserveRatio="true">
          <image>
             <Image url="@images/catan_logo.png" />
          </image>
       </ImageView>
-      <VBox layoutX="576.0" layoutY="362.0" prefHeight="334.0" prefWidth="455.0" spacing="10.0">
+
+      <HBox layoutX="640.0" layoutY="270.0" spacing="20" alignment="CENTER">
          <children>
-            <HBox fx:id="playerBox1" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <TextField fx:id="player_1_name" prefHeight="39.0" prefWidth="344.0" promptText=" name player 1" />
-                  <Circle fx:id="colChoiceRed" fill="#c63a2a" radius="21.0" stroke="BLACK" strokeType="INSIDE">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Circle>
-               </children>
-            </HBox>
-            <HBox fx:id="playerBox2" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <TextField fx:id="player_2_name" prefHeight="39.0" prefWidth="344.0" promptText="name player 2" />
-                  <Circle fx:id="colChoiceBlue" fill="#3b7acd" radius="21.0" stroke="BLACK" strokeType="INSIDE">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Circle>
-               </children>
-            </HBox>
-            <HBox fx:id="playerBox3" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <TextField fx:id="player_3_name" prefHeight="39.0" prefWidth="344.0" promptText="name player 3" />
-                  <Circle fx:id="colChoiceGreen" fill="#1abf27" radius="21.0" stroke="BLACK" strokeType="INSIDE">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Circle>
-               </children>
-            </HBox>
-            <HBox fx:id="playerBox4" prefHeight="100.0" prefWidth="598.0">
-               <children>
-                  <TextField fx:id="player_4_name" prefHeight="39.0" prefWidth="344.0" promptText="name player 4" />
-                  <Circle fx:id="colChoiceYellow" fill="#fce903" radius="21.0" stroke="BLACK" strokeType="INSIDE">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Circle>
-               </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </HBox>
+            <Spinner fx:id="playerSpinner" prefHeight="42.0" prefWidth="88.0" styleClass="spinner"/>
+            <Label text="Players" styleClass="player-label" />
          </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
+      </HBox>
+
+      <VBox fx:id="playerBoxVBox"
+            layoutX="550.0" layoutY="350.0"
+            spacing="15"
+            prefWidth="455.0"
+            alignment="TOP_CENTER">
+
+         <children>
+
+            <HBox fx:id="playerBox1" styleClass="player-box" spacing="10" alignment="CENTER">
+               <TextField fx:id="player_1_name" promptText="name player 1"  prefHeight="42.0" prefWidth="360.0" />
+               <Circle fx:id="colChoiceRed" fill="#c63a2a" radius="21.0" stroke="BLACK" strokeType="INSIDE">
+                  <HBox.margin>
+                     <Insets left="20.0" />
+                  </HBox.margin>
+               </Circle>
+            </HBox>
+
+            <HBox fx:id="playerBox2" styleClass="player-box" spacing="10" alignment="CENTER">
+               <TextField fx:id="player_2_name" promptText="name player 2"  prefHeight="42.0" prefWidth="360.0"/>
+               <Circle fx:id="colChoiceBlue" fill="#3b7acd" radius="21.0" stroke="BLACK" strokeType="INSIDE">
+                  <HBox.margin>
+                     <Insets left="20.0" />
+                  </HBox.margin>
+               </Circle>
+            </HBox>
+
+            <HBox fx:id="playerBox3" styleClass="player-box" spacing="10" alignment="CENTER">
+               <TextField fx:id="player_3_name" promptText="name player 3" prefHeight="42.0" prefWidth="360.0" />
+               <Circle fx:id="colChoiceGreen" fill="#1abf27" radius="21.0" stroke="BLACK" strokeType="INSIDE">
+                  <HBox.margin>
+                     <Insets left="20.0" />
+                  </HBox.margin>
+               </Circle>
+            </HBox>
+
+            <HBox fx:id="playerBox4" styleClass="player-box" spacing="10" alignment="CENTER">
+               <TextField fx:id="player_4_name" promptText="name player 4"  prefHeight="42.0" prefWidth="360.0"/>
+               <Circle fx:id="colChoiceYellow" fill="#fce903" radius="21.0" stroke="BLACK" strokeType="INSIDE">
+                  <HBox.margin>
+                     <Insets left="20.0" />
+                  </HBox.margin>
+               </Circle>
+            </HBox>
+
+         </children>
       </VBox>
+
+      <Button layoutX="667.0" layoutY="740.0" text="New Game"
+              onAction="#onStartGame" styleClass="button" prefWidth="214.0" prefHeight="60.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+
    </children>
 </AnchorPane>

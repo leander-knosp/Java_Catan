@@ -7,6 +7,7 @@ import java.util.Objects;
 import de.dhbw.catan.model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -58,47 +59,74 @@ public class IntroScreenController {
 
     private void updateVisiblePlayers(int playerCount) {
         playerBox1.setVisible(true);
-        playerBox2.setVisible(true);
-        playerBox3.setVisible(playerCount >= 3);
-        playerBox4.setVisible(playerCount == 4);
+        playerBox1.setManaged(true);
     
-        // Verhindert, dass unsichtbare Boxen Platz im Layout einnehmen
+        playerBox2.setVisible(true);
+        playerBox2.setManaged(true);
+    
+        playerBox3.setVisible(playerCount >= 3);
         playerBox3.setManaged(playerCount >= 3);
+    
+        playerBox4.setVisible(playerCount == 4);
         playerBox4.setManaged(playerCount == 4);
     }
+    
+    
 
     @FXML
-    private void onStartGame(ActionEvent event) {
+private void onStartGame(ActionEvent event) {
     int playerCount = playerSpinner.getValue();
+    boolean hasError = false;
 
+    // Zuerst alle Fehlermarkierungen zurücksetzen
+    player_1_name.getStyleClass().remove("text-field-error");
+    player_2_name.getStyleClass().remove("text-field-error");
+    player_3_name.getStyleClass().remove("text-field-error");
+    player_4_name.getStyleClass().remove("text-field-error");
+
+    // Spieler 1
+    if (player_1_name.getText().isBlank()) {
+        player_1_name.getStyleClass().add("text-field-error");
+        hasError = true;
+    }
+
+    // Spieler 2
+    if (player_2_name.getText().isBlank()) {
+        player_2_name.getStyleClass().add("text-field-error");
+        hasError = true;
+    }
+
+    // Spieler 3
+    if (playerCount >= 3 && player_3_name.getText().isBlank()) {
+        player_3_name.getStyleClass().add("text-field-error");
+        hasError = true;
+    }
+
+    // Spieler 4
+    if (playerCount == 4 && player_4_name.getText().isBlank()) {
+        player_4_name.getStyleClass().add("text-field-error");
+        hasError = true;
+    }
+
+    if (hasError) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Fehlende Namen");
+        alert.setHeaderText(null);
+        alert.setContentText("Bitte gib für alle aktiven Spieler einen Namen ein.");
+        alert.showAndWait();
+        return;
+    }
+
+    // Spieler erstellen
     List<Player> players = new ArrayList<>();
+    players.add(new Player(player_1_name.getText(), "Red"));
+    players.add(new Player(player_2_name.getText(), "Blue"));
+    if (playerCount >= 3) players.add(new Player(player_3_name.getText(), "Green"));
+    if (playerCount == 4) players.add(new Player(player_4_name.getText(), "Yellow"));
 
-    // Spieler 1 (immer dabei)
-    String name1 = player_1_name.getText().isBlank() ? "Spieler 1" : player_1_name.getText();
-    players.add(new Player(name1, "Red"));
-
-    // Spieler 2 (immer dabei)
-    String name2 = player_2_name.getText().isBlank() ? "Spieler 2" : player_2_name.getText();
-    players.add(new Player(name2, "Blue"));
-
-    if (playerCount >= 3) {
-        String name3 = player_3_name.getText().isBlank() ? "Spieler 3" : player_3_name.getText();
-        players.add(new Player(name3, "Green"));
-    }
-
-    if (playerCount == 4) {
-        String name4 = player_4_name.getText().isBlank() ? "Spieler 4" : player_4_name.getText();
-        players.add(new Player(name4, "Yellow"));
-    }
-
-    // Debug-Ausgabe
-    for (Player p : players) {
-        System.out.println("Spieler: " + p.getName() + " - Farbe: " + p.getColor());
-    }
-
-    // Spiel starten
     mainGameController.startGame(players);
 }
+
 
     public void setMainGameController(MainGameController mainGameController) {
         this.mainGameController = mainGameController;
