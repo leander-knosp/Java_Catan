@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import de.dhbw.catan.model.Trade;
 import javafx.fxml.Circle;;
+import de.dhbw.catan.model.GameState;
 
 import lombok.Data;
 
@@ -155,8 +156,8 @@ public class MainGameController {
             System.out.println("Bitte wähle eine Farbe aus.");
             return false;
         }
-        
-        Trade trade = new Trade(offerFromYou, requestFromOther, selectedColor);
+        private List<Player> playerList = GameState.getInstance().getPlayers();
+        Trade trade = new Trade(offerFromYou, requestFromOther, selectedColor, playerList);
         return trade.handleTrade();
     }
 
