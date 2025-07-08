@@ -109,8 +109,6 @@ public class MainGameController {
     }
 
     public void updateResourceLabels(Player player) {
-        System.out.println("Updating resource labels for player: " + player.getName());
-
         grainCount.setText(String.valueOf(player.getResourceCount(ResourceType.GRAIN)));
         woolCount.setText(String.valueOf(player.getResourceCount(ResourceType.WOOL)));
         oreCount.setText(String.valueOf(player.getResourceCount(ResourceType.ORE)));
