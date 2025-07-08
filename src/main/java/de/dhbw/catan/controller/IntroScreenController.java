@@ -1,8 +1,11 @@
 package de.dhbw.catan.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import de.dhbw.catan.model.Player;
 import javafx.event.ActionEvent;
@@ -56,7 +59,7 @@ public class IntroScreenController {
         // Initialanzeige anpassen
         updateVisiblePlayers(playerSpinner.getValue());
     }
-
+    @FXML
     private void updateVisiblePlayers(int playerCount) {
         playerBox1.setVisible(true);
         playerBox1.setManaged(true);
@@ -70,62 +73,73 @@ public class IntroScreenController {
         playerBox4.setVisible(playerCount == 4);
         playerBox4.setManaged(playerCount == 4);
     }
-    
-    
 
     @FXML
-private void onStartGame(ActionEvent event) {
-    int playerCount = playerSpinner.getValue();
-    boolean hasError = false;
+    private void onStartGame(ActionEvent event) {
+        int playerCount = playerSpinner.getValue();
+        boolean hasError = false;
 
-    // Zuerst alle Fehlermarkierungen zurücksetzen
-    player_1_name.getStyleClass().remove("text-field-error");
-    player_2_name.getStyleClass().remove("text-field-error");
-    player_3_name.getStyleClass().remove("text-field-error");
-    player_4_name.getStyleClass().remove("text-field-error");
+        player_1_name.getStyleClass().remove("text-field-error");
+        player_2_name.getStyleClass().remove("text-field-error");
+        player_3_name.getStyleClass().remove("text-field-error");
+        player_4_name.getStyleClass().remove("text-field-error");
 
-    // Spieler 1
-    if (player_1_name.getText().isBlank()) {
-        player_1_name.getStyleClass().add("text-field-error");
-        hasError = true;
+        List<String> names = new ArrayList<>();
+        names.add(player_1_name.getText().trim());
+        names.add(player_2_name.getText().trim());
+        if (playerCount >= 3) names.add(player_3_name.getText().trim());
+        if (playerCount == 4) names.add(player_4_name.getText().trim());
+
+        for (int i = 0; i < playerCount; i++) {
+            if (names.get(i).isEmpty()) {
+                hasError = true;
+                switch (i) {
+                    case 0 -> player_1_name.getStyleClass().add("text-field-error");
+                    case 1 -> player_2_name.getStyleClass().add("text-field-error");
+                    case 2 -> player_3_name.getStyleClass().add("text-field-error");
+                    case 3 -> player_4_name.getStyleClass().add("text-field-error");
+                }
+            }
+        }
+
+        Set<String> uniqueNames = new HashSet<>(names);
+        if (uniqueNames.size() < names.size()) {
+            hasError = true;
+            for (int i = 0; i < playerCount; i++) {
+                String currentName = names.get(i);
+                if (Collections.frequency(names, currentName) > 1) {
+                    switch (i) {
+                        case 0 -> player_1_name.getStyleClass().add("text-field-error");
+                        case 1 -> player_2_name.getStyleClass().add("text-field-error");
+                        case 2 -> player_3_name.getStyleClass().add("text-field-error");
+                        case 3 -> player_4_name.getStyleClass().add("text-field-error");
+                    }
+                }
+            }
+        }
+
+        if (hasError) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Player Name Error");
+            alert.setHeaderText(null);
+            if (uniqueNames.size() < names.size()) {
+                alert.setContentText("Please enter a unique name for each player. Duplicate names are not allowed.");
+            } else {
+                alert.setContentText("Please enter a name for all active players.");
+            }
+            alert.showAndWait();
+            return;
+        }
+
+        List<Player> players = new ArrayList<>();
+        players.add(new Player(names.get(0), "Red"));
+        players.add(new Player(names.get(1), "Blue"));
+        if (playerCount >= 3) players.add(new Player(names.get(2), "Green"));
+        if (playerCount == 4) players.add(new Player(names.get(3), "Yellow"));
+
+        mainGameController.startGame(players);
     }
 
-    // Spieler 2
-    if (player_2_name.getText().isBlank()) {
-        player_2_name.getStyleClass().add("text-field-error");
-        hasError = true;
-    }
-
-    // Spieler 3
-    if (playerCount >= 3 && player_3_name.getText().isBlank()) {
-        player_3_name.getStyleClass().add("text-field-error");
-        hasError = true;
-    }
-
-    // Spieler 4
-    if (playerCount == 4 && player_4_name.getText().isBlank()) {
-        player_4_name.getStyleClass().add("text-field-error");
-        hasError = true;
-    }
-
-    if (hasError) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Fehlende Namen");
-        alert.setHeaderText(null);
-        alert.setContentText("Bitte gib für alle aktiven Spieler einen Namen ein.");
-        alert.showAndWait();
-        return;
-    }
-
-    // Spieler erstellen
-    List<Player> players = new ArrayList<>();
-    players.add(new Player(player_1_name.getText(), "Red"));
-    players.add(new Player(player_2_name.getText(), "Blue"));
-    if (playerCount >= 3) players.add(new Player(player_3_name.getText(), "Green"));
-    if (playerCount == 4) players.add(new Player(player_4_name.getText(), "Yellow"));
-
-    mainGameController.startGame(players);
-}
 
 
     public void setMainGameController(MainGameController mainGameController) {
