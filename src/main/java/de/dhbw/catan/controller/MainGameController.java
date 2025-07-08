@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import lombok.Data;
 
 import java.io.IOException;
+import java.util.List;
 
 @Data
 public class MainGameController {
@@ -62,26 +63,24 @@ public class MainGameController {
         }
     }
 
-    public void startGame(int playerCount, String playerColor) {
-        this.playerCount = playerCount;
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Board.fxml"));
-            Scene gameScene = new Scene(loader.load());
-            
-            // Setze den MainGameController im BoardController
-            BoardController boardController = loader.getController();
-            boardController.setMainGameController(this);
-            
-            Player player = new Player("Spieler 1", playerColor);
-            boardController.initializePlayer(player);
-            
-            this.boardController = boardController;
+   public void startGame(List<Player> players) {
+    this.playerCount = players.size();
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/catan.fxml"));
+        Scene gameScene = new Scene(loader.load());
 
-            Main.primaryStage.setScene(gameScene);  
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // Setze den MainGameController im BoardController
+        BoardController boardController = loader.getController();
+        boardController.setMainGameController(this);
+
+        // Spieler an den BoardController übergeben
+        boardController.initializePlayers(players);
+
+        Main.primaryStage.setScene(gameScene);
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
 
     public int getPlayerCount() {
         return this.playerCount;
