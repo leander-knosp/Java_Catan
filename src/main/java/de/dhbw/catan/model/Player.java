@@ -48,11 +48,6 @@ public class Player {
     public boolean build(BuildingType buildingType) {
         if (!hasEnoughResources(buildingType)) return false;
 
-        Map<ResourceType, Integer> cost = BuildingCost.getCost(buildingType);
-        for (Map.Entry<ResourceType, Integer> entry : cost.entrySet()) {
-            resources.put(entry.getKey(), resources.get(entry.getKey()) - entry.getValue());
-        }
-
         switch (buildingType) {
                     case ROAD -> {
                         if (roads <= 0) return false;
@@ -68,6 +63,12 @@ public class Player {
                     }
                     default -> throw new IllegalArgumentException("Unexpected value: " + buildingType);
         }
+
+        Map<ResourceType, Integer> cost = BuildingCost.getCost(buildingType);
+        for (Map.Entry<ResourceType, Integer> entry : cost.entrySet()) {
+            resources.put(entry.getKey(), resources.get(entry.getKey()) - entry.getValue());
+        }
+
 
         return true;
     }
