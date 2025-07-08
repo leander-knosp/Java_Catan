@@ -1,5 +1,4 @@
-import de.dhbw.catan.model.ResourceType;
-import de.dhbw.catan.model.Player;
+package de.dhbw.catan.model;
 import java.util.List;
 import java.util.Map;
 import lombok.Data;
@@ -15,11 +14,11 @@ public class Trade {
 
     public Trade(Map<ResourceType, Integer> offerFromYou,
                     Map<ResourceType, Integer> requestFromOther,
-                    String targetPlayerColor) {
+                    String targetPlayerColor, List<Player> allPlayers) {
         this.offerFromYou = offerFromYou;
         this.requestFromOther = requestFromOther;
         this.targetPlayerColor = targetPlayerColor;
-        this.allPlayers = 
+        this.allPlayers = allPlayers;
     }
 
     private void setTargetPlayer(Player targetPlayer){

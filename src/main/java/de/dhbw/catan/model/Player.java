@@ -67,7 +67,7 @@ public class Player {
                         cities--;
                     }
                     default -> throw new IllegalArgumentException("Unexpected value: " + buildingType);
-        }
+        } 
         return true;
     }
 

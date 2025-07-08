@@ -14,7 +14,13 @@ import de.dhbw.catan.model.Trade;
 import javafx.scene.shape.Circle;
 import de.dhbw.catan.model.Game;
 
-import de.dhbw.catan.model.GameState;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
 
 import lombok.Data;
 
@@ -51,6 +57,7 @@ public class MainGameController {
     private int playerCount;
     private String selectedColor;
     private Trade trade;
+    private Game game;
 
     public MainGameController() {
         this.dice = new Dice();
@@ -93,7 +100,7 @@ public class MainGameController {
             BoardController boardController = loader.getController();
             boardController.setMainGameController(this);
 
-            Game game = new Game(board, null, 0) //unfinished-----------------------------------------------------------
+            game = new Game(null, 0); //unfinished-----------------------------------------------------------
             Player player = new Player("Spieler 1", playerColor);
             boardController.initializePlayer(player);
             
@@ -174,7 +181,7 @@ public class MainGameController {
             System.out.println("Bitte wähle eine Farbe aus.");
             return;
         }
-        List<Player> playerList = GameState.getInstance().getPlayers();
+        List<Player> playerList = game.getPlayers();
         trade = new Trade(offerFromYou, requestFromOther, selectedColor, playerList);
         if(trade.handleTrade(boardController.getCurrentPlayer())){
             showButtons();
