@@ -11,6 +11,7 @@ public class Trade {
     private Map<ResourceType, Integer> offerFromYou;
     private Map<ResourceType, Integer> requestFromOther;
     private String targetPlayerColor;
+    private Player targetPlayer;
 
     public Trade(Map<ResourceType, Integer> offerFromYou,
                     Map<ResourceType, Integer> requestFromOther,
@@ -18,15 +19,24 @@ public class Trade {
         this.offerFromYou = offerFromYou;
         this.requestFromOther = requestFromOther;
         this.targetPlayerColor = targetPlayerColor;
+        this.allPlayers = 
     }
 
-    public bool handleTrade(){
+    private void setTargetPlayer(Player targetPlayer){
+        this.targetPlayer = targetPlayer;
+    }
+
+    public Player getTargetPlayer() {
+        return this.targetPlayer;
+    }
+
+    public boolean handleTrade(Player currentPlayer){
         for (Player player : allPlayers) {
             if (player.getColor().equals(targetPlayerColor) && !player.equals(currentPlayer)) {
                 Player targetPlayer = player;
+                this.setTargetPlayer(targetPlayer);
     
                 if (canTrade(currentPlayer, targetPlayer)) {
-                    executeTrade(currentPlayer, targetPlayer);
                     return true;
                 } else {
                     System.out.println("Handel nicht möglich – Ressourcen fehlen.");
@@ -34,9 +44,10 @@ public class Trade {
                 }
             }
         }
+        return false;
     }
 
-    private void executeTrade(Player currentPlayer, Player targetPlayer) {
+    public void executeTrade(Player currentPlayer, Player targetPlayer) {
         for (Map.Entry<ResourceType, Integer> entry : offerFromYou.entrySet()) {
             ResourceType resourceType = entry.getKey();
             int amount = entry.getValue();

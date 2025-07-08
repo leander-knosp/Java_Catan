@@ -11,7 +11,8 @@ import de.dhbw.catan.model.Board;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import de.dhbw.catan.model.Trade;
-import javafx.fxml.Circle;;
+import javafx.scene.shape.Circle;
+
 import de.dhbw.catan.model.GameState;
 
 import lombok.Data;
@@ -27,12 +28,28 @@ public class MainGameController {
     @FXML
     private Label grainCount, woolCount, oreCount, brickCount, lumberCount, diceLabel;
 
+    @FXML
+    private Spinner<Integer> woolSpinnerYou, lumberSpinnerYou, oreSpinnerYou, brickSpinnerYou, grainSpinnerYou;
+    
+    @FXML
+    private Spinner<Integer> woolSpinnerOther, lumberSpinnerOther, oreSpinnerOther, brickSpinnerOther, grainSpinnerOther;
+    
+    @FXML
+    private Button acceptTradeButton, declineTradeButton;
+    
+    @FXML
+    private HBox tradeDecisionBox;
+    
+    @FXML
+    private Circle redCircle, blueCircle, yellowCircle, greenCircle;
+
     private final Dice dice;
     private Board board;
     private BuildController buildController;
     private BoardController boardController;
     private int playerCount;
     private String selectedColor;
+    private Trade trade;
 
     public MainGameController() {
         this.dice = new Dice();
@@ -137,7 +154,7 @@ public class MainGameController {
 
 
     @FXML
-    public bool trade(){
+    public void trade(){
         Map<ResourceType, Integer> offerFromYou = new HashMap<>();
         offerFromYou.put(ResourceType.WOOL, woolSpinnerYou.getValue());
         offerFromYou.put(ResourceType.LUMBER, lumberSpinnerYou.getValue());
@@ -154,16 +171,17 @@ public class MainGameController {
     
         if(selectedColor == null) {
             System.out.println("Bitte wähle eine Farbe aus.");
-            return false;
+            return;
         }
-        private List<Player> playerList = GameState.getInstance().getPlayers();
-        Trade trade = new Trade(offerFromYou, requestFromOther, selectedColor, playerList);
-        return trade.handleTrade();
+        List<Player> playerList = GameState.getInstance().getPlayers();
+        trade = new Trade(offerFromYou, requestFromOther, selectedColor, playerList);
+        if(trade.handleTrade(boardController.getCurrentPlayer())){
+            showButtons();
+        }
     }
 
     @FXML
     private void onPlayerSelect(javafx.scene.input.MouseEvent event) {
-        @FXML private Circle redCircle, blueCircle, yellowCircle, greenCircle;
         Circle clickedCircle = (Circle) event.getSource();
         redCircle.setStyle("");
         blueCircle.setStyle("");
@@ -176,10 +194,26 @@ public class MainGameController {
         } else if (clickedCircle == blueCircle) {
             selectedColor = "Blue";
         } else if (clickedCircle == yellowCircle) {
-            selectedColor = "YELLOW";
+            selectedColor = "Yellow";
         } else if (clickedCircle == greenCircle) {
             selectedColor = "Green";
         }
     }
     
+    @FXML
+    private void onAcceptTrade() {
+        Player currentPlayer = boardController.getCurrentPlayer();
+        trade.executeTrade(currentPlayer, trade.getTargetPlayer());
+    }
+    
+    @FXML
+    private void onDeclineTrade() {
+        System.out.println("Trade abgelehnt.");
+        tradeDecisionBox.setVisible(false);
+    }
+    
+
+    private void showButtons() {
+        tradeDecisionBox.setVisible(true);
+    }
 }

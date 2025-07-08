@@ -68,7 +68,6 @@ public class Player {
                     }
                     default -> throw new IllegalArgumentException("Unexpected value: " + buildingType);
         }
-
         return true;
     }
 

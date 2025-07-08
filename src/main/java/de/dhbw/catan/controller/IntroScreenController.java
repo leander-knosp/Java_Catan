@@ -53,7 +53,7 @@ public class IntroScreenController {
         } else if (clickedCircle == colChoiceBlue) {
             selectedColor = "Blue";
         } else if (clickedCircle == colChoiceYellow) {
-            selectedColor = "YELLOW";
+            selectedColor = "Yellow";
         } else if (clickedCircle == colChoiceGreen) {
             selectedColor = "Green";
         }
