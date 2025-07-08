@@ -197,6 +197,7 @@ public class BoardController {
 
             BuildController buildController = new BuildController();
             buildController.setBoardController(this); // <--- wichtig!
+            buildController.setMainGameController(subController);
             this.buildController = buildController;
 
             // Wenn Player bereits existiert, sofort initialisieren

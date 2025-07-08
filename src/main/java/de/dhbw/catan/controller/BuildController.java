@@ -21,6 +21,7 @@ import java.util.List;
 public class BuildController {
 
     private BoardController boardController;
+    private MainGameController mainGameController;
     private Player currentPlayer;
 
     public void initializePlayer(Player player) {
@@ -36,6 +37,10 @@ public class BuildController {
 
     public void setBoardController(BoardController boardController) {
         this.boardController = boardController;
+    }
+
+    public void setMainGameController(MainGameController mainGameController) {
+        this.mainGameController = mainGameController;
     }
 
     @FXML
@@ -113,6 +118,7 @@ public class BuildController {
         if (!boardController.getBoard().hasAdjacentBuildings(boardNode)) {
             if (!boardNode.isOccupied()) {
                 boolean success = currentPlayer.build(BuildingType.SETTLEMENT);
+                mainGameController.updateResourceLabels(currentPlayer);
                 if (success) {
                     boardNode.setOwner(currentPlayer);
                     boardNode.setBuildingType(BuildingType.SETTLEMENT);
@@ -145,6 +151,7 @@ public class BuildController {
     private void handleRoadPlacement(Edge edge, Line line) {
         if (!edge.isOccupied()) {
             boolean success = currentPlayer.build(BuildingType.ROAD);
+            mainGameController.updateResourceLabels(currentPlayer);
             if (success) {
                 Color playerColor;
 
