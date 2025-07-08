@@ -89,12 +89,35 @@ public class BoardController {
         initializeRobber();
     }
 
-    public void initializePlayer(Player player) {
-        this.currentPlayer = player;
+    // public void initializePlayer(Player player) {
+    //     this.currentPlayer = player;
+    //     if (this.buildController != null) {
+    //         this.buildController.initializePlayer(player);
+    //     }
+    //     System.out.println("Hier initializePlayer " + this.currentPlayer);
+    // }
+    private List<Player> players;
+    private int currentPlayerIndex = 0;
+
+    public void initializePlayers(List<Player> players) {
+        this.players = players;
+        this.currentPlayerIndex = 0;
+        this.currentPlayer = players.get(0);
+    
         if (this.buildController != null) {
-            this.buildController.initializePlayer(player);
+            this.buildController.initializePlayer(this.currentPlayer);
         }
-        System.out.println("Hier initializePlayer " + this.currentPlayer);
+    
+        System.out.println("Initialisiere Spieler:");
+        for (Player p : players) {
+            System.out.println("- " + p.getName() + " (" + p.getColor() + ")");
+        }
+    }
+    public void nextPlayer() {
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+        currentPlayer = players.get(currentPlayerIndex);
+        buildController.initializePlayer(currentPlayer);
+        System.out.println("Jetzt am Zug: " + currentPlayer.getName());
     }
 
     private void initializeRobber() {
