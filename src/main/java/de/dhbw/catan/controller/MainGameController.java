@@ -10,6 +10,8 @@ import javafx.scene.shape.Rectangle;
 import de.dhbw.catan.model.Board;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import de.dhbw.catan.model.Trade;
+import javafx.fxml.Circle;;
 
 import lombok.Data;
 
@@ -29,6 +31,7 @@ public class MainGameController {
     private BuildController buildController;
     private BoardController boardController;
     private int playerCount;
+    private String selectedColor;
 
     public MainGameController() {
         this.dice = new Dice();
@@ -115,4 +118,67 @@ public class MainGameController {
         brickCount.setText(String.valueOf(player.getResourceCount(ResourceType.BRICK)));
         lumberCount.setText(String.valueOf(player.getResourceCount(ResourceType.LUMBER)));
     }
+
+    @FXML
+    public void initialize() {
+        woolSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        lumberSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        oreSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        brickSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        grainSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+
+        woolSpinnerOther.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        lumberSpinnerOther.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        oreSpinnerOther.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        brickSpinnerOther.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        grainSpinnerOther.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+    }
+
+
+    @FXML
+    public bool trade(){
+        Map<ResourceType, Integer> offerFromYou = new HashMap<>();
+        offerFromYou.put(ResourceType.WOOL, woolSpinnerYou.getValue());
+        offerFromYou.put(ResourceType.LUMBER, lumberSpinnerYou.getValue());
+        offerFromYou.put(ResourceType.ORE, oreSpinnerYou.getValue());
+        offerFromYou.put(ResourceType.BRICK, brickSpinnerYou.getValue());
+        offerFromYou.put(ResourceType.GRAIN, grainSpinnerYou.getValue());
+    
+        Map<ResourceType, Integer> requestFromOther = new HashMap<>();
+        requestFromOther.put(ResourceType.WOOL, woolSpinnerOther.getValue());
+        requestFromOther.put(ResourceType.LUMBER, lumberSpinnerOther.getValue());
+        requestFromOther.put(ResourceType.ORE, oreSpinnerOther.getValue());
+        requestFromOther.put(ResourceType.BRICK, brickSpinnerOther.getValue());
+        requestFromOther.put(ResourceType.GRAIN, grainSpinnerOther.getValue());
+    
+        if(selectedColor == null) {
+            System.out.println("Bitte wähle eine Farbe aus.");
+            return false;
+        }
+        
+        Trade trade = new Trade(offerFromYou, requestFromOther, selectedColor);
+        return trade.handleTrade();
+    }
+
+    @FXML
+    private void onPlayerSelect(javafx.scene.input.MouseEvent event) {
+        @FXML private Circle redCircle, blueCircle, yellowCircle, greenCircle;
+        Circle clickedCircle = (Circle) event.getSource();
+        redCircle.setStyle("");
+        blueCircle.setStyle("");
+        yellowCircle.setStyle("");
+        greenCircle.setStyle("");
+            
+        clickedCircle.setStyle("-fx-stroke: white; -fx-stroke-width: 3;");
+        if (clickedCircle == redCircle) {
+            selectedColor = "Red";
+        } else if (clickedCircle == blueCircle) {
+            selectedColor = "Blue";
+        } else if (clickedCircle == yellowCircle) {
+            selectedColor = "YELLOW";
+        } else if (clickedCircle == greenCircle) {
+            selectedColor = "Green";
+        }
+    }
+    
 }
