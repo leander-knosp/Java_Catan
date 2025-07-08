@@ -21,11 +21,12 @@ import java.util.List;
 public class BuildController {
 
     private BoardController boardController;
+    private MainGameController mainGameController;
     private Player currentPlayer;
 
     public void initializePlayer(Player player) {
         this.currentPlayer = player;
-        System.out.println("Player: " + player);
+        //System.out.println("Player: " + player);
         // Ressourcen initialisieren
         currentPlayer.addResource(ResourceType.BRICK, 10);
         currentPlayer.addResource(ResourceType.GRAIN, 10);
@@ -36,6 +37,10 @@ public class BuildController {
 
     public void setBoardController(BoardController boardController) {
         this.boardController = boardController;
+    }
+
+    public void setMainGameController(MainGameController mainGameController) {
+        this.mainGameController = mainGameController;
     }
 
     @FXML
@@ -113,6 +118,7 @@ public class BuildController {
         if (!boardController.getBoard().hasAdjacentBuildings(boardNode)) {
             if (!boardNode.isOccupied()) {
                 boolean success = currentPlayer.build(BuildingType.SETTLEMENT);
+                mainGameController.updateResourceLabels(currentPlayer);
                 if (success) {
                     boardNode.setOwner(currentPlayer);
                     boardNode.setBuildingType(BuildingType.SETTLEMENT);
@@ -131,8 +137,8 @@ public class BuildController {
                     boardPane.getChildren().remove(circle);
                     boardPane.getChildren().add(imageView);
 
-                    System.out.println("Node gesetzt an: " + boardNode.getX() + "," + boardNode.getY());
-                    System.out.println("Owner gesetzt: " + boardNode.getOwner());
+                    //System.out.println("Node gesetzt an: " + boardNode.getX() + "," + boardNode.getY());
+                    //System.out.println("Owner gesetzt: " + boardNode.getOwner());
                 } else {
                     System.out.println("Nicht genug Ressourcen für Siedlung.");
                 }
@@ -145,6 +151,7 @@ public class BuildController {
     private void handleRoadPlacement(Edge edge, Line line) {
         if (!edge.isOccupied()) {
             boolean success = currentPlayer.build(BuildingType.ROAD);
+            mainGameController.updateResourceLabels(currentPlayer);
             if (success) {
                 Color playerColor;
 
@@ -159,7 +166,7 @@ public class BuildController {
                 line.setStroke(playerColor);
                 line.setUserData("road");
 
-                System.out.println("Straße auf Kante gesetzt: " + edge);
+                //System.out.println("Straße auf Kante gesetzt: " + edge);
             } else {
                 System.out.println("Nicht genug Ressourcen für Straße.");
             }
