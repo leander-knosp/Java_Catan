@@ -133,6 +133,9 @@ public class BuildController {
                     imageView.setX(boardNode.getX() - 30);
                     imageView.setY(boardNode.getY() - 30);
                     imageView.setUserData("corner");
+                    imageView.setOnMouseClicked(event -> {
+                        handleCityPlacement(imageView, boardNode);
+                    });
 
                     boardPane.getChildren().remove(circle);
                     boardPane.getChildren().add(imageView);
@@ -172,6 +175,17 @@ public class BuildController {
             }
         } else {
             System.out.println("Kante bereits besetzt: " + edge);
+        }
+    }
+
+    private void handleCityPlacement(ImageView imageView, Node boardNode) {
+        boolean success = currentPlayer.build(BuildingType.CITY);
+        mainGameController.updateResourceLabels(currentPlayer);
+        if (success) {
+            boardNode.setOwner(currentPlayer);
+            boardNode.setBuildingType(BuildingType.CITY);
+            imageView.setImage(new Image(getClass().getResource("/images/city.png").toExternalForm()));
+            imageView.setOnMouseClicked(null);
         }
     }
 }
