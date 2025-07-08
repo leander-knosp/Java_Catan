@@ -39,6 +39,14 @@ public class MainGameController {
         this.buildController = buildController;
     }
 
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    public void setBoardController(BoardController boardController) {
+        this.boardController = boardController;
+    }
+
     public void showIntroScreen() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/IntroScreen.fxml"));
@@ -87,6 +95,8 @@ public class MainGameController {
         }
         if (boardController != null) {
             updateResourceLabels(boardController.getCurrentPlayer());
+        } else {
+            System.err.println("BoardController ist nicht initialisiert!");
         }
     }
 
@@ -99,6 +109,8 @@ public class MainGameController {
     }
 
     public void updateResourceLabels(Player player) {
+        System.out.println("Updating resource labels for player: " + player.getName());
+
         grainCount.setText(String.valueOf(player.getResourceCount(ResourceType.GRAIN)));
         woolCount.setText(String.valueOf(player.getResourceCount(ResourceType.WOOL)));
         oreCount.setText(String.valueOf(player.getResourceCount(ResourceType.ORE)));

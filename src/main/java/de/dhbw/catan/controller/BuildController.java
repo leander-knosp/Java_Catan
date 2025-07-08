@@ -25,7 +25,7 @@ public class BuildController {
 
     public void initializePlayer(Player player) {
         this.currentPlayer = player;
-        System.out.println("Player: " + player);
+        //System.out.println("Player: " + player);
         // Ressourcen initialisieren
         currentPlayer.addResource(ResourceType.BRICK, 10);
         currentPlayer.addResource(ResourceType.GRAIN, 10);
@@ -131,8 +131,8 @@ public class BuildController {
                     boardPane.getChildren().remove(circle);
                     boardPane.getChildren().add(imageView);
 
-                    System.out.println("Node gesetzt an: " + boardNode.getX() + "," + boardNode.getY());
-                    System.out.println("Owner gesetzt: " + boardNode.getOwner());
+                    //System.out.println("Node gesetzt an: " + boardNode.getX() + "," + boardNode.getY());
+                    //System.out.println("Owner gesetzt: " + boardNode.getOwner());
                 } else {
                     System.out.println("Nicht genug Ressourcen für Siedlung.");
                 }
@@ -159,7 +159,7 @@ public class BuildController {
                 line.setStroke(playerColor);
                 line.setUserData("road");
 
-                System.out.println("Straße auf Kante gesetzt: " + edge);
+                //System.out.println("Straße auf Kante gesetzt: " + edge);
             } else {
                 System.out.println("Nicht genug Ressourcen für Straße.");
             }
