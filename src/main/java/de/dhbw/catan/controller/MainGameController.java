@@ -52,10 +52,10 @@ public class MainGameController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/IntroScreen.fxml"));
             Scene introScene = new Scene(loader.load());
-            
+
             IntroScreenController introController = loader.getController();
             introController.setMainGameController(this);
-            
+
             Main.primaryStage.setScene(introScene);
             Main.primaryStage.show();
         } catch (IOException e) {
@@ -66,7 +66,7 @@ public class MainGameController {
    public void startGame(List<Player> players) {
     this.playerCount = players.size();
     try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/catan.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/board.fxml"));
         Scene gameScene = new Scene(loader.load());
 
         // Setze den MainGameController im BoardController
