@@ -9,20 +9,14 @@ public class Game {
     private List<Player> players;
     private int currentPlayerIndex;
 
-    public Game(Board board, List<Player> players) {
+    public Game(Board board, List<Player> players, int startingPlayerIndex) {
         this.board = board;
         this.players = players;
-        this.currentPlayerIndex = 0;
+        this.currentPlayerIndex = startingPlayerIndex;
     }
 
     public Player getCurrentPlayer() {
         return players.get(currentPlayerIndex);
-    }
-
-    public void moveRobber(int newPosition) {
-        // Player currentPlayer = getCurrentPlayer();
-        // board.moveRobber(newPosition, victim);
-        // nextPlayer();
     }
 
     public void nextPlayer() {

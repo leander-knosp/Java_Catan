@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import de.dhbw.catan.model.Trade;
 import javafx.scene.shape.Circle;
+import de.dhbw.catan.model.Game;
 
 import de.dhbw.catan.model.GameState;
 
@@ -89,10 +90,10 @@ public class MainGameController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Board.fxml"));
             Scene gameScene = new Scene(loader.load());
             
-            // Setze den MainGameController im BoardController
             BoardController boardController = loader.getController();
             boardController.setMainGameController(this);
-            
+
+            Game game = new Game(board, null, 0) //unfinished-----------------------------------------------------------
             Player player = new Player("Spieler 1", playerColor);
             boardController.initializePlayer(player);
             
