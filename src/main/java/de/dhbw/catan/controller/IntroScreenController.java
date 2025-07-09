@@ -10,6 +10,7 @@ import java.util.Set;
 import de.dhbw.catan.model.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
@@ -139,8 +140,6 @@ public class IntroScreenController {
 
         mainGameController.startGame(players);
     }
-
-
 
     public void setMainGameController(MainGameController mainGameController) {
         this.mainGameController = mainGameController;
