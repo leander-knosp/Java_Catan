@@ -2,6 +2,7 @@ package de.dhbw.catan.controller;
 
 import de.dhbw.catan.Main;
 import de.dhbw.catan.model.Dice;
+import de.dhbw.catan.model.Game;
 import de.dhbw.catan.model.Player;
 import de.dhbw.catan.model.ResourceType;
 import javafx.fxml.FXML;
@@ -30,6 +31,7 @@ public class MainGameController {
     private BuildController buildController;
     private BoardController boardController;
     private int playerCount;
+    private Game game;
 
     public MainGameController() {
         this.dice = new Dice();
@@ -63,24 +65,54 @@ public class MainGameController {
         }
     }
 
-   public void startGame(List<Player> players) {
-    this.playerCount = players.size();
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/board.fxml"));
-        Scene gameScene = new Scene(loader.load());
+    public void startGame(List<Player> players) {
+        this.playerCount = players.size();
+        this.game = new Game(this.board, players);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Board.fxml"));
+            Scene gameScene = new Scene(loader.load());
 
-        // Setze den MainGameController im BoardController
-        BoardController boardController = loader.getController();
-        boardController.setMainGameController(this);
+            // Setze den MainGameController im BoardController
+            this.boardController = loader.getController();
+            this.boardController.setMainGameController(this);
 
-        // Spieler an den BoardController übergeben
-        boardController.initializePlayers(players);
+            // Spieler an den BoardController übergeben
+            boardController.initializePlayers(players);
+            Main.primaryStage.setScene(gameScene);
 
-        Main.primaryStage.setScene(gameScene);
-    } catch (IOException e) {
-        e.printStackTrace();
+            gameplay();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-}
+
+    public void initialPlacement() {
+        if (buildController != null && boardController != null) {
+            buildController.setBoardController(boardController);
+            buildController.setMainGameController(this);
+            buildController.showCornerPoints();
+        } else {
+            System.err.println("Controllers not properly initialized!");
+        }
+        List<Player> players = game.getPlayers();
+        buildController.showCornerPoints();
+        for (Player player : players) {
+            System.out.println(player.getName() + " platziert seine erste Siedlung und Straße.");
+
+        }
+    }
+
+    public void gameplay() {
+        if (game == null) {
+            System.err.println("Game object is not initialized!");
+            return;
+        }
+        Player currentPlayer = game.getCurrentPlayer();
+        initialPlacement();
+        // while (currentPlayer.getVictoryPoints() < 10) {
+        //     System.out.println(currentPlayer.getName() + " ist am Zug!");
+        // }
+    }
 
     public int getPlayerCount() {
         return this.playerCount;

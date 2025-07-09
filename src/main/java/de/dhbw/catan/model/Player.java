@@ -14,6 +14,7 @@ public class Player {
     private int roads;
     private int settlements;
     private int cities;
+    private int victoryPoints;
 
     public Player(String name, String color) {
         this.name = name;
@@ -25,6 +26,7 @@ public class Player {
         this.roads = 15;
         this.settlements = 5;
         this.cities = 4;
+        this.victoryPoints = 0;
     }
 
     public String getColor() {
@@ -74,5 +76,15 @@ public class Player {
 
     public int getResourceCount(ResourceType type) {
         return resources.getOrDefault(type, 0);
+    }
+
+    public void calculateVictoryPoints() {
+        victoryPoints = 0;
+        victoryPoints += settlements * 1;
+        victoryPoints += cities * 2;
+    }
+
+    public int getVictoryPoints() {
+        return victoryPoints;
     }
 }
