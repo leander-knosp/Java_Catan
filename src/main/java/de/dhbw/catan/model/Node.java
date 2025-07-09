@@ -47,18 +47,20 @@ public class Node {
 
     /**
      * Berechnet den Hashcode des Knotens basierend auf den gerundeten Koordinaten.
-     * Die Koordinaten werden dabei auf ein Raster der Größe {@link #TOLERANCE}
-     * gerundet, sodass Knoten mit nahe beieinander liegenden Positionen denselben Hashcode erhalten.
-     * Dies sorgt für Konsistenz mit der {@link #equals(Object)}-Methode, die eine
-     * Toleranz beim Vergleich verwendet.
+     * Die Koordinaten werden auf ein Raster der Größe {@code 2 * TOLERANCE} gerundet,
+     * sodass Knoten, die innerhalb der Toleranz voneinander liegen, denselben
+     * Hashcode erhalten.
+     * Dies stellt sicher, dass Knoten, die gemäß {@link #equals(Object)} als gleich gelten,
+     * auch denselben Hashcode besitzen, und erfüllt so die Konsistenzanforderung
+     * zwischen {@code equals} und {@code hashCode}.
      *
      * @return ein Hashcode, der Knoten mit ähnlichen Positionen gruppiert
      */
     @Override
     public int hashCode() {
-        int precision = (int) TOLERANCE;
-        int xRounded = (int) (x / precision);
-        int yRounded = (int) (y / precision);
+        int precision = (int) (2 * TOLERANCE);
+        int xRounded = (int) Math.round(x / precision);
+        int yRounded = (int) Math.round(y / precision);
         int result = 17;
         result = 31 * result + xRounded;
         result = 31 * result + yRounded;
