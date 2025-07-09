@@ -11,6 +11,10 @@ public class Game {
         this.currentPlayerIndex = startingPlayerIndex;
     }
 
+    public List <Player> getPlayers() {
+        return players;
+    }
+
     public Player getCurrentPlayer() {
         return players.get(currentPlayerIndex);
     }
