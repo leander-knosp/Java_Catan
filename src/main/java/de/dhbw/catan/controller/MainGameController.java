@@ -11,6 +11,19 @@ import javafx.scene.shape.Rectangle;
 import de.dhbw.catan.model.Board;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import de.dhbw.catan.model.Trade;
+import javafx.scene.shape.Circle;
+import de.dhbw.catan.model.Game;
+
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
 
 import lombok.Data;
 
@@ -26,11 +39,31 @@ public class MainGameController {
     @FXML
     private Label grainCount, woolCount, oreCount, brickCount, lumberCount, diceLabel;
 
+    @FXML
+    private Spinner<Integer> woolSpinnerYou, lumberSpinnerYou, oreSpinnerYou, brickSpinnerYou, grainSpinnerYou;
+    
+    @FXML
+    private Spinner<Integer> woolSpinnerOther, lumberSpinnerOther, oreSpinnerOther, brickSpinnerOther, grainSpinnerOther;
+    
+    @FXML
+    private Button acceptTradeButton, declineTradeButton;
+    
+    @FXML
+    private HBox tradeDecisionBox;
+
+    @FXML
+    private VBox tradeContainer;
+    
+    @FXML
+    private Circle redCircle, blueCircle, yellowCircle, greenCircle;
+
     private final Dice dice;
     private Board board;
     private BuildController buildController;
     private BoardController boardController;
     private int playerCount;
+    private String selectedColor;
+    private Trade trade;
     private Game game;
 
     public MainGameController() {
@@ -145,5 +178,98 @@ public class MainGameController {
         oreCount.setText(String.valueOf(player.getResourceCount(ResourceType.ORE)));
         brickCount.setText(String.valueOf(player.getResourceCount(ResourceType.BRICK)));
         lumberCount.setText(String.valueOf(player.getResourceCount(ResourceType.LUMBER)));
+    }
+
+    @FXML
+    public void initialize() {
+        initializeSpinner();
+        tradeContainer.setVisible(false);
+        tradeDecisionBox.setVisible(false);
+    }
+
+    private void initializeSpinner() {
+        woolSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        lumberSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        oreSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        brickSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        grainSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+
+        woolSpinnerOther.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        lumberSpinnerOther.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        oreSpinnerOther.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        brickSpinnerOther.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+        grainSpinnerOther.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
+    }
+
+
+    @FXML
+    public void trade(){
+        Map<ResourceType, Integer> offerFromYou = new HashMap<>();
+        offerFromYou.put(ResourceType.WOOL, woolSpinnerYou.getValue());
+        offerFromYou.put(ResourceType.LUMBER, lumberSpinnerYou.getValue());
+        offerFromYou.put(ResourceType.ORE, oreSpinnerYou.getValue());
+        offerFromYou.put(ResourceType.BRICK, brickSpinnerYou.getValue());
+        offerFromYou.put(ResourceType.GRAIN, grainSpinnerYou.getValue());
+    
+        Map<ResourceType, Integer> requestFromOther = new HashMap<>();
+        requestFromOther.put(ResourceType.WOOL, woolSpinnerOther.getValue());
+        requestFromOther.put(ResourceType.LUMBER, lumberSpinnerOther.getValue());
+        requestFromOther.put(ResourceType.ORE, oreSpinnerOther.getValue());
+        requestFromOther.put(ResourceType.BRICK, brickSpinnerOther.getValue());
+        requestFromOther.put(ResourceType.GRAIN, grainSpinnerOther.getValue());
+    
+        if(selectedColor == null) {
+            System.out.println("Bitte wähle eine Farbe aus.");
+            return;
+        }
+        List<Player> playerList = game.getPlayers();
+        trade = new Trade(offerFromYou, requestFromOther, selectedColor, playerList);
+        if(trade.handleTrade(boardController.getCurrentPlayer())){
+            showButtons();
+        }
+    }
+
+    @FXML
+    private void onPlayerSelect(javafx.scene.input.MouseEvent event) {
+        Circle clickedCircle = (Circle) event.getSource();
+        redCircle.setStyle("");
+        blueCircle.setStyle("");
+        yellowCircle.setStyle("");
+        greenCircle.setStyle("");
+            
+        clickedCircle.setStyle("-fx-stroke: white; -fx-stroke-width: 3;");
+        if (clickedCircle == redCircle) {
+            selectedColor = "Red";
+        } else if (clickedCircle == blueCircle) {
+            selectedColor = "Blue";
+        } else if (clickedCircle == yellowCircle) {
+            selectedColor = "Yellow";
+        } else if (clickedCircle == greenCircle) {
+            selectedColor = "Green";
+        }
+    }
+    
+    @FXML
+    private void onAcceptTrade() {
+        Player currentPlayer = boardController.getCurrentPlayer();
+        trade.executeTrade(currentPlayer, trade.getTargetPlayer());
+        tradeDecisionBox.setVisible(false);
+        tradeContainer.setVisible(false);
+    }
+    
+    @FXML
+    private void onDeclineTrade() {
+        System.out.println("Trade abgelehnt.");
+        tradeDecisionBox.setVisible(false);
+    }
+    
+
+    private void showButtons() {
+        tradeDecisionBox.setVisible(true);
+    }
+
+    @FXML
+    private void showTradeMenu(){
+        tradeContainer.setVisible(true);
     }
 }
