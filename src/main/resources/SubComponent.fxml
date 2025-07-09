@@ -135,7 +135,7 @@
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0"> <!-- marker................................................. -->
          <children>
             <Button mnemonicParsing="false" onAction="#showTradeMenu" text="Trade with Player" />
-            <VBox fx:id="tradeContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" style="-fx-background-color: #f5f0f0; -fx-padding: 10px; -fx-background-radius: 15;" visible="true">
+            <VBox fx:id="tradeContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" style="-fx-background-color: #f5f0f0; -fx-padding: 10px; -fx-background-radius: 15;" visible="false">
                <VBox.margin>
                   <Insets bottom="10" left="10" right="10" top="10" />
                </VBox.margin>
