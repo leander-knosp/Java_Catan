@@ -52,10 +52,10 @@ public class MainGameController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/IntroScreen.fxml"));
             Scene introScene = new Scene(loader.load());
-            
+
             IntroScreenController introController = loader.getController();
             introController.setMainGameController(this);
-            
+
             Main.primaryStage.setScene(introScene);
             Main.primaryStage.show();
         } catch (IOException e) {
