@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="385.0" prefWidth="279.0" spacing="30.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.MainGameController">
+<VBox alignment="CENTER" prefHeight="385.0" prefWidth="400.0" spacing="30.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.MainGameController">
    <children>
       <Button mnemonicParsing="false" onAction="#callShowCornerPoints" text="Corner">
          <cursor>
@@ -132,26 +132,27 @@
             <Insets top="-25.0" />
          </VBox.margin>
       </AnchorPane>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0"> <!-- marker................................................. -->
          <children>
-            <Button mnemonicParsing="false" text="Trade with Player" />
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <Button mnemonicParsing="false" text="Trade with Player" onAction="#showTradeMenu"/>
+            <VBox fx:id="tradeContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" visible="false">
                <children>
                   <HBox alignment="CENTER" focusTraversable="true" prefHeight="36.0" prefWidth="161.0" spacing="10.0">
                      <children>
-                        <Circle fill="#c63a2a" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Circle fill="#3b7acd" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Circle fill="#fce903" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Circle fill="#1abf27" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="redCircle" fill="#c63a2a" radius="21.0" stroke="BLACK" strokeType="INSIDE" onMouseClicked="#onPlayerSelect"/>
+                        <Circle fx:id="blueCircle" fill="#3b7acd" radius="21.0" stroke="BLACK" strokeType="INSIDE" onMouseClicked="#onPlayerSelect"/>
+                        <Circle fx:id="yellowCircle" fill="#fce903" radius="21.0" stroke="BLACK" strokeType="INSIDE" onMouseClicked="#onPlayerSelect"/>
+                        <Circle fx:id="greenCircle" fill="#1abf27" radius="21.0" stroke="BLACK" strokeType="INSIDE" onMouseClicked="#onPlayerSelect"/>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Spinner prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner prefHeight="35.0" prefWidth="71.0" />
+                        <Spinner fx:id="woolSpinnerOther" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="lumberSpinnerOther" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="oreSpinnerOther" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="brickSpinnerOther" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="grainSpinnerOther" prefHeight="35.0" prefWidth="90.0" />
+
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
@@ -165,14 +166,21 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Spinner prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner prefHeight="35.0" prefWidth="71.0" />
+                        <Spinner fx:id="woolSpinnerYou" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="lumberSpinnerYou" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="oreSpinnerYou" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="brickSpinnerYou" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="grainSpinnerYou" prefHeight="35.0" prefWidth="90.0" />
+
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Send" />
+                  <Button mnemonicParsing="false" text="Send" onAction="#trade" />
+                  <HBox fx:id="tradeDecisionBox" alignment="CENTER" spacing="10.0" visible="false">
+                     <children>
+                        <Button fx:id="acceptTradeButton" text="Annehmen" onAction="#onAcceptTrade"/>
+                        <Button fx:id="declineTradeButton" text="Ablehnen" onAction="#onDeclineTrade"/>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
