@@ -48,6 +48,7 @@ public class MainGameController {
     private BuildController buildController;
     private BoardController boardController;
     private int playerCount;
+    private boolean robberMustMove = false;
 
     public MainGameController() {
         this.dice = new Dice();
@@ -112,8 +113,16 @@ public class MainGameController {
      */
     @FXML
     public void onRollDice() {
-        int total = dice.rollDice();
+        System.out.println("onRollDice() aufgerufen in Instanz mit ID: " + System.identityHashCode(this));
+    System.out.println("robberMustMove ist aktuell: " + robberMustMove);
 
+        if (robberMustMove) {
+            System.out.println("Du musst zuerst den Räuber versetzen!");
+            // Optional: Popup oder visuelle Meldung im UI anzeigen
+            return;
+        }
+    
+        int total = dice.rollDice();
         int dice1 = dice.getFirstDie();
         int dice2 = dice.getSecondDie();
 
@@ -122,6 +131,15 @@ public class MainGameController {
         showFirstDiceNumber(dice1);
         showSecondDiceNumber(dice2);
 
+        if (total == 7) {
+            robberMustMove = true;
+            // Hier UI für Räuber verschieben triggern (z.B. BoardController)
+            if (boardController != null) {
+                boardController.promptRobberMove();
+            }
+            return;
+        }
+    
         if (board != null) {
             board.distributeResources(total);
         }
@@ -131,6 +149,12 @@ public class MainGameController {
         } else {
             System.err.println("BoardController ist nicht initialisiert!");
         }
+    }
+
+    public void robberMoved() {
+        System.out.println("robberMoved() aufgerufen in Instanz mit ID: " + System.identityHashCode(this));
+        robberMustMove = false;
+        // evtl weitere logik 
     }
 
     public void callShowCornerPoints() {
