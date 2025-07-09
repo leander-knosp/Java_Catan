@@ -14,28 +14,139 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<VBox alignment="CENTER" prefHeight="385.0" prefWidth="279.0" spacing="30.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.MainGameController">
+<VBox fx:id="subComponents" alignment="CENTER" prefHeight="385.0" prefWidth="279.0" spacing="30.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.MainGameController">
    <children>
       <Button mnemonicParsing="false" onAction="#callShowCornerPoints" text="Corner">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Button mnemonicParsing="false" onAction="#callShowEdgePoints" text="Edge" />
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="80.0" prefWidth="100.0">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c9cdd0" height="80.0" layoutX="11.0" onMouseClicked="#onRollDice" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.0" width="80.0" />
-            <Circle layoutX="73.0" layoutY="19.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle layoutX="73.0" layoutY="61.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle layoutX="30.0" layoutY="61.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle layoutX="30.0" layoutY="19.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle layoutX="52.0" layoutY="40.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
-         </children>
-         <cursor>
-            <Cursor fx:constant="HAND" />
          </cursor>
-      </AnchorPane>
-      <Label fx:id="diceLabel" text="Label">
+      </Button>
+      <Button mnemonicParsing="false" onAction="#callShowEdgePoints" text="Edge" />
+      <HBox fx:id="dice_box" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+           <!-- First Dice -->
+           <StackPane fx:id="First_dice" onMouseClicked="#onRollDice" prefHeight="80" prefWidth="80" style="-fx-cursor: hand;">
+             <children>
+               <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#c9cdd0" height="80" stroke="black" strokeWidth="2.0" width="80" />
+               <GridPane hgap="10" vgap="10" prefWidth="100" prefHeight="100">
+                  <padding>
+                     <Insets top="5" right="5" bottom="5" left="5"/>
+                  </padding>
+                 <columnConstraints>
+                   <ColumnConstraints percentWidth="33" />
+                   <ColumnConstraints percentWidth="33" />
+                   <ColumnConstraints percentWidth="33" />
+                 </columnConstraints>
+                 <rowConstraints>
+                   <RowConstraints percentHeight="33" />
+                   <RowConstraints percentHeight="33" />
+                   <RowConstraints percentHeight="33" />
+                 </rowConstraints>
+       
+                 <StackPane GridPane.columnIndex="0" GridPane.rowIndex="0" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="first_dotTopLeft" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+                 <StackPane GridPane.columnIndex="2" GridPane.rowIndex="0" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="first_dotTopRight" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+                 <StackPane GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="first_dotMiddle" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+                 <StackPane GridPane.columnIndex="0" GridPane.rowIndex="2" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="first_dotBottomLeft" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+                 <StackPane GridPane.columnIndex="2" GridPane.rowIndex="2" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="first_dotBottomRight" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+                 <StackPane GridPane.columnIndex="0" GridPane.rowIndex="1" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="first_dotMidLeft" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+                 <StackPane GridPane.columnIndex="2" GridPane.rowIndex="1" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="first_dotMidRight" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+               </GridPane>
+             </children>
+           </StackPane>
+       
+           <!-- Second Dice -->
+           <StackPane fx:id="Second_dice" onMouseClicked="#onRollDice" prefHeight="80" prefWidth="80" style="-fx-cursor: hand;">
+             <children>
+               <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#c9cdd0" height="80" stroke="black" strokeWidth="2.0" width="80" />
+               <GridPane hgap="10" vgap="10" prefWidth="100" prefHeight="100">
+                  <padding>
+                     <Insets top="5" right="5" bottom="5" left="5"/>
+                   </padding>
+                 <columnConstraints>
+                   <ColumnConstraints percentWidth="33" />
+                   <ColumnConstraints percentWidth="33" />
+                   <ColumnConstraints percentWidth="33" />
+                 </columnConstraints>
+                 <rowConstraints>
+                   <RowConstraints percentHeight="33" />
+                   <RowConstraints percentHeight="33" />
+                   <RowConstraints percentHeight="33" />
+                 </rowConstraints>
+       
+                 <StackPane GridPane.columnIndex="0" GridPane.rowIndex="0" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="second_dotTopLeft" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+                 <StackPane GridPane.columnIndex="2" GridPane.rowIndex="0" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="second_dotTopRight" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+                 <StackPane GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="second_dotMiddle" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+                 <StackPane GridPane.columnIndex="0" GridPane.rowIndex="2" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="second_dotBottomLeft" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+                 <StackPane GridPane.columnIndex="2" GridPane.rowIndex="2" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="second_dotBottomRight" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+                 <StackPane GridPane.columnIndex="0" GridPane.rowIndex="1" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="second_dotMidLeft" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+                 <StackPane GridPane.columnIndex="2" GridPane.rowIndex="1" alignment="CENTER">
+                   <children>
+                     <Circle fx:id="second_dotMidRight" fill="black" radius="8" visible="false" />
+                   </children>
+                 </StackPane>
+               </GridPane>
+             </children>
+           </StackPane>
+         </children>
+       </HBox>
+       
+      <Label fx:id="diceLabel" text="Label" styleClass="player-label">
          <font>
             <Font name="Georgia Bold" size="16.0" />
          </font>
