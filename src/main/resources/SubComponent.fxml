@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="385.0" prefWidth="279.0" spacing="30.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.MainGameController">
+<VBox alignment="CENTER" prefHeight="385.0" prefWidth="400.0" spacing="30.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.MainGameController">
    <children>
       <Button mnemonicParsing="false" onAction="#callShowCornerPoints" text="Corner">
          <cursor>
@@ -147,11 +147,11 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Spinner fx:id="woolSpinnerOther" prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner fx:id="lumberSpinnerOther" prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner fx:id="oreSpinnerOther" prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner fx:id="brickSpinnerOther" prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner fx:id="grainSpinnerOther" prefHeight="35.0" prefWidth="71.0" />
+                        <Spinner fx:id="woolSpinnerOther" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="lumberSpinnerOther" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="oreSpinnerOther" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="brickSpinnerOther" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="grainSpinnerOther" prefHeight="35.0" prefWidth="90.0" />
 
                      </children>
                   </HBox>
@@ -166,11 +166,11 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Spinner fx:id="woolSpinnerYou" prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner fx:id="lumberSpinnerYou" prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner fx:id="oreSpinnerYou" prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner fx:id="brickSpinnerYou" prefHeight="35.0" prefWidth="71.0" />
-                        <Spinner fx:id="grainSpinnerYou" prefHeight="35.0" prefWidth="71.0" />
+                        <Spinner fx:id="woolSpinnerYou" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="lumberSpinnerYou" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="oreSpinnerYou" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="brickSpinnerYou" prefHeight="35.0" prefWidth="90.0" />
+                        <Spinner fx:id="grainSpinnerYou" prefHeight="35.0" prefWidth="90.0" />
 
                      </children>
                   </HBox>

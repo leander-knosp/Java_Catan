@@ -153,6 +153,12 @@ public class MainGameController {
 
     @FXML
     public void initialize() {
+        initializeSpinner();
+        tradeContainer.setVisible(false);
+        tradeDecisionBox.setVisible(false);
+    }
+
+    private void initializeSpinner() {
         woolSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
         lumberSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
         oreSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
