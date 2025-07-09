@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="385.0" prefWidth="400.0" spacing="30.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.MainGameController">
+<VBox alignment="CENTER" prefHeight="385.0" prefWidth="450.0" spacing="30.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dhbw.catan.controller.MainGameController">
    <children>
       <Button mnemonicParsing="false" onAction="#callShowCornerPoints" text="Corner">
          <cursor>
@@ -45,6 +45,26 @@
       </Label>
       <HBox prefHeight="113.0" prefWidth="285.0" spacing="10.0">
          <children>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <Rectangle fx:id="lumberCard" arcHeight="5.0" arcWidth="5.0" fill="#8a7143" height="79.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
+                  <ImageView fitHeight="50.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@images/lumberIcon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <Rectangle fx:id="brickCard" arcHeight="5.0" arcWidth="5.0" fill="#d0b390" height="79.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
+                  <ImageView fitHeight="50.0" fitWidth="50.0" preserveRatio="true">
+                     <image>
+                        <Image url="@images/brickIcon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
                   <Rectangle fx:id="woolCard" arcHeight="5.0" arcWidth="5.0" fill="#50d744" height="79.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
@@ -78,51 +98,31 @@
                   </ImageView>
                </children>
             </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0">
-               <children>
-                  <Rectangle fx:id="lumberCard" arcHeight="5.0" arcWidth="5.0" fill="#8a7143" height="79.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <ImageView fitHeight="50.0" fitWidth="50.0">
-                     <image>
-                        <Image url="@images/lumberIcon.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0">
-               <children>
-                  <Rectangle fx:id="brickCard" arcHeight="5.0" arcWidth="5.0" fill="#d0b390" height="79.0" stroke="BLACK" strokeType="INSIDE" width="49.0" />
-                  <ImageView fitHeight="50.0" fitWidth="50.0" preserveRatio="true">
-                     <image>
-                        <Image url="@images/brickIcon.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </StackPane>
          </children>
       </HBox>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Label fx:id="grainCount" layoutX="15.0" text="10">
+            <Label fx:id="grainCount" layoutX="51.0" text="10">
                <font>
                   <Font name="Georgia Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="woolCount" layoutX="76.0" text="10">
+            <Label fx:id="woolCount" layoutX="142.0" text="10">
                <font>
                   <Font name="Georgia Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="oreCount" layoutX="134.0" text="10">
+            <Label fx:id="oreCount" layoutX="234.0" text="10">
                <font>
                   <Font name="Georgia Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="lumberCount" layoutX="194.0" text="10">
+            <Label fx:id="lumberCount" layoutX="325.0" text="10">
                <font>
                   <Font name="Georgia Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="brickCount" layoutX="253.0" text="10">
+            <Label fx:id="brickCount" layoutX="417.0" layoutY="-1.0" text="10">
                <font>
                   <Font name="Georgia Bold" size="13.0" />
                </font>
@@ -134,18 +134,24 @@
       </AnchorPane>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0"> <!-- marker................................................. -->
          <children>
-            <Button mnemonicParsing="false" text="Trade with Player" onAction="#showTradeMenu"/>
-            <VBox fx:id="tradeContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" visible="false">
+            <Button mnemonicParsing="false" onAction="#showTradeMenu" text="Trade with Player" />
+            <VBox fx:id="tradeContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" style="-fx-background-color: #f5f0f0; -fx-padding: 10px; -fx-background-radius: 15;" visible="true">
+               <VBox.margin>
+                  <Insets bottom="10" left="10" right="10" top="10" />
+               </VBox.margin>
                <children>
                   <HBox alignment="CENTER" focusTraversable="true" prefHeight="36.0" prefWidth="161.0" spacing="10.0">
+                     <VBox.margin>
+                        <Insets bottom="20" />
+                     </VBox.margin>
                      <children>
-                        <Circle fx:id="redCircle" fill="#c63a2a" radius="21.0" stroke="BLACK" strokeType="INSIDE" onMouseClicked="#onPlayerSelect"/>
-                        <Circle fx:id="blueCircle" fill="#3b7acd" radius="21.0" stroke="BLACK" strokeType="INSIDE" onMouseClicked="#onPlayerSelect"/>
-                        <Circle fx:id="yellowCircle" fill="#fce903" radius="21.0" stroke="BLACK" strokeType="INSIDE" onMouseClicked="#onPlayerSelect"/>
-                        <Circle fx:id="greenCircle" fill="#1abf27" radius="21.0" stroke="BLACK" strokeType="INSIDE" onMouseClicked="#onPlayerSelect"/>
+                        <Circle fx:id="redCircle" fill="#c63a2a" onMouseClicked="#onPlayerSelect" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="blueCircle" fill="#3b7acd" onMouseClicked="#onPlayerSelect" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="greenCircle" fill="#fce903" onMouseClicked="#onPlayerSelect" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="yellowCircle" fill="#1abf27" onMouseClicked="#onPlayerSelect" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                      <children>
                         <Spinner fx:id="woolSpinnerOther" prefHeight="35.0" prefWidth="90.0" />
                         <Spinner fx:id="lumberSpinnerOther" prefHeight="35.0" prefWidth="90.0" />
@@ -155,16 +161,16 @@
 
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                  <AnchorPane prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Wool" />
-                        <Label text="Lumber" />
-                        <Label text="Ore" />
-                        <Label text="Brick" />
-                        <Label text="Grain" />
+                        <Label layoutX="13.0" text="Lumber" />
+                        <Label layoutX="108.0" text="Brick" />
+                        <Label layoutX="189.0" text="Wool" />
+                        <Label layoutX="272.0" text="Grain" />
+                        <Label layoutX="362.0" text="Ore" />
                      </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  </AnchorPane>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                      <children>
                         <Spinner fx:id="woolSpinnerYou" prefHeight="35.0" prefWidth="90.0" />
                         <Spinner fx:id="lumberSpinnerYou" prefHeight="35.0" prefWidth="90.0" />
@@ -174,11 +180,11 @@
 
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Send" onAction="#trade" />
+                  <Button mnemonicParsing="false" onAction="#trade" text="Send" />
                   <HBox fx:id="tradeDecisionBox" alignment="CENTER" spacing="10.0" visible="false">
                      <children>
-                        <Button fx:id="acceptTradeButton" text="Annehmen" onAction="#onAcceptTrade"/>
-                        <Button fx:id="declineTradeButton" text="Ablehnen" onAction="#onDeclineTrade"/>
+                        <Button fx:id="acceptTradeButton" onAction="#onAcceptTrade" text="Annehmen" />
+                        <Button fx:id="declineTradeButton" onAction="#onDeclineTrade" text="Ablehnen" />
                      </children>
                   </HBox>
                </children>
