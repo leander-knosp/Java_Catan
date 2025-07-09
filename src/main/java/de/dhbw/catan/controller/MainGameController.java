@@ -41,19 +41,19 @@ public class MainGameController {
 
     @FXML
     private Spinner<Integer> woolSpinnerYou, lumberSpinnerYou, oreSpinnerYou, brickSpinnerYou, grainSpinnerYou;
-    
+
     @FXML
     private Spinner<Integer> woolSpinnerOther, lumberSpinnerOther, oreSpinnerOther, brickSpinnerOther, grainSpinnerOther;
-    
+
     @FXML
     private Button acceptTradeButton, declineTradeButton;
-    
+
     @FXML
     private HBox tradeDecisionBox;
 
     @FXML
     private VBox tradeContainer;
-    
+
     @FXML
     private Circle redCircle, blueCircle, yellowCircle, greenCircle;
 
@@ -100,7 +100,6 @@ public class MainGameController {
 
     public void startGame(List<Player> players) {
         this.playerCount = players.size();
-        this.game = new Game(this.board, players);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Board.fxml"));
             Scene gameScene = new Scene(loader.load());
@@ -210,14 +209,14 @@ public class MainGameController {
         offerFromYou.put(ResourceType.ORE, oreSpinnerYou.getValue());
         offerFromYou.put(ResourceType.BRICK, brickSpinnerYou.getValue());
         offerFromYou.put(ResourceType.GRAIN, grainSpinnerYou.getValue());
-    
+
         Map<ResourceType, Integer> requestFromOther = new HashMap<>();
         requestFromOther.put(ResourceType.WOOL, woolSpinnerOther.getValue());
         requestFromOther.put(ResourceType.LUMBER, lumberSpinnerOther.getValue());
         requestFromOther.put(ResourceType.ORE, oreSpinnerOther.getValue());
         requestFromOther.put(ResourceType.BRICK, brickSpinnerOther.getValue());
         requestFromOther.put(ResourceType.GRAIN, grainSpinnerOther.getValue());
-    
+
         if(selectedColor == null) {
             System.out.println("Bitte wähle eine Farbe aus.");
             return;
@@ -236,7 +235,7 @@ public class MainGameController {
         blueCircle.setStyle("");
         yellowCircle.setStyle("");
         greenCircle.setStyle("");
-            
+
         clickedCircle.setStyle("-fx-stroke: white; -fx-stroke-width: 3;");
         if (clickedCircle == redCircle) {
             selectedColor = "Red";
@@ -248,7 +247,7 @@ public class MainGameController {
             selectedColor = "Green";
         }
     }
-    
+
     @FXML
     private void onAcceptTrade() {
         Player currentPlayer = boardController.getCurrentPlayer();
@@ -256,13 +255,13 @@ public class MainGameController {
         tradeDecisionBox.setVisible(false);
         tradeContainer.setVisible(false);
     }
-    
+
     @FXML
     private void onDeclineTrade() {
         System.out.println("Trade abgelehnt.");
         tradeDecisionBox.setVisible(false);
     }
-    
+
 
     private void showButtons() {
         tradeDecisionBox.setVisible(true);

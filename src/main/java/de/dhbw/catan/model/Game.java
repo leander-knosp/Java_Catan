@@ -22,8 +22,4 @@ public class Game {
     public void nextPlayer() {
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
     }
-
-    public List<Player> getPlayers() {
-        return players;
-    }
 }
