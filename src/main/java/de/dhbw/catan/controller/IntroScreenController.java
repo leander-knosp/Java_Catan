@@ -19,14 +19,22 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
+import de.dhbw.catan.Main;
+import de.dhbw.catan.controller.MainGameController;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import java.io.IOException;
+
+
 
 import lombok.Data;
 
 @Data
 public class IntroScreenController {
 
-    private MainGameController mainGameController;
     private String selectedColor = null;
+    private MainGameController mainGameController;
 
     @FXML
     private ImageView catan_logo;
@@ -138,7 +146,19 @@ public class IntroScreenController {
         if (playerCount >= 3) players.add(new Player(names.get(2), "Green"));
         if (playerCount == 4) players.add(new Player(names.get(3), "Yellow"));
 
-        mainGameController.startGame(players);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainGame.fxml"));
+            Scene gameScene = new Scene(loader.load());
+    
+            MainGameController mainGameController = loader.getController();
+            mainGameController.startGame(players); // <-- Spieler an MainGameController übergeben
+    
+            Main.primaryStage.setScene(gameScene);
+            Main.primaryStage.show();
+    
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setMainGameController(MainGameController mainGameController) {

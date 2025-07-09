@@ -1,19 +1,31 @@
 package de.dhbw.catan;
 
-import de.dhbw.catan.controller.MainGameController;
 import javafx.application.Application;
 import javafx.stage.Stage;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import java.io.IOException;
+
 
 public class Main extends Application {
 
     public static Stage primaryStage;
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         Main.primaryStage = primaryStage;
-        
-        MainGameController mainGameController = new MainGameController();
-        mainGameController.showIntroScreen();
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainGame.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Catan");
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {

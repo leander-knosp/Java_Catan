@@ -4,11 +4,13 @@ import de.dhbw.catan.Main;
 import de.dhbw.catan.model.Dice;
 import de.dhbw.catan.model.Player;
 import de.dhbw.catan.model.ResourceType;
+import de.dhbw.catan.controller.IntroScreenController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Rectangle;
 import de.dhbw.catan.model.Board;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import de.dhbw.catan.model.Trade;
 import javafx.scene.shape.Circle;
@@ -31,6 +33,12 @@ import java.util.List;
 
 @Data
 public class MainGameController {
+
+    @FXML
+    private VBox introContainer; 
+
+    @FXML
+    private VBox boardContainer;
 
     @FXML
     private Rectangle grainCard, woolCard, oreCard, brickCard, lumberCard;
@@ -60,6 +68,7 @@ public class MainGameController {
     private Board board;
     private BuildController buildController;
     private BoardController boardController;
+    private IntroScreenController introScreenController;
     private int playerCount;
     private String selectedColor;
     private Trade trade;
@@ -69,6 +78,40 @@ public class MainGameController {
         this.dice = new Dice();
         this.buildController = new BuildController();
     }
+
+    @FXML
+    public void initialize() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/IntroScreen.fxml"));
+            Parent introRoot = loader.load();
+            introScreenController = loader.getController();
+            introScreenController.setMainGameController(this);
+    
+            introContainer.getChildren().add(introRoot);
+    
+            boardContainer.setVisible(false);
+            boardContainer.setManaged(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+
+    private void loadBoardFXML() {
+        if (boardController == null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Board.fxml"));
+                Parent boardNode = loader.load();
+                boardController = loader.getController();
+                boardController.setMainGameController(this);
+
+                boardContainer.getChildren().add(boardNode);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
 
     public void setBuildController(BuildController buildController) {
         this.buildController = buildController;
@@ -99,24 +142,22 @@ public class MainGameController {
 
     public void startGame(List<Player> players) {
         this.playerCount = players.size();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Board.fxml"));
-            Scene gameScene = new Scene(loader.load());
-            
-            BoardController boardController = loader.getController();
-            boardController.setMainGameController(this);
+        this.game = new Game(players, 0);
 
-            game = new Game(players, 0); //unfinished-----------------------------------------------------------
-            System.out.println(game + " " + players + " " + game.getCurrentPlayer());
+        introContainer.setVisible(false);
+        introContainer.setManaged(false);
+
+        boardContainer.setVisible(true);
+        boardContainer.setManaged(true);
+
+        loadBoardFXML();
+
+        if (boardController != null) {
             boardController.initializePlayers(players);
-            
-            this.boardController = boardController;
-
-            Main.primaryStage.setScene(gameScene);
-    } catch (IOException e) {
-        e.printStackTrace();
+        } else {
+            System.err.println("BoardController konnte nicht geladen werden.");
+        }
     }
-}
 
     public int getPlayerCount() {
         return this.playerCount;
@@ -151,8 +192,7 @@ public class MainGameController {
         lumberCount.setText(String.valueOf(player.getResourceCount(ResourceType.LUMBER)));
     }
 
-    @FXML
-    public void initialize() {
+    private void initializeSpinner() {
         woolSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
         lumberSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
         oreSpinnerYou.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0));
@@ -169,6 +209,7 @@ public class MainGameController {
 
     @FXML
     public void trade(){
+        this.initializeSpinner();
         Map<ResourceType, Integer> offerFromYou = new HashMap<>();
         offerFromYou.put(ResourceType.WOOL, woolSpinnerYou.getValue());
         offerFromYou.put(ResourceType.LUMBER, lumberSpinnerYou.getValue());
