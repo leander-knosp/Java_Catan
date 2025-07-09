@@ -103,15 +103,14 @@ public class MainGameController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Board.fxml"));
             Scene gameScene = new Scene(loader.load());
+            
+            BoardController boardController = loader.getController();
+            boardController.setMainGameController(this);
 
-            // Setze den MainGameController im BoardController
-            this.boardController = loader.getController();
-            this.boardController.setMainGameController(this);
-
-            // Spieler an den BoardController übergeben
+            game = new Game(players, 0); //unfinished-----------------------------------------------------------
             boardController.initializePlayers(players);
-            Main.primaryStage.setScene(gameScene);
 
+            Main.primaryStage.setScene(gameScene);
             gameplay();
         } catch (IOException e) {
             e.printStackTrace();
@@ -134,7 +133,7 @@ public class MainGameController {
         }
     }
 
-    public void gameplay() {
+    private void gameplay() {
         if (game == null) {
             System.err.println("Game object is not initialized!");
             return;

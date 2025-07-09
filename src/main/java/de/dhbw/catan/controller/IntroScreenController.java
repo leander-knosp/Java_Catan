@@ -138,7 +138,6 @@ public class IntroScreenController {
         players.add(new Player(names.get(1), "Blue"));
         if (playerCount >= 3) players.add(new Player(names.get(2), "Green"));
         if (playerCount == 4) players.add(new Player(names.get(3), "Yellow"));
-
         mainGameController.startGame(players);
     }
 
