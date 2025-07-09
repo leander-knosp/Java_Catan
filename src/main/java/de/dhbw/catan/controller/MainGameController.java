@@ -18,6 +18,8 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -47,6 +49,9 @@ public class MainGameController {
     
     @FXML
     private HBox tradeDecisionBox;
+
+    @FXML
+    private VBox tradeContainer;
     
     @FXML
     private Circle redCircle, blueCircle, yellowCircle, greenCircle;
@@ -102,6 +107,7 @@ public class MainGameController {
             boardController.setMainGameController(this);
 
             game = new Game(players, 0); //unfinished-----------------------------------------------------------
+            System.out.println(game + " " + players + " " + game.getCurrentPlayer());
             boardController.initializePlayers(players);
             
             this.boardController = boardController;
@@ -212,6 +218,8 @@ public class MainGameController {
     private void onAcceptTrade() {
         Player currentPlayer = boardController.getCurrentPlayer();
         trade.executeTrade(currentPlayer, trade.getTargetPlayer());
+        tradeDecisionBox.setVisible(false);
+        tradeContainer.setVisible(false);
     }
     
     @FXML
@@ -223,5 +231,10 @@ public class MainGameController {
 
     private void showButtons() {
         tradeDecisionBox.setVisible(true);
+    }
+
+    @FXML
+    private void showTradeMenu(){
+        tradeContainer.setVisible(true);
     }
 }

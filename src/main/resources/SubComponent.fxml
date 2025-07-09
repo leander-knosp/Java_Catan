@@ -134,8 +134,8 @@
       </AnchorPane>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0"> <!-- marker................................................. -->
          <children>
-            <Button mnemonicParsing="false" text="Trade with Player" onAction="#"/>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <Button mnemonicParsing="false" text="Trade with Player" onAction="#showTradeMenu"/>
+            <VBox fx:id="tradeContainer" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" visible="false">
                <children>
                   <HBox alignment="CENTER" focusTraversable="true" prefHeight="36.0" prefWidth="161.0" spacing="10.0">
                      <children>
@@ -175,6 +175,12 @@
                      </children>
                   </HBox>
                   <Button mnemonicParsing="false" text="Send" onAction="#trade" />
+                  <HBox fx:id="tradeDecisionBox" alignment="CENTER" spacing="10.0" visible="false">
+                     <children>
+                        <Button fx:id="acceptTradeButton" text="Annehmen" onAction="#onAcceptTrade"/>
+                        <Button fx:id="declineTradeButton" text="Ablehnen" onAction="#onDeclineTrade"/>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>

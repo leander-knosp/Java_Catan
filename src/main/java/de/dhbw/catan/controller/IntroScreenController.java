@@ -141,32 +141,6 @@ public class IntroScreenController {
         mainGameController.startGame(players);
     }
 
-    // @FXML
-    // private void onChooseColor(javafx.scene.input.MouseEvent event) {
-    //     Circle clickedCircle = (Circle) event.getSource();
-    //     // Borders zurücksetzen
-    //     colChoiceRed.setStyle("");
-    //     colChoiceBlue.setStyle("");
-    //     colChoiceYellow.setStyle("");
-    //     colChoiceGreen.setStyle("");
-    
-    //     // Ausgewählten Kreis hervorheben
-    //     clickedCircle.setStyle("-fx-stroke: white; -fx-stroke-width: 3;");
-    
-    //     // Farbe merken
-    //     if (clickedCircle == colChoiceRed) {
-    //         selectedColor = "Red";
-    //     } else if (clickedCircle == colChoiceBlue) {
-    //         selectedColor = "Blue";
-    //     } else if (clickedCircle == colChoiceYellow) {
-    //         selectedColor = "Yellow";
-    //     } else if (clickedCircle == colChoiceGreen) {
-    //         selectedColor = "Green";
-    //     }
-    
-    //     //System.out.println("Ausgewählte Farbe: " + selectedColor);
-    // }
-
     public void setMainGameController(MainGameController mainGameController) {
         this.mainGameController = mainGameController;
     }
