@@ -55,7 +55,7 @@ public class BoardController {
     public Board getBoard() {
         return board;
     }
-    
+
     public List<Tile> getTiles() {
         return board.getTiles();
     }
@@ -89,12 +89,35 @@ public class BoardController {
         initializeRobber();
     }
 
-    public void initializePlayer(Player player) {
-        this.currentPlayer = player;
+    // public void initializePlayer(Player player) {
+    //     this.currentPlayer = player;
+    //     if (this.buildController != null) {
+    //         this.buildController.initializePlayer(player);
+    //     }
+    //     System.out.println("Hier initializePlayer " + this.currentPlayer);
+    // }
+    private List<Player> players;
+    private int currentPlayerIndex = 0;
+
+    public void initializePlayers(List<Player> players) {
+        this.players = players;
+        this.currentPlayerIndex = 0;
+        this.currentPlayer = players.get(0);
+
         if (this.buildController != null) {
-            this.buildController.initializePlayer(player);
+            this.buildController.initializePlayer(this.currentPlayer);
         }
-        //System.out.println("Hier initializePlayer " + this.currentPlayer);
+        System.out.println("Initialisiere Spieler:");
+        for (Player p : players) {
+            System.out.println("- " + p.getName() + " (" + p.getColor() + ")");
+        }
+    }
+
+    public void nextPlayer() {
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+        currentPlayer = players.get(currentPlayerIndex);
+        buildController.initializePlayer(currentPlayer);
+        System.out.println("Jetzt am Zug: " + currentPlayer.getName());
     }
 
     private void initializeRobber() {
@@ -103,7 +126,7 @@ public class BoardController {
         for (Tile tile : board.getTiles()) {
             //System.out.println(tile.getType());
         }
-        
+
         for (int i = 0; i < board.getTiles().size(); i++) {
             if (board.getTiles().get(i).getType() == TileType.DESERT) {
                 desertIndex = i;
@@ -132,13 +155,13 @@ public class BoardController {
         Robber robber = board.getRobber(); // 🔁
         Tile robberTile = board.getTiles().get(robber.getPosition());
         Polygon hex = robberTile.getShape();
-    
+
         robberImageView.setLayoutX(hex.getLayoutX() - robberImageView.getFitWidth() / 2);
         robberImageView.setLayoutY(hex.getLayoutY() - robberImageView.getFitHeight() / 2);
-    
+
         //System.out.println("Räuber ist jetzt auf Tile " + robber.getPosition());
     }
-    
+
 
     public void moveRobberTo(int newPosition) {
         board.getRobber().move(newPosition); // 🔁
@@ -149,15 +172,15 @@ public class BoardController {
     private void positionTiles() {
         List<Double> posX = board.getTiles().stream().map(t -> t.getShape().getLayoutX()).collect(Collectors.toList());
         List<Double> posY = board.getTiles().stream().map(t -> t.getShape().getLayoutY()).collect(Collectors.toList());
-    
+
         int tokenIndex = 0;
-    
+
         for (int i = 0; i < board.getTiles().size(); i++) {
             Polygon shape = board.getTiles().get(i).getShape();
-    
+
             shape.setLayoutX(posX.get(i));
             shape.setLayoutY(posY.get(i));
-    
+
             if (board.getTiles().get(i).getType() != TileType.DESERT) {
                 AnchorPane token = board.getNumberTokens().get(tokenIndex);
                 token.setLayoutX(posX.get(i) - 24);
@@ -207,6 +230,7 @@ public class BoardController {
 
             subController.setBuildController(buildController);
             sidebar.getChildren().add(subComponent);
+            System.out.println("SubComponent geladen und initialisiert.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -241,8 +265,8 @@ public class BoardController {
             // Nur Cursor-Effekt (kein roter Rahmen oder Füllfarbe)
             hex.setCursor(javafx.scene.Cursor.HAND);
         }
-    } 
-        
+    }
+
     public void disableRobberOverlay() {
         for (Tile tile : board.getTiles()) {
             Polygon hex = tile.getShape();
@@ -251,5 +275,5 @@ public class BoardController {
             hex.setStyle(""); // Reset style
             hex.setOpacity(1.0); // Reset Transparenz
         }
-    } 
+    }
 }

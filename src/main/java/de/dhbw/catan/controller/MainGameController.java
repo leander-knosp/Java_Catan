@@ -25,6 +25,7 @@ import java.util.List;
 import lombok.Data;
 
 import java.io.IOException;
+import java.util.List;
 
 @Data
 public class MainGameController {
@@ -80,10 +81,10 @@ public class MainGameController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/IntroScreen.fxml"));
             Scene introScene = new Scene(loader.load());
-            
+
             IntroScreenController introController = loader.getController();
             introController.setMainGameController(this);
-            
+
             Main.primaryStage.setScene(introScene);
             Main.primaryStage.show();
         } catch (IOException e) {
@@ -91,8 +92,8 @@ public class MainGameController {
         }
     }
 
-    public void startGame(int playerCount, String playerColor) {
-        this.playerCount = playerCount;
+    public void startGame(List<Player> players) {
+        this.playerCount = players.size();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Board.fxml"));
             Scene gameScene = new Scene(loader.load());
@@ -100,17 +101,16 @@ public class MainGameController {
             BoardController boardController = loader.getController();
             boardController.setMainGameController(this);
 
-            game = new Game(null, 0); //unfinished-----------------------------------------------------------
-            Player player = new Player("Spieler 1", playerColor);
-            boardController.initializePlayer(player);
+            game = new Game(players, 0); //unfinished-----------------------------------------------------------
+            boardController.initializePlayers(players);
             
             this.boardController = boardController;
 
-            Main.primaryStage.setScene(gameScene);  
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            Main.primaryStage.setScene(gameScene);
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
 
     public int getPlayerCount() {
         return this.playerCount;

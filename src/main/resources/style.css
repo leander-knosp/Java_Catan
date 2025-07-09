@@ -1,3 +1,84 @@
 .backgroundPane {
-    -fx-background-color: #bdc4d3;
+    -fx-background-color: rgb(131,40,43);
+}
+
+.text-field {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 16px;
+    -fx-text-fill: #333;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0.3, 1, 1);
+    -fx-pref-height: 42px;
+    -fx-pref-width: 360px;
+}
+.text-field-error {
+    -fx-border-color: gold;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-background-color: rgba(255, 250, 200, 0.9);
+}
+
+.spinner {
+    -fx-background-radius: 8;
+    -fx-font-size: 16px;
+    -fx-padding: 6 16 6 16;
+    -fx-background-color: rgba(255, 255, 255, 0.85);
+    -fx-border-radius: 8;
+    -fx-border-color: #ffcc66;
+    -fx-border-width: 2;
+}
+
+.button {
+    -fx-background-color: #ffe26c;
+    -fx-text-fill: #222;
+    -fx-font-family: "Verdana";
+    -fx-font-size: 20px;
+    -fx-background-radius: 10;
+    -fx-padding: 10 24 10 24;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0.2, 1, 2);
+}
+
+.button:hover {
+    -fx-background-color: #ffcd3c;
+    -fx-cursor: hand;
+}
+
+.player-box {
+    -fx-min-height: 65px;
+    -fx-pref-height: 65px;
+    -fx-max-height: 65px;
+
+    -fx-min-width: 450px; 
+    -fx-pref-width: 450px;
+    -fx-max-width: 450px;
+
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-background-radius: 10;
+    -fx-padding: 5 10 5 10;  /* Weniger Padding */
+    -fx-spacing: 10;
+    -fx-border-color: rgba(255,255,255,0.1);
+    -fx-border-radius: 10;
+}
+
+.circle {
+    -fx-stroke: white;
+    -fx-stroke-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 4, 0.3, 0, 1);
+}
+.player-label {
+    -fx-font-family: "Verdana";
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff5cc;
+}
+.spinner {
+    -fx-background-color: rgba(255, 255, 255, 0.85);
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-border-color: #ffcc66;
+    -fx-border-width: 2;
+    -fx-padding: 5;
+    -fx-font-size: 16px;
 }
