@@ -654,79 +654,94 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="sidebar" layoutX="1094.0" layoutY="51.0" prefHeight="805.0" prefWidth="414.0" />
-         <VBox fx:id="buildingCostsBox" alignment="CENTER" layoutX="6.0" layoutY="727.0" prefHeight="166.0" prefWidth="300.0" spacing="10.0" styleClass="building-costs-box" stylesheets="@style.css">
-      <children>
-         <Label styleClass="title-label" text="Building Costs" />
-   
-         <!-- Street -->
-         <HBox alignment="CENTER_LEFT" spacing="6.0">
-            <children>
-               <Label styleClass="item-label" text="Street" />
-               <Label styleClass="resource-count" text="1x" />
-               <ImageView fitHeight="24.0" fitWidth="24.0">
-                  <image>
-                     <Image url="@images/brickIcon.png" />
-                  </image>
-               </ImageView>
-               <Label styleClass="resource-count" text="1x" />
-               <ImageView fitHeight="24.0" fitWidth="24.0">
-                  <image>
-                     <Image url="@images/lumberIcon.png" />
-                  </image>
-               </ImageView>
-            </children>
-         </HBox>
-   
-         <!-- Settlement -->
-         <HBox alignment="CENTER_LEFT" spacing="6.0">
-            <children>
-               <Label styleClass="item-label" text="Settlement" />
-               <Label styleClass="resource-count" text="1x" />
-               <ImageView fitHeight="24.0" fitWidth="24.0">
-                  <image>
-                     <Image url="@images/brickIcon.png" />
-                  </image>
-               </ImageView>
-               <Label styleClass="resource-count" text="1x" />
-               <ImageView fitHeight="24.0" fitWidth="24.0">
-                  <image>
-                     <Image url="@images/lumberIcon.png" />
-                  </image>
-               </ImageView>
-               <Label styleClass="resource-count" text="1x" />
-               <ImageView fitHeight="28.0" fitWidth="30.0">
-                  <image>
-                     <Image url="@images/grainIcon.png" />
-                  </image>
-               </ImageView>
-               <Label styleClass="resource-count" text="1x" />
-               <ImageView fitHeight="24.0" fitWidth="24.0">
-                  <image>
-                     <Image url="@images/woolIcon.png" />
-                  </image>
-               </ImageView>
-            </children>
-         </HBox>
-   
-         <!-- City -->
-         <HBox alignment="CENTER_LEFT" spacing="6.0">
-            <children>
-               <Label styleClass="item-label" text="City" />
-               <Label styleClass="resource-count" text="2x" />
-               <ImageView fitHeight="30.0" fitWidth="31.0">
-                  <image>
-                     <Image url="@images/grainIcon.png" />
-                  </image>
-               </ImageView>
-               <Label styleClass="resource-count" text="3x" />
-               <ImageView fitHeight="24.0" fitWidth="24.0">
-                  <image>
-                     <Image url="@images/oreIcon.png" />
-                  </image>
-               </ImageView>
-            </children>
-         </HBox>
-      </children>
-   </VBox>   
+      <VBox fx:id="buildingCostsBox" alignment="CENTER" layoutX="6.0" layoutY="727.0" prefHeight="166.0" prefWidth="300.0" spacing="10.0" styleClass="building-costs-box" stylesheets="@style.css">
+         <children>
+            <Label styleClass="title-label" text="Building Costs" />
+
+                  <!-- Street -->
+            <HBox alignment="CENTER_LEFT" spacing="6.0">
+               <children>
+                  <Label styleClass="item-label" text="Street" />
+                  <Label styleClass="resource-count" text="1x" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0">
+                     <image>
+                        <Image url="@images/brickIcon.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="resource-count" text="1x" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0">
+                     <image>
+                        <Image url="@images/lumberIcon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+
+                  <!-- Settlement -->
+            <HBox alignment="CENTER_LEFT" spacing="6.0">
+               <children>
+                  <Label styleClass="item-label" text="Settlement" />
+                  <Label styleClass="resource-count" text="1x" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0">
+                     <image>
+                        <Image url="@images/brickIcon.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="resource-count" text="1x" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0">
+                     <image>
+                        <Image url="@images/lumberIcon.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="resource-count" text="1x" />
+                  <ImageView fitHeight="28.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@images/grainIcon.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="resource-count" text="1x" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0">
+                     <image>
+                        <Image url="@images/woolIcon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+
+                  <!-- City -->
+            <HBox alignment="CENTER_LEFT" spacing="6.0">
+               <children>
+                  <Label styleClass="item-label" text="City" />
+                  <Label styleClass="resource-count" text="2x" />
+                  <ImageView fitHeight="30.0" fitWidth="31.0">
+                     <image>
+                        <Image url="@images/grainIcon.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="resource-count" text="3x" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0">
+                     <image>
+                        <Image url="@images/oreIcon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox fx:id="scoreboardBox"
+      alignment="TOP_CENTER"
+      layoutX="14.0"
+      layoutY="12.0"
+      prefHeight="249.0"
+      prefWidth="223.0"
+      minWidth="223.0"
+      maxWidth="223.0"
+      spacing="10.0"
+      styleClass="building-costs-box"
+      stylesheets="@style.css">
+   <children>
+      <Label styleClass="title-label" text="Scoreboard" />
+   </children>
+</VBox>
    </children>
 </AnchorPane>
