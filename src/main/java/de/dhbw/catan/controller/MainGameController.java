@@ -113,14 +113,11 @@ public class MainGameController {
      */
     @FXML
     public void onRollDice() {
-        System.out.println("onRollDice() aufgerufen in Instanz mit ID: " + System.identityHashCode(this));
-    System.out.println("robberMustMove ist aktuell: " + robberMustMove);
 
-        if (robberMustMove) {
-            System.out.println("Du musst zuerst den Räuber versetzen!");
-            // Optional: Popup oder visuelle Meldung im UI anzeigen
-            return;
-        }
+        // if (robberMustMove) {
+        //     System.out.println("Du musst zuerst den Räuber versetzen!");
+        //     return;
+        // }
     
         int total = dice.rollDice();
         int dice1 = dice.getFirstDie();
@@ -131,14 +128,14 @@ public class MainGameController {
         showFirstDiceNumber(dice1);
         showSecondDiceNumber(dice2);
 
-        if (total == 7) {
-            robberMustMove = true;
-            // Hier UI für Räuber verschieben triggern (z.B. BoardController)
-            if (boardController != null) {
-                boardController.promptRobberMove();
-            }
-            return;
-        }
+        // if (total == 7) {
+        //     robberMustMove = true;
+        //     // Hier UI für Räuber verschieben triggern (z.B. BoardController)
+        //     if (boardController != null) {
+        //         boardController.promptRobberMove();
+        //     }
+        //     return;
+        // }
     
         if (board != null) {
             board.distributeResources(total);
